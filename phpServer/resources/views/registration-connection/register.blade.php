@@ -14,14 +14,14 @@
                     <h5 class="card-title text-center">Se connecter au bureau des élèves</h5>
                     <form class="form-signin" method="post" action="login.php">
                         <div class="form-label-group ">
-                            <label for="email">Adresse mail :</label>
-                            <input type="email" id="email" name="email" class="form-control"
+                            <label for="emailLogin">Adresse mail :</label>
+                            <input type="email" id="emailLogin" name="email" class="form-control"
                                    placeholder="robert.dupont@orange.fr" required>
                         </div>
 
                         <div class="form-label-group ">
-                            <label for="password">Mot de passe : </label>
-                            <input type="password" id="password" name="password" class="form-control"
+                            <label for="passwordLogin">Mot de passe : </label>
+                            <input type="password" id="passwordLogin" name="password" class="form-control"
                                    placeholder="xihfdofhAIHfhd154" required>
                         </div>
 
@@ -48,14 +48,14 @@
 
                         <div class="row">
                             <div class="form-label-group col-6">
-                                <label for="firstNameInscription">Prénom :</label>
-                                <input type="text" id="firstNameInscription" name="firstNameInscription" class="form-control"
+                                <label for="firstName">Prénom :</label>
+                                <input type="text" id="firstName" name="firstName" class="form-control"
                                        placeholder="Robert" required>
                             </div>
 
                             <div class="form-label-group col-6">
-                                <label for="lastNameInscription">Nom :</label>
-                                <input type="text" id="lastNameInscription" name="lastNameInscription" class="form-control"
+                                <label for="lastName">Nom :</label>
+                                <input type="text" id="lastName" name="lastName" class="form-control"
                                        placeholder="Dupont" required>
                             </div>
                         </div>
@@ -63,13 +63,14 @@
 
                         <div class="form-label-group ">
                             <label for="emailInscription">Adresse mail :</label>
-                            <input type="email" id="emailInscription" name="emailInscription" class="form-control"
+                            <input type="email" id="emailInscription" name="email" class="form-control"
                                    placeholder="robert.dupont@orange.fr" required>
                         </div>
 
                         <div class="form-label-group ">
                             <label for="campusList">Campus :</label>
                             <select name="campusList" class="custom-select">
+                                <option value="" selected disabled>Choisir un campus...</option>
                                 <option value="SaintNazaire">Saint-Nazaire</option>
                                 <option value="Rouen">Rouen</option>
                             </select>
@@ -77,22 +78,22 @@
 
                         <div class="form-label-group ">
                             <label for="passwordInscription">Mot de passe : </label>
-                            <input type="password" id="passwordInscription" name="passwordInscription"
+                            <input type="password" id="passwordInscription" name="password"
                                    class="form-control champ" placeholder="qodpfjsdjgAJjfd!45" required>
                         </div>
 
                         <div class="form-label-group ">
                             <label for="passwordConfirmation">Confirmation mot de passe : </label>
-                            <input type="password" id="passwordConfirmation" name="passwordConfirmation"
+                            <input type="password" id="passwordConfirmation" name="password_confirmation"
                                    class="form-control champ" placeholder="qodpfjsdjgAJjfd!45" required>
-                            <p class="" id="passwordMismatch">Les mots de passe ne correspondent pas.</p>
-                            <p class="" id="passwordMatch">Les mots de passe correspondent.</p>
+                            <p  id="passwordMismatch">Les mots de passe ne correspondent pas.</p>
+                            <p  id="passwordMatch">Les mots de passe correspondent.</p>
                         </div>
 
                         <div class="form-label-group ">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="legalIssuesConsent">
-                                <label class="custom-control-label" for="legalIssuesConsent">J'accepte les mentions légales</label>
+                                <label class="custom-control-label" for="legalIssuesConsentInscription">J'accepte les mentions légales</label>
                             </div>
                         </div>
 
