@@ -63,23 +63,12 @@ h1 {
     align-items: flex-start;
 }
 
-.eventDetails {
-    margin-left: 1%;
-    display: flex;
-    flex-direction: column;
-}
-
-.eventMainImage {
-    padding: 3%;
-}
-
 #singleEventTitle {
     text-align: center;
 }
 
 #eventDescription {
     height: 485px;
-
     overflow: auto;
 }
 
@@ -89,6 +78,20 @@ h1 {
     flex-direction: column;
 }
 
+.eventImageAndParticipate
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#participateToEvent
+{
+    margin-top: 1%;
+    margin-bottom: 1%;
+}
+
+
 @media screen and (max-width: 1280px) {
     .eventPresentation {
         display: flex;
@@ -97,8 +100,6 @@ h1 {
     }
 
     #eventDescription {
-        height: 485px;
-
-        overflow: visible;
+        height: 100%;
     }
 }

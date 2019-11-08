@@ -11,8 +11,9 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap/bootstrap.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/project-css/master-layout.css') }}"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    @stack('stylesheet')
     @stack('script.head')
+
+    @yield('stylesheet')
 </head>
 
 @include('partials._nav')
@@ -22,14 +23,17 @@
 
 <main>
 
-    <div id="main-wrapper" class="container">
-        @yield('content')
-    </div>
+        <div id="main-wrapper" class="container">
+            @yield('content')
+        </div>
+
+
+
 
 </main>
 
-
 @include('partials._footer')
+
 
 
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"

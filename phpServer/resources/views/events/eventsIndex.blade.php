@@ -8,9 +8,9 @@
     Le bureau des élèves de Saint-Nazaire organise de nombreux évènements !
 @endsection
 
-@push('stylesheet')
+@section('stylesheet')
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
-@endpush
+@endsection
 
 
 @section('content')

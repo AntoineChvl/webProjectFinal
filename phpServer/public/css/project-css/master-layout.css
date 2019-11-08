@@ -1,13 +1,13 @@
 body
 {
     font-family: "Roboto", sans-serif;
-    width: 100%;
-    //background-color: lightblue;
+
 }
 
 #main-wrapper
 {
     background-color: white;
+    min-height: 100vh;
 }
 
 #main-wrapper img
@@ -89,21 +89,106 @@ li
     color: #FFC252;
 }
 
-footer
-{
+
+footer {
     background-color: black;
-
-}
-
-footer .row
-{
-    display: flex;
-}
-
-footer p
-{
-    vertical-align: center;
     text-align: center;
     color: white;
 }
+
+footer a {
+    color: white;
+}
+
+footer a:hover{
+    text-decoration: none;
+    color: #fcbc50;
+}
+
+.facebook:hover {
+    color: #3b5998;
+    text-decoration: none;
+}
+
+.twitter:hover {
+    color: #33ccff;
+    text-decoration: none;
+}
+
+.linkedin:hover {
+    color: #1E90FF;
+    text-decoration: none;
+}
+
+
+#box {
+    display: flex;
+    justify-content:center;
+    align-content:space-around;
+}
+
+.element {
+    height: 800px;
+    border:1px solid black;
+    margin-top: 55px;
+    margin-right: 30px;
+    margin-left: 30px;
+    padding: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    background-color: white
+
+}
+
+.element:nth-child(1){
+    flex: 1;
+}
+
+.element:nth-child(2){
+    flex: 1;
+}
+
+footer h3 {
+    text-align: center;
+    color: white;
+    background-color: black;
+    background-clip: content-box;
+}
+
+footer div p {
+    text-align: center;
+}
+
+#boxFooter {
+    display:flex;
+    justify-content: center;
+}
+
+.elementFooter {
+    padding: 20px;
+}
+
+.elementFooter:nth-child(1){
+    flex:1;
+}
+
+.elementFooter:nth-child(2){
+    flex:2;
+    border-right: 2px solid #696969;
+    border-left: 2px solid #696969;
+}
+
+.elementFooter:nth-child(3){
+    flex:1;
+    margin-top: 1%;
+}
+
+@media screen and (max-width: 680px) {
+    #boxFooter {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+
 
