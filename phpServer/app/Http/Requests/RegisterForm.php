@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\UniqueEmail;
 use Illuminate\Foundation\Http\FormRequest;
 
 class RegisterForm extends FormRequest
@@ -27,7 +28,8 @@ class RegisterForm extends FormRequest
             'firstName' => 'required|min:3|max:16|alpha',
             'lastName' => 'required|min:3|max:25|alpha',
             'campus' => 'required',
-            'password' => 'required|min:6|max:32|confirmed|regex:[0-9]|regex:[A-Z]',
+            'email' => ['required','email',new UniqueEmail],
+            'password' => 'required|min:6|max:32|confirmed|regex:/.*[0-9].*/i|regex:/.*[A-Z].*/i',
             'password_confirmation' => 'required',
         ];
     }

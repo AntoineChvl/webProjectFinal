@@ -14,7 +14,8 @@ const DATABASE_PASSWORD = '';
 
 var app = require('express')();
 var mysql = require('mysql');
-var userController = require('./Class/UserController.js');
+var userController = require('./UserController.js');
+var bodyCatcher = require('./bodyCatcher.js');
 
 
 
@@ -35,12 +36,24 @@ connection.connect(function(error) {
 
 userController.connection = connection;
 
-app.get('/users',(req, res)=>userController.index(req, res));
-app.post('/users',(req, res)=>userController.store(req, res));
-app.get('/users/:id',(req, res)=>userController.show(req, res));
-app.put('/users/:id',(req, res)=>userController.update(req, res));
-app.patch('/users/:id',(req, res)=>userController.update(req, res));
-app.delete('/users/:id',(req, res)=>userController.destroy(req, res));
+app.get('/users',(req, res)=>
+	bodyCatcher(req,res,(req, res,body)=>
+		userController.index(req, res,body)));
+app.post('/users',(req, res)=>
+	bodyCatcher(req,res,(req, res,body)=>
+		userController.store(req, res)));
+app.get('/users/:id',(req, res)=>
+	bodyCatcher(req,res,(req, res,body)=>
+		userController.show(req, res)));
+app.put('/users/:id',(req, res)=>
+	bodyCatcher(req,res,(req, res,body)=>
+		userController.update(req, res)));
+app.patch('/users/:id',(req, res)=>
+	bodyCatcher(req,res,(req, res,body)=>
+		userController.update(req, res)));
+app.delete('/users/:id',(req, res)=>
+	bodyCatcher(req,res,(req, res,body)=>
+		userController.destroy(req, res)));
 
 // const bodyParser = require('body-parser')
 

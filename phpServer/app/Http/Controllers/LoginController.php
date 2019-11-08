@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterForm;
+use GuzzleHttp\Client as HTTPClient;
+use GuzzleHttp\Psr7\Request as HTTPRequest;
 use Illuminate\Http\Request;
 
 class LoginController extends Controller
@@ -25,7 +27,7 @@ class LoginController extends Controller
 
     public function register(RegisterForm $request)
     {
-        dd($request);
+
         return view('registration-connection/register');
     }
 }
