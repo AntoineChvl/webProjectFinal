@@ -12,13 +12,11 @@
 @section('content')
 
     <article class="eventPresentation">
-
-        
-
-
+        <h1>{{$event->name}}</h1>
+        <img src="https://via.placeholder.com/300">
     </article>
 
-    <h1>{{$event->name}}</h1>
+
 
 
 

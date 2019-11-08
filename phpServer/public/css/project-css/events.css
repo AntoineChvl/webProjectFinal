@@ -1,3 +1,11 @@
+
+/**
+This file will cover all the CSS for the event part of the website.
+ */
+
+
+/* ALL EVENTS STYLE */
+
 /*Two sections of events*/
 .eventsGroup
 {
@@ -56,4 +64,7 @@ h1
 {
     margin-top: 2%;
 }
+
+/* SINGLE EVENT STYLE */
+
 

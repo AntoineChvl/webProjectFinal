@@ -9,7 +9,7 @@
 @endsection
 
 @push('stylesheet')
-    <link href="{{ asset('css/project-css/eventsIndex.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
 @endpush
 
 
