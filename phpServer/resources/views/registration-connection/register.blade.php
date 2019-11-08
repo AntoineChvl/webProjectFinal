@@ -69,7 +69,8 @@
 
                         <div class="form-label-group ">
                             <label for="campusList">Campus :</label>
-                            <select name="campusList" class="custom-select">
+                            <select name="campusListInscription" class="custom-select">
+                                <option value="" selected disabled>Choisir un campus...</option>
                                 <option value="SaintNazaire">Saint-Nazaire</option>
                                 <option value="Rouen">Rouen</option>
                             </select>
@@ -82,17 +83,17 @@
                         </div>
 
                         <div class="form-label-group ">
-                            <label for="passwordConfirmation">Confirmation mot de passe : </label>
-                            <input type="password" id="passwordConfirmation" name="passwordConfirmation"
+                            <label for="passwordConfirmationInscription">Confirmation mot de passe : </label>
+                            <input type="password" id="passwordConfirmation" name="passwordConfirmationInscription"
                                    class="form-control champ" placeholder="qodpfjsdjgAJjfd!45" required>
-                            <p class="" id="passwordMismatch">Les mots de passe ne correspondent pas.</p>
-                            <p class="" id="passwordMatch">Les mots de passe correspondent.</p>
+                            <p  id="passwordMismatch">Les mots de passe ne correspondent pas.</p>
+                            <p  id="passwordMatch">Les mots de passe correspondent.</p>
                         </div>
 
                         <div class="form-label-group ">
                             <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="legalIssuesConsent">
-                                <label class="custom-control-label" for="legalIssuesConsent">J'accepte les mentions légales</label>
+                                <input type="checkbox" class="custom-control-input" id="legalIssuesConsentInscription">
+                                <label class="custom-control-label" for="legalIssuesConsentInscription">J'accepte les mentions légales</label>
                             </div>
                         </div>
 
