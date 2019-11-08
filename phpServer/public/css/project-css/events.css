@@ -67,4 +67,8 @@ h1
 
 /* SINGLE EVENT STYLE */
 
-
+.eventPresentation
+{
+    display: flex;
+    flex-direction: row;
+}
