@@ -1,0 +1,109 @@
+body
+{
+    font-family: "Roboto", sans-serif;
+    width: 100%;
+    //background-color: lightblue;
+}
+
+#main-wrapper
+{
+    background-color: white;
+}
+
+#main-wrapper img
+{
+    width: 100%;
+}
+
+p
+{
+    text-align: justify;
+}
+
+li
+{
+    color: white
+}
+
+
+nav
+{
+    background-color: black;
+    width: 100%;
+}
+
+#school_logo
+{
+    margin-right: 1%;
+}
+
+#navbarText a:hover, .eventsDropdown button:hover
+{
+    color: #FFC252;
+}
+
+#navbarEventDropdown a
+{
+    background-color: white;
+    color: black;
+}
+
+#toggle_button
+{
+    color: white;
+}
+
+#navbarUl ul
+{
+
+    display: flex;
+    flex-direction: row;
+}
+
+#navbarUl li a, #dropdownMenuButton
+{
+    justify-content: center;
+    color: white;
+    align-items: center;
+    border-right: solid white;
+}
+
+#navbarUl li a:hover, #dropdownMenuButton:hover
+{
+    background-color:  #FFC252;
+    color: black;
+}
+
+#dropdownMenuButton
+{
+    height: 100%;
+}
+
+.eventsDropdown
+{
+    color: white;
+}
+
+#navTitle
+{
+    color: #FFC252;
+}
+
+footer
+{
+    background-color: black;
+
+}
+
+footer .row
+{
+    display: flex;
+}
+
+footer p
+{
+    vertical-align: center;
+    text-align: center;
+    color: white;
+}
+
