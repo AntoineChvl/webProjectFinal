@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@section('header')
+@push('stylesheet')
     <link href="{{ asset('css/project-css/registration.css') }}" rel="stylesheet">
-@endsection
+@endpush
 
 @section('content')
 
@@ -80,7 +80,6 @@
 @endsection
 
 
-@section('scripts')
+@push('script')
     <script src="{{ asset('js/project-js/registration.js') }}"></script>
-@endsection
-
+@endpush

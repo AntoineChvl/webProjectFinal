@@ -6,12 +6,13 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Sections to put the title and meta description tags -->
-    <title>@yield('head-title')</title>
-    <meta name="description" content=@yield('head-meta-description')>
+    <title>@yield('head-title',app('APP_NAME'))</title>
+    <meta name="description" content="@yield('head-meta-description','')">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap/bootstrap.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/project-css/master-layout.css') }}"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    @yield('header')
+    @stack('stylesheet')
+    @stack('script.head')
 </head>
 
 @include('partials._nav')
@@ -40,6 +41,6 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-@yield('scripts')
+@stack('script')
 </body>
 </html>
