@@ -27,6 +27,17 @@
 
                 @if($event->date < now())
                     <a href="#" class="btn btn-danger" id="participateToEvent">Poster des photos</a>
+
+                    <form action="{{ route('image') }}" method="post" enctype="multipart/form-data" id="uploadImageForm">
+                        @csrf
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="image_name" required>
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-danger">Envoyer l'image</button>
+                    </form>
+
                 @else
                     <a href="#" class="btn btn-danger" id="participateToEvent">Participer à l'évènement</a>
                 @endif
@@ -49,3 +60,7 @@
     </article>
 
 @endsection
+
+@push('script')
+    <script src="{{ asset('js/project-js/upload-image.js') }}"></script>
+@endpush
