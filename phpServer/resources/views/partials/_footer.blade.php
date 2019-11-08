@@ -19,8 +19,12 @@
                 dans 29 campus en France, en Espagne, en Algérie et au Cameroun</p>
         </div>
         <div class="elementFooter">
-            <p><a href="#">Politique de collecte d'informations</a><br><a href="#">Politique de
-                    confidentialité</a><br><a href="#">Politique sur les Cookies</a></p>
+            <ul>
+               <li><a href="#">Mentions légales</a></li>
+               <li><a href="#">Conditions générales de ventes</a></li>
+               <li><a href="#">Rejoindre le CESI</a></li>
+            </ul>
+
         </div>
     </div>
 </footer>
