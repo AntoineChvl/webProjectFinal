@@ -41,19 +41,19 @@ app.get('/users',(req, res)=>
 		userController.index(req, res,body)));
 app.post('/users',(req, res)=>
 	bodyCatcher(req,res,(req, res,body)=>
-		userController.store(req, res)));
+		userController.store(req, res,body)));
 app.get('/users/:id',(req, res)=>
 	bodyCatcher(req,res,(req, res,body)=>
-		userController.show(req, res)));
+		userController.show(req, res,body)));
 app.put('/users/:id',(req, res)=>
 	bodyCatcher(req,res,(req, res,body)=>
-		userController.update(req, res)));
+		userController.update(req, res,body)));
 app.patch('/users/:id',(req, res)=>
 	bodyCatcher(req,res,(req, res,body)=>
-		userController.update(req, res)));
+		userController.update(req, res,body)));
 app.delete('/users/:id',(req, res)=>
 	bodyCatcher(req,res,(req, res,body)=>
-		userController.destroy(req, res)));
+		userController.destroy(req, res,body)));
 
 // const bodyParser = require('body-parser')
 

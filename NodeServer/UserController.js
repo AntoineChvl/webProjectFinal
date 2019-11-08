@@ -1,17 +1,16 @@
 function UserController() {
     this.connection = undefined;
-    this.index = function (request, res, body) {
-    	if(body.email!==undefined){
-			this.connection.query('SELECT * FROM users WHERE email=?',body.email, (err, result) => {
-				res.json({status: 'success', 'result': result});
-			});
-		}else {
-			this.connection.query('SELECT * FROM users', (err, result) => {
-				res.json({status: 'success', 'result': result});
-			});
-		}
+    this.query = require('./query');
+    this.index = async function (request, res, body) {
+        if (body.email !== undefined) {
+            let result = await this.query(this.connection, 'SELECT * FROM users WHERE email=?', body.email);
+            res.json({status: 'success', 'result': result});
+        } else {
+            let result = await this.query(this.connection, 'SELECT * FROM users');
+            res.json({status: 'success', 'result': result});
+        }
     }
-    this.store = function (request, res, body) {
+    this.store = async function (request, res, body) {
         let errors = []
 
         if (body.firstname == undefined) {
@@ -30,6 +29,17 @@ function UserController() {
             errors.push('lastname is too long');
         }
 
+        if (body.campus == undefined) {
+            errors.push('campus is required');
+        } else {
+            let campusResult = await this.query(this.connection, 'SELECT * FROM campus WHERE id=? OR location=?', [body.campus, body.campus]);
+            if (campusResult.length > 0) {
+                body.campus = campusResult[0].id;
+            } else {
+                errors.push('this campus does not exist');
+            }
+        }
+
         if (body.password == undefined) {
             errors.push('password is required');
         }
@@ -43,37 +53,27 @@ function UserController() {
             if (body.email.length > 64) {
                 errors.push('email is too long');
             }
-            this.connection.query('SELECT * FROM users WHERE email=?', body.email, (err, emailResult) => {
-                if (emailResult.length > 0) {
-                    errors.push('email already exist');
-                }
-                if (errors.length == 0) {
-                    let newUser = {
-                        email: body.email,
-                        firstname: body.firstname,
-                        lastname: body.lastname,
-                        password: body.password
-                    };
-                    this.connection.query('INSERT INTO users SET ?', newUser, (err, r) => {
-                        this.connection.query('SELECT * FROM users WHERE id=?', r.insertId, (err, result) => {
-                            if (result[0]) {
-                                res.json({status: 'success', 'result': result[0]});
-                            } else {
-                                res.json({
-                                    status: 'failed',
-                                    'errors': 'user #' + request.params.id + ' does not exist'
-                                });
-                            }
-                        });
-                    });
-                } else {
-                    res.json({status: 'failed', 'errors': errors});
-                }
-            });
+            let emailResult = await this.query(this.connection, 'SELECT * FROM users WHERE email=?', body.email);
+            if (emailResult.length > 0) {
+                errors.push('email already exist');
+            }
+        }
+        if (errors.length == 0) {
+            let newUser = {
+                email: body.email,
+                firstname: body.firstname,
+                lastname: body.lastname,
+                password: body.password,
+                campus_id: body.campus,
+            };
+            let insertResult = await this.query(this.connection, 'INSERT INTO users SET ?', newUser);
+            let userResult = await this.query(this.connection, 'SELECT * FROM users WHERE id=?', insertResult.insertId);
+            res.json({status: 'success', 'result': userResult[0]});
+        } else {
+            res.json({status: 'failed', 'errors': errors});
         }
     }
-
-    this.show = function (request, res, body) {
+    this.show = async function (request, res, body) {
         this.connection.query('SELECT * FROM users WHERE id=?', request.params.id, (err, result) => {
             //if (err) throw err;
             if (result[0]) {
@@ -83,8 +83,7 @@ function UserController() {
             }
         });
     }
-    this.update = function (request, res, body) {
-        let body = [];
+    this.update = async function (request, res, body) {
         request.on('data', (chunk) => {
             body.push(chunk);
         }).on('end', () => {
@@ -97,7 +96,7 @@ function UserController() {
             });
         });
     }
-    this.destroy = function (request, res, body) {
+    this.destroy = async function (request, res, body) {
         this.connection.query('DELETE FROM `users` WHERE id=?', request.params.id, (err, result) => {
             if (err) throw err;
             if (result.affectedRows > 0) {

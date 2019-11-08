@@ -72,7 +72,7 @@
                             <label for="campusList">Campus :</label>
                             <select id="campusList" class="custom-select" name="campus">
                                 <option {{ old('campus')? '' : 'selected' }} value=""  disabled>Choisir un campus...</option>
-                                <option {{ old('campus')=="SaintNazaire"? 'selected' : '' }} value="SaintNazaire">Saint-Nazaire</option>
+                                <option {{ old('campus')=="Saint-Nazaire"? 'selected' : '' }} value="Saint-Nazaire">Saint-Nazaire</option>
                                 <option {{ old('campus')=="Rouen"? 'selected' : '' }} value="Rouen">Rouen</option>
                             </select>
                         </div>
