@@ -5,14 +5,15 @@
 @endpush
 
 @section('content')
-
+    {{ $errors }}
     <div class="container" id="loginForm">
 
         <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
             <div class="card card-signin my-5">
                 <div class="card-body">
                     <h5 class="card-title text-center">Se connecter au bureau des élèves</h5>
-                    <form class="form-signin" method="post" action="login.php">
+                    <form class="form-signin" method="post" action="{{ route('login') }}">
+                        @csrf
                         <div class="form-label-group ">
                             <label for="emailLogin">Adresse mail :</label>
                             <input type="email" id="emailLogin" name="email" class="form-control"
@@ -43,20 +44,20 @@
                 <div class="card-body">
                     <h5 class="card-title text-center">S'inscrire</h5>
 
-                    <form class="form-signin" method="post" action="inscription.php">
-
+                    <form class="form-signin" method="post" action="{{ route('register') }}">
+                        @csrf
 
                         <div class="row">
                             <div class="form-label-group col-6">
                                 <label for="firstName">Prénom :</label>
                                 <input type="text" id="firstName" name="firstName" class="form-control"
-                                       placeholder="Robert" required>
+                                       placeholder="Robert" value="{{old('firstName')}}" required>
                             </div>
 
                             <div class="form-label-group col-6">
                                 <label for="lastName">Nom :</label>
                                 <input type="text" id="lastName" name="lastName" class="form-control"
-                                       placeholder="Dupont" required>
+                                       placeholder="Dupont" value="{{old('lastName')}}" required>
                             </div>
                         </div>
 
@@ -64,15 +65,15 @@
                         <div class="form-label-group ">
                             <label for="emailInscription">Adresse mail :</label>
                             <input type="email" id="emailInscription" name="email" class="form-control"
-                                   placeholder="robert.dupont@orange.fr" required>
+                                   placeholder="robert.dupont@orange.fr" value="{{old('email')}}" required>
                         </div>
 
                         <div class="form-label-group ">
                             <label for="campusList">Campus :</label>
-                            <select name="campusList" class="custom-select">
-                                <option value="" selected disabled>Choisir un campus...</option>
-                                <option value="SaintNazaire">Saint-Nazaire</option>
-                                <option value="Rouen">Rouen</option>
+                            <select id="campusList" class="custom-select" name="campus">
+                                <option {{ old('campus')? '' : 'selected' }} value=""  disabled>Choisir un campus...</option>
+                                <option {{ old('campus')=="SaintNazaire"? 'selected' : '' }} value="SaintNazaire">Saint-Nazaire</option>
+                                <option {{ old('campus')=="Rouen"? 'selected' : '' }} value="Rouen">Rouen</option>
                             </select>
                         </div>
 
@@ -93,7 +94,7 @@
                         <div class="form-label-group ">
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="legalIssuesConsent">
-                                <label class="custom-control-label" for="legalIssuesConsentInscription">J'accepte les mentions légales</label>
+                                <label class="custom-control-label" for="legalIssuesConsent">J'accepte les mentions légales</label>
                             </div>
                         </div>
 
