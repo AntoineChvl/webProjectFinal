@@ -1,8 +1,8 @@
 @extends('layouts.master')
 
-@push('stylesheet')
+@section('stylesheet')
     <link href="{{ asset('css/project-css/registration.css') }}" rel="stylesheet">
-@endpush
+@endsection
 
 @section('content')
     {{ $errors }}
