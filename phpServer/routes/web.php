@@ -18,7 +18,7 @@ Route::get('/about', 'Controller@exemple')->name('about');//page d'accueil
 
 
 // connection / inscription
-Route::get('/login', 'Controller@exemple')->name('login');//page de connection / inscription
+Route::get('/login', 'LoginController@show')->name('login');//page de connection / inscription
 Route::get('/logout', 'Controller@exemple')->name('logout');//page de deconnection
 Route::post('/login', 'Controller@exemple')->name('login');//reception du formulaire de connection -> redirection
 Route::post('/register', 'Controller@exemple')->name('register');//reception du formulaire d'inscription -> redirection
