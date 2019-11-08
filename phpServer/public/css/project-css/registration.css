@@ -2,6 +2,7 @@
 {
     display: flex;
     flex-direction: row;
+    align-items: center;
 }
 
 #passwordMismatch {
@@ -28,7 +29,14 @@ form button
     color: black !important;
 }
 
+form input, form label
+{
+    margin-top: 1%;
+}
+
 form a
 {
     color: black;
 }
+
+
