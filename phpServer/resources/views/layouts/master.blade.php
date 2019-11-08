@@ -6,7 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- Sections to put the title and meta description tags -->
-    <title>@yield('head-title',app('APP_NAME'))</title>
+    <title>@yield('head-title',env('APP_NAME'))</title>
     <meta name="description" content="@yield('head-meta-description','')">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap/bootstrap.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/project-css/master-layout.css') }}"/>

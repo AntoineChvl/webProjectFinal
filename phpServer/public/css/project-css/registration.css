@@ -27,3 +27,8 @@ form button
     border: none !important;
     color: black !important;
 }
+
+form a
+{
+    color: black;
+}

@@ -32,6 +32,14 @@ Route::resource('events.comments','Controller');
 Route::get('/shop', 'Controller@exemple')->name('shop');
 Route::resource('shop/product','Controller');
 
+Route::get('/accueilTest', function() {
+    return view('home.home');
+});
+
+
+Route::get('/loginTest', function() {
+    return view('registration-connection.register');
+});
 
 
 
