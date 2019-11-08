@@ -24,7 +24,7 @@ Route::post('/login', 'LoginController@login')->name('login');//reception du for
 Route::post('/register', 'LoginController@register')->name('register');//reception du formulaire d'inscription -> redirection
 
 //activité
-Route::resource('events','Controller');
+Route::resource('events','EventsController');
 Route::resource('events.comments','Controller');
 //Route::get('/events', 'Controller@exemple')->name('events');
 

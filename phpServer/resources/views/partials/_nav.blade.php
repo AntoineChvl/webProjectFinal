@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-dark bg-dark sticky-top navbar-expand-lg">
+<nav class="navbar navbar-dark bg-dark sticky-top navbar-expand-lg mainNavbar">
     <img src="{{ asset('assets/imgs/cesi_logo.png') }}" alt="Logo de l'école d'ingénieurs CESI" id="school_logo">
     <a class="navbar-brand" href="/" id="navTitle">Bureau des élèves - Saint-Nazaire</a>
     <button class="navbar-toggler" id="toggle_button" type="button" data-toggle="collapse" data-target="#navbarText"

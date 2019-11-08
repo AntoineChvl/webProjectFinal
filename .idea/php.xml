@@ -87,6 +87,11 @@
       <path value="$PROJECT_DIR$/phpServer/vendor/facade/ignition" />
       <path value="$PROJECT_DIR$/phpServer/vendor/erusev/parsedown" />
       <path value="$PROJECT_DIR$/phpServer/vendor/nikic/php-parser" />
+      <path value="$PROJECT_DIR$/phpServer/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/phpServer/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/phpServer/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/phpServer/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/phpServer/vendor/ralouphie/getallheaders" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

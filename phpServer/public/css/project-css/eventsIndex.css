@@ -1,0 +1,59 @@
+/*Two sections of events*/
+.eventsGroup
+{
+    background-color: #FFC252;
+    border-radius: 3px;
+    margin-bottom: 3%;
+    padding: 2%;
+    box-shadow: 2px 2px 2px #FFC252;
+}
+
+/*The events list, either actual or past*/
+.eventsList
+{
+    display: flex;
+    flex-wrap: wrap-reverse;
+    justify-content: center;
+}
+
+/*A single event, considered as an article*/
+.singleEvent
+{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+/*Graphical properties of a single event*/
+.singleEvent img, h3
+{
+    align-self: center;
+    text-align: center;
+}
+
+.singleEvent a
+{
+    margin-top: 2%;
+}
+
+/*The title of the event*/
+.eventsTitle
+{
+    font-style: italic;
+}
+
+
+#upcomingEvents img, #pastEvents img
+{
+
+    width: 100%;
+    height: 100%;
+}
+
+h1
+{
+    margin-top: 2%;
+}
+
