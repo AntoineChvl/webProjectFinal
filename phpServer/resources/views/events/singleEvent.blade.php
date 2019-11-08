@@ -15,6 +15,8 @@
 
 @section('content')
 
+    <a href="{{route('events.index')}}" class="btn btn-light" id="backToEvents">Retour aux évènements</a>
+
     <h1 id="singleEventTitle">{{$event->name}}</h1>
 
     <article class="eventPresentation row mx-auto">

@@ -31,6 +31,7 @@
                             <img src="https://via.placeholder.com/150">
                             <a href="{{route('events.show', $event->id )}}" class="btn btn-dark">Visiter l'évènement</a>
                         </article>
+
                     @endforeach
                 @else
                     @foreach($past_events as $past_event)
@@ -44,7 +45,6 @@
 
                 @endif
             </div>
-
         </section>
     @endforeach
 
