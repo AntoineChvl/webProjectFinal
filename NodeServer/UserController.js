@@ -1,114 +1,91 @@
-function UserController() {
-    this.connection = undefined;
-    this.query = require('./query');
-    this.index = async function (request, res, body) {
-        if (body.email !== undefined) {
-            let result = await this.query(this.connection, 'SELECT * FROM users WHERE email=?', body.email);
+function UserController(connection) {
+    this.executeQuery = (new require('./query')(connection)).executeQuery;
+    this.validator = new require('./validator')(this.query);
+    this.index = async function (request, res) {
+        if (request.body.email !== undefined) {
+            let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id WHERE email=?', request.body.email);
             res.json({status: 'success', 'result': result});
         } else {
-            let result = await this.query(this.connection, 'SELECT * FROM users');
+            let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id');
             res.json({status: 'success', 'result': result});
         }
     }
-    this.store = async function (request, res, body) {
-        let errors = []
+    this.store = async function (request, res) {
+        let errors = [];
 
-        if (body.firstname == undefined) {
-            errors.push('firstname is required');
-        } else if (body.firstname.length < 3) {
-            errors.push('firstname is too short');
-        } else if (body.firstname.length > 32) {
-            errors.push('firstname is too long');
-        }
+        await this.validator.validateFirstname(request.body, errors);
+        await this.validator.validateLastname(request.body, errors);
+        await this.validator.validateCampus(request.body, errors);
+        await this.validator.validatePassword(request.body, errors);
+        await this.validator.validateEmail(request.body, errors);
 
-        if (body.lastname == undefined) {
-            errors.push('lastname is required');
-        } else if (body.lastname.length < 3) {
-            errors.push('lastname is too short');
-        } else if (body.lastname.length > 32) {
-            errors.push('lastname is too long');
-        }
-
-        if (body.campus == undefined) {
-            errors.push('campus is required');
-        } else {
-            let campusResult = await this.query(this.connection, 'SELECT * FROM campus WHERE id=? OR location=?', [body.campus, body.campus]);
-            if (campusResult.length > 0) {
-                body.campus = campusResult[0].id;
-            } else {
-                errors.push('this campus does not exist');
-            }
-        }
-
-        if (body.password == undefined) {
-            errors.push('password is required');
-        }
-
-        if (body.email == undefined) {
-            errors.push('email is required');
-        } else {
-            if (body.email.length < 1) {
-                errors.push('email is too short');
-            }
-            if (body.email.length > 64) {
-                errors.push('email is too long');
-            }
-            let emailResult = await this.query(this.connection, 'SELECT * FROM users WHERE email=?', body.email);
-            if (emailResult.length > 0) {
-                errors.push('email already exist');
-            }
-        }
-        if (errors.length == 0) {
+        if (errors.length === 0) {
             let newUser = {
-                email: body.email,
-                firstname: body.firstname,
-                lastname: body.lastname,
-                password: body.password,
-                campus_id: body.campus,
+                email: request.body.email,
+                firstname: request.body.firstname,
+                lastname: request.body.lastname,
+                password: request.body.password,
+                campus_id: request.body.campus,
             };
-            let insertResult = await this.query(this.connection, 'INSERT INTO users SET ?', newUser);
-            let userResult = await this.query(this.connection, 'SELECT * FROM users WHERE id=?', insertResult.insertId);
-            res.json({status: 'success', 'result': userResult[0]});
+            this.showFromId(res, (await this.executeQuery('INSERT INTO users SET ?', newUser)).insertId);
         } else {
             res.json({status: 'failed', 'errors': errors});
         }
     }
-    this.show = async function (request, res, body) {
-        this.connection.query('SELECT * FROM users WHERE id=?', request.params.id, (err, result) => {
-            //if (err) throw err;
-            if (result[0]) {
-                res.json({status: 'success', 'result': result[0]});
-            } else {
-                res.json({status: 'failed', 'errors': 'user #' + request.params.id + ' does not exist'});
-            }
-        });
+    this.show = async function (request, res) {
+        this.showFromId(res, request.params.id);
     }
-    this.update = async function (request, res, body) {
-        request.on('data', (chunk) => {
-            body.push(chunk);
-        }).on('end', () => {
-            body = JSON.parse(Buffer.concat(body).toString());
+    this.update = async function (request, res) {
+        let errors = []
+        let updatedUser = {};
 
+        if (request.body.firstname !== undefined) {
+            updatedUser.firstname = await this.validator.validateFirstname(request.body, errors);
+        }
+        if (request.body.lastname !== undefined) {
+            updatedUser.lastname = await this.validator.validateLastname(request.body, errors);
+        }
+        if (request.body.campus !== undefined) {
+            updatedUser.campus_id = await this.validator.validateCampus(request.body, errors);
+        }
+        if (request.body.status_id !== undefined) {
+            updatedUser.status_id = await this.validator.validateStatus(request.body, errors,request);
+        }
+        if (request.body.password !== undefined) {
+            updatedUser.password = await this.validator.validatePassword(request.body, errors);
+        }
+        if (request.body.email !== undefined) {
+            updatedUser.email = await this.validator.validateEmail(request.body, errors,request.params.id);
+        }
 
-            this.connection.query('UPDATE users SET ? WHERE id=?', [body, request.params.id], (err, result) => {
-                if (err) throw err;
-                this.show(request, res);
-            });
-        });
+        if (errors.length === 0) {
+            let result = await this.executeQuery('UPDATE users SET ? WHERE id=?', [updatedUser, request.params.id]);
+            this.showFromId(res, request.params.id);
+        } else {
+            res.json({status: 'failed', 'errors': errors});
+        }
     }
-    this.destroy = async function (request, res, body) {
-        this.connection.query('DELETE FROM `users` WHERE id=?', request.params.id, (err, result) => {
-            if (err) throw err;
-            if (result.affectedRows > 0) {
-                res.json({status: 'success'});
-            } else {
-                res.json({status: 'failed', 'errors': 'user #' + request.params.id + ' does not exist'});
-            }
-        });
+
+    this.destroy = async function (request, res) {
+        let result = await this.executeQuery('DELETE FROM `users` WHERE id=?', request.params.id);
+        if (result.affectedRows > 0) {
+            res.json({status: 'success'});
+        } else {
+            res.json({status: 'failed', 'errors': 'user #' + request.params.id + ' does not exist'});
+        }
     }
 
+    this.showFromId = async function (res, id) {
+        let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id WHERE users.id=?', id);
+        if (result[0]) {
+            res.json({status: 'success', 'result': result[0]});
+        } else {
+            res.json({status: 'failed', 'errors': 'user #' + id + ' does not exist'});
+        }
+    }
+    return this;
 };
 
 
-module.exports = new UserController();
+module.exports = UserController;
 
