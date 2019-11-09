@@ -113,3 +113,18 @@ h1 {
         height: 100%;
     }
 }
+
+/* EVENT CREATION */
+
+.createEvent
+{
+    text-align: center;
+}
+
+form
+{
+    display: flex;
+    flex-direction: column;
+}
+
+
