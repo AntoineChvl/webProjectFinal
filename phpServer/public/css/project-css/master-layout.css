@@ -3,14 +3,16 @@
 body
 {
     font-family: "Roboto", sans-serif;
-    //background-color: black;
+
 }
 
 #main-wrapper
 {
+    border-radius: 2px;
     background-color: white;
     min-height: 100vh;
 }
+
 
 #main-wrapper img
 {
@@ -62,13 +64,17 @@ li
     flex-direction: row;
 }
 
-.mainNavbar #navbarUl li a, #dropdownMenuButton
+.mainNavbar #navbarUl li a, #navbarEventDropdown
 {
     justify-content: center;
     color: white;
     align-items: center;
-    border-right: solid white;
 }
+.mainNavbar #navbarUl li, #navbarEventDropdown
+{
+    border-right: 1px white groove;
+}
+
 
 .mainNavbar #navbarUl li a:hover, #dropdownMenuButton:hover
 {

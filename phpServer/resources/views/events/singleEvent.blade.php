@@ -8,12 +8,14 @@
     Le bureau des élèves de Saint-Nazaire organise une nouvelle activité, c'est {{ $event->name }}, qui consiste à {{ $event->description }}
 @endsection
 
-@section('stylesheet')
+@push('stylesheet')
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
-@endsection
+@endpush
 
 
 @section('content')
+
+    <a href="{{route('events.index')}}" class="btn btn-light" id="backToEvents">Retour aux évènements</a>
 
     <h1 id="singleEventTitle">{{$event->name}}</h1>
 
@@ -25,6 +27,17 @@
 
                 @if($event->date < now())
                     <a href="#" class="btn btn-danger" id="participateToEvent">Poster des photos</a>
+
+                    <form action="{{ route('image') }}" method="post" enctype="multipart/form-data" id="uploadImageForm">
+                        @csrf
+                        <div class="custom-file">
+                            <input type="file" class="custom-file-input" id="customFile" name="image_name" required>
+                            <label class="custom-file-label" for="customFile">Choose file</label>
+                        </div>
+
+                        <button type="submit" class="btn btn-danger">Envoyer l'image</button>
+                    </form>
+
                 @else
                     <a href="#" class="btn btn-danger" id="participateToEvent">Participer à l'évènement</a>
                 @endif
@@ -47,3 +60,7 @@
     </article>
 
 @endsection
+
+@push('script')
+    <script src="{{ asset('js/project-js/upload-image.js') }}"></script>
+@endpush

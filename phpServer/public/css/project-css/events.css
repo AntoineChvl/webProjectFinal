@@ -91,6 +91,16 @@ h1 {
     margin-bottom: 1%;
 }
 
+#backToEvents
+{
+    margin-top: 1%;
+}
+
+#uploadImageForm
+{
+    display: none;
+}
+
 
 @media screen and (max-width: 1280px) {
     .eventPresentation {

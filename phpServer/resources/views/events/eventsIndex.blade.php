@@ -8,9 +8,9 @@
     Le bureau des élèves de Saint-Nazaire organise de nombreux évènements !
 @endsection
 
-@section('stylesheet')
+@push('stylesheet')
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
-@endsection
+@endpush
 
 
 @section('content')
@@ -31,6 +31,7 @@
                             <img src="https://via.placeholder.com/150">
                             <a href="{{route('events.show', $event->id )}}" class="btn btn-dark">Visiter l'évènement</a>
                         </article>
+
                     @endforeach
                 @else
                     @foreach($past_events as $past_event)
@@ -44,7 +45,6 @@
 
                 @endif
             </div>
-
         </section>
     @endforeach
 
