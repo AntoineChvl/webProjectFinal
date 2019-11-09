@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     @stack('script.head')
 
-    @yield('stylesheet')
+    @stack('stylesheet')
 </head>
 
 @include('partials._nav')

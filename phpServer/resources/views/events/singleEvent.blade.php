@@ -8,9 +8,9 @@
     Le bureau des élèves de Saint-Nazaire organise une nouvelle activité, c'est {{ $event->name }}, qui consiste à {{ $event->description }}
 @endsection
 
-@section('stylesheet')
+@push('stylesheet')
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
-@endsection
+@endpush
 
 
 @section('content')
