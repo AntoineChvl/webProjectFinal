@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\Images;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class EventsController extends Controller
@@ -29,7 +31,8 @@ class EventsController extends Controller
      */
     public function show(Event $event)
     {
-        return view('events.singleEvent', compact('event'));
+        $image = Images::find(Event::find($event)->pluck('image_id'))->first();
+        return view('events.singleEvent', compact('event', 'image'));
     }
 
     /**
@@ -39,7 +42,7 @@ class EventsController extends Controller
      */
     public function create()
     {
-        //
+        return view('events.createEvent');
     }
 
     /**
@@ -48,9 +51,16 @@ class EventsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store()
     {
-        //
+
+        Event::create($this->validateEvent());
+        $lastEventId = Event::latest()->first();
+
+        /*The user id is still not being considered. It will be changed later.*/
+
+        return redirect(route('events.show', $lastEventId));
+
     }
 
 
@@ -63,7 +73,8 @@ class EventsController extends Controller
      */
     public function edit(Event $event)
     {
-        //
+
+        return view('events.editEvent', compact('event'));
     }
 
     /**
@@ -73,9 +84,11 @@ class EventsController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Event $event)
+    public function update(Event $event)
     {
-        //
+        $event->update($this->validateEvent());
+
+        return redirect('events.show', $event);
     }
 
     /**
@@ -88,4 +101,22 @@ class EventsController extends Controller
     {
         //
     }
+
+    public function validateEvent()
+    {
+        return request()->validate([
+            'name' => 'required|min:3|string',
+            'description' => 'required|min:10',
+            'location' => 'required|min:3',
+            'image' => 'nullable|image',
+            'date' => 'required|date|after:today',
+            'price' => 'nullable|integer|max:15',
+        ]);
+    }
+
+
+
+
+
+
 }

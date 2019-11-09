@@ -22,11 +22,11 @@
     <article class="eventPresentation row mx-auto">
 
         <div class="col-md eventImageAndParticipate">
-            <img src="https://via.placeholder.com/300" class="eventMainImage">
+            <img src="{{ $image->path }}" class="eventMainImage">
             <div class="row justify-content-center">
 
                 @if($event->date < now())
-                    <a href="#" class="btn btn-danger" id="participateToEvent">Poster des photos</a>
+                    <a href="#" class="btn submit-button" id="participateToEvent">Poster des photos</a>
 
                     <form action="{{ route('image') }}" method="post" enctype="multipart/form-data" id="uploadImageForm">
                         @csrf
@@ -35,11 +35,11 @@
                             <label class="custom-file-label" for="customFile">Choose file</label>
                         </div>
 
-                        <button type="submit" class="btn btn-danger">Envoyer l'image</button>
+                        <button type="submit" class="btn submit-button">Envoyer l'image</button>
                     </form>
 
                 @else
-                    <a href="#" class="btn btn-danger" id="participateToEvent">Participer à l'évènement</a>
+                    <a href="#" class="btn submit-button" id="participateToEvent">Participer à l'évènement</a>
                 @endif
 
             </div>

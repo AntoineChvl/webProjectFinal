@@ -29,6 +29,19 @@ li
     color: white
 }
 
+.submit-button
+{
+    background-color: #FFC252;
+    color: black;
+    border-radius: 0px;
+}
+
+.submit-button:hover
+{
+    background-color: black;
+    color: #FFC252;
+}
+
 /*NAVBAR */
 
 .mainNavbar nav
