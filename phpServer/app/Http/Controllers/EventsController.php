@@ -31,8 +31,7 @@ class EventsController extends Controller
      */
     public function show(Event $event)
     {
-        $image = Images::find(Event::find($event)->pluck('image_id'))->first();
-        return view('events.singleEvent', compact('event', 'image'));
+        return view('events.singleEvent', compact('event'));
     }
 
     /**

@@ -37,3 +37,7 @@
     </section>
 
 @endsection
+
+@push('script')
+    <script src="{{ asset('js/project-js/preview-image.js') }}"></script>
+@endpush

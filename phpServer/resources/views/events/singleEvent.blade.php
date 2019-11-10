@@ -22,7 +22,7 @@
     <article class="eventPresentation row mx-auto">
 
         <div class="col-md eventImageAndParticipate">
-            <img src="{{ asset('storage/imagesUploaded/'.$image->path) }}" class="eventMainImage" alt="Image décrivant l'évènement organisé par le BDE !">
+            <img src="{{ asset('storage/imagesUploaded/'.$event->image->path) }}" class="eventMainImage" alt="Image décrivant l'évènement organisé par le BDE !">
             <div class="row justify-content-center">
 
                 @if($event->date < now())
