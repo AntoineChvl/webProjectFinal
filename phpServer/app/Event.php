@@ -14,4 +14,9 @@ class Event extends Model
     {
         return $this->belongsTo(Images::class);
     }
+
+    public function imagesPostedByUsers()
+    {
+        return $this->hasMany(ImagesPastEvent::class);
+    }
 }

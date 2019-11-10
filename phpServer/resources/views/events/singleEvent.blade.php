@@ -10,6 +10,7 @@
 
 @push('stylesheet')
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/project-css/lightbox/lightbox.css') }}" rel="stylesheet">
 @endpush
 
 
@@ -22,7 +23,8 @@
     <article class="eventPresentation row mx-auto">
 
         <div class="col-md eventImageAndParticipate">
-            <img src="{{ asset('storage/imagesUploaded/'.$event->image->path) }}" class="eventMainImage" alt="Image décrivant l'évènement organisé par le BDE !">
+            <img src="{{ asset('storage/imagesUploaded/'.$event->image->path) }}" class="eventMainImage"
+                 alt="Image décrivant l'évènement organisé par le BDE !">
         </div>
 
         <div class="col-md">
@@ -39,13 +41,14 @@
         </div>
     </article>
 
-    <div class="row ">
-
+    <div class="row">
         @if($event->date < now())
 
-            <button type="button" class="btn submit-button" data-toggle="modal" data-target="#exampleModal">
-                Ajouter une photo
-            </button>
+            <div class="row col-12">
+                <button type="button" class="btn submit-button" data-toggle="modal" data-target="#exampleModal">
+                    Ajouter une photo
+                </button>
+            </div>
 
             <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
                 <div class="modal-dialog" role="document">
@@ -57,11 +60,13 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form action="{{ route('image') }}" method="post" enctype="multipart/form-data" id="uploadImageForm">
+                            <form action="{{ route('imagePastEvent') }}" method="post" enctype="multipart/form-data"
+                                  id="uploadImageForm">
                                 @csrf
                                 <div class="form-group col-md-12">
                                     <input type="file" name="image" id="imageReadyToUpload">
-                                    <img id="imagePreview" src="@isset($event) {{ asset('storage/imagesUploaded/'.$event->image->path) }} @endisset">
+                                    <img id="imagePreview"
+                                         src="@isset($event) {{ asset('storage/imagesUploaded/'.$event->image->path) }} @endisset">
                                     @error('image')
                                     <p>{{ $errors->first('image') }}</p>
                                     @enderror
@@ -76,14 +81,26 @@
                 </div>
             </div>
 
+            <div class="row col-12 justify-content-center" id="pastEventImagesTitle">
+                <h4>Images postées par les utilisateurs ayant participé à l'évènement</h4>
+            </div>
+
+            <!-- Display images posted by users that have participated -->
+            <div class="row">
+                @foreach($event->imagesPostedByUsers as $pastImage)
+                    <a href="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}" data-lightbox="pastEvent" class="col-md-2 col-4 imagePastEvent"><img src="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}"  alt="Image décrivant l'évènement organisé par le BDE !"></a>
+
+                @endforeach
+            </div>
+
         @else
             <a href="#" class="btn submit-button" id="participateToEvent">Participer à l'évènement</a>
         @endif
-
     </div>
 
 @endsection
 
 @push('script')
     <script src="{{ asset('js/project-js/preview-image.js') }}"></script>
+    <script src="{{ asset('js/project-js/lightbox/lightbox.min.js') }}"></script>
 @endpush

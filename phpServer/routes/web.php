@@ -41,7 +41,8 @@ Route::get('/loginTest', function() {
     return view('registration-connection.register');
 });
 
-Route::post('/image', 'ImagesController@store')->name('image');
+Route::post('/image', 'ImagesController@publishImage')->name('image');
+Route::post('/imagePastEvent', 'ImagesController@uploadImagePastEvent')->name('imagePastEvent');
 
 
 

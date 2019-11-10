@@ -1,8 +1,5 @@
 $(document).ready(function () {
 
-    $('#participateToEvent').click(function () {
-            $('#uploadImageForm').fadeIn(200);
-    });
 
 });
 
