@@ -23,26 +23,6 @@
 
         <div class="col-md eventImageAndParticipate">
             <img src="{{ asset('storage/imagesUploaded/'.$event->image->path) }}" class="eventMainImage" alt="Image décrivant l'évènement organisé par le BDE !">
-            <div class="row justify-content-center">
-
-                @if($event->date < now())
-                    <a href="#" class="btn submit-button" id="participateToEvent">Poster des photos</a>
-
-                    <form action="{{ route('image') }}" method="post" enctype="multipart/form-data" id="uploadImageForm">
-                        @csrf
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="customFile" name="image_name" required>
-                            <label class="custom-file-label" for="customFile">Choose file</label>
-                        </div>
-
-                        <button type="submit" class="btn submit-button">Envoyer l'image</button>
-                    </form>
-
-                @else
-                    <a href="#" class="btn submit-button" id="participateToEvent">Participer à l'évènement</a>
-                @endif
-
-            </div>
         </div>
 
         <div class="col-md">
@@ -59,8 +39,51 @@
         </div>
     </article>
 
+    <div class="row ">
+
+        @if($event->date < now())
+
+            <button type="button" class="btn submit-button" data-toggle="modal" data-target="#exampleModal">
+                Ajouter une photo
+            </button>
+
+            <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Ajouter une photo</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="{{ route('image') }}" method="post" enctype="multipart/form-data" id="uploadImageForm">
+                                @csrf
+                                <div class="form-group col-md-12">
+                                    <input type="file" name="image" id="imageReadyToUpload">
+                                    <img id="imagePreview" src="@isset($event) {{ asset('storage/imagesUploaded/'.$event->image->path) }} @endisset">
+                                    @error('image')
+                                    <p>{{ $errors->first('image') }}</p>
+                                    @enderror
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn submit-button col-md-6">Envoyer l'image</button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        @else
+            <a href="#" class="btn submit-button" id="participateToEvent">Participer à l'évènement</a>
+        @endif
+
+    </div>
+
 @endsection
 
 @push('script')
-    <script src="{{ asset('js/project-js/upload-image.js') }}"></script>
+    <script src="{{ asset('js/project-js/preview-image.js') }}"></script>
 @endpush

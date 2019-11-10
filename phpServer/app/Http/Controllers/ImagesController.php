@@ -40,6 +40,10 @@ class ImagesController extends Controller
     public function store(Request $request)
     {
 
+        /*Get the event number from which the request has been made*/
+        $previousEventPath = explode('/', parse_url(url()->previous(), PHP_URL_PATH));
+        $previousEventNumber = $previousEventPath[2];
+
        if($request->hasfile('image'))
        {
            $this->validateImage();
@@ -57,12 +61,18 @@ class ImagesController extends Controller
               'user_id' => 1,
            ]);
 
+           // Si l'évènement est passé et l'utilisateur inscrit, on ajoute la ligne dans images_past_events
+
+           /* In case of a past event image uploading */
+           if($previousEventNumber > 0)
+           {
+
+           }
+
            Event::latest()->first()->update([
                'image_id' => $storedImage,
            ]);
-
        }
-
     }
 
     public function validateImage()
