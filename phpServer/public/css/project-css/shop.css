@@ -1,0 +1,153 @@
+.top-center {
+    display: flex;
+    margin: 40px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.sum {
+    text-align: justify;
+    width: 180px;
+    font-size: 20px;
+    margin-left: auto;
+    padding: 5px 30px 5px 30px;
+    border-bottom : 2px solid #FFC252;
+}
+
+@media (max-width: 1080px) {
+    .top-center {
+        display: inline;
+    }
+}
+img:hover {
+    opacity: 0.8;
+}
+
+.top-block-image p {
+    width: 100%;
+    margin: auto;
+    padding: 2px;
+    font-weight: bold;
+    text-align: center;
+    background-color: #FFC252;
+}
+
+section {
+    height: 10vh;
+    width: 100%;
+}
+
+.p-scroll {
+    color: #FFC252;
+    text-align: center;
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 30px;
+}
+
+.scroll-down {
+    -webkit-transition: all .5s ease-in 3s;
+    transition: all .5s ease-in 3s;
+}
+
+.scroll-down {
+    display: block;
+    bottom: 10px;
+    width: 32px;
+    height: 32px;
+    margin: auto;
+    border: 2px solid #FFC252;
+    border-radius: 50%;
+
+    -webkit-animation: bounce 2s infinite 2s;
+    animation: bounce 2s infinite 2s;
+    -webkit-transition: all .2s ease-in;
+    transition: all .2s ease-in;
+}
+
+.scroll-down:before {
+    position: absolute;
+    top: calc(50% - 8px);
+    left: calc(50% - 6px);
+    transform: rotate(-45deg);
+    display: block;
+    width: 12px;
+    height: 12px;
+    content: "";
+    border: solid #FFC252;
+    border-width: 0px 0 2px 2px;
+}
+
+@keyframes bounce {
+    0%, 100%, 20%, 50%, 80% {
+        -webkit-transform: translateY(0);
+        -ms-transform: translateY(0);
+        transform: translateY(0);
+    }
+    40% {
+        -webkit-transform: translateY(-10px);
+        -ms-transform: translateY(-10px);
+        transform: translateY(-10px);
+    }
+    60% {
+        -webkit-transform: translateY(-5px);
+        -ms-transform: translateY(-5px);
+        transform: translateY(-5px);
+    }
+}
+
+.transition {
+    margin-bottom: 125px;
+}
+
+.top-bar {
+    margin-top: 40px;
+    margin-bottom: 25px;
+}
+
+hr {
+    width: 70%;
+}
+
+.cat {
+    text-align: center;
+    word-spacing: 50px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.yellow {
+    color: #FFC252;
+}
+
+label:hover {
+    transform: scale(1.2);
+    transition: all ease 1s;
+}
+
+.product {
+    display: flex;
+    width: 100%;
+    length: 100%;
+    margin-bottom: 30px;
+    flex-direction: column;
+}
+
+.product:hover {
+    opacity: 0.85;
+}
+
+.product img {
+    width: 100%;
+    height: auto;
+}
+
+.product-name {
+    width: 100%;
+    margin: auto;
+    padding: 2px;
+    text-align: center;
+    background-color: #FFC252;
+}
