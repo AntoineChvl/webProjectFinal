@@ -9,10 +9,10 @@
     <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav mr-auto" id="navbarUl">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Accueil</a>
+                <a class="nav-link" href="{{ route('home') }}">Accueil</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Boutique</a>
+                <a class="nav-link" href="{{ route('shop') }}">Boutique</a>
             </li>
             <li class="nav-item dropdown">
 
@@ -20,7 +20,7 @@
                     Évènements
                 </button>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="navbarEventDropdown">
-                    <a class="dropdown-item" href="#">Tous les évènements</a>
+                    <a class="dropdown-item" href="{{ route('events.index') }}">Tous les évènements</a>
                     <a class="dropdown-item" href="#">Évènements à venir</a>
                     <a class="dropdown-item" href="#">Évènements passés</a>
                 </div>

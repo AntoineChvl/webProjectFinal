@@ -12,9 +12,9 @@
 */
 
 // accueil
-Route::get('/', 'Controller@exemple');// -> redirection -> route('home')
-Route::get('/home', 'Controller@exemple')->name('home');//page d'accueil
-Route::get('/about', 'Controller@exemple')->name('about');//page d'accueil
+Route::get('/', 'StaticPagesController@home');// -> redirection -> route('home')
+Route::get('/home', 'StaticPagesController@home')->name('home');//page d'accueil
+Route::get('/about', 'StaticPagesController@about')->name('about');//page d'accueil
 
 
 // connection / inscription
