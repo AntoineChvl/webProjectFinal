@@ -34,7 +34,7 @@ Route::resource('shop/product','Controller');
 
 Route::get('/accueilTest', function() {
     return view('home.home');
-});
+})->middleware('auth');
 
 
 Route::get('/loginTest', function() {

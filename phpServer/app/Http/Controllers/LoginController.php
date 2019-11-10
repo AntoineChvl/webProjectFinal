@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginForm;
 use App\Http\Requests\RegisterForm;
 use GuzzleHttp\Client as HTTPClient;
 use GuzzleHttp\Psr7\Request as HTTPRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use mysql_xdevapi\Result;
 
 class LoginController extends Controller
 {
@@ -15,20 +18,39 @@ class LoginController extends Controller
         return view('registration-connection/register');
     }
 
-    public function login(Request $request)
+    public function login(LoginForm $request)
     {
-        return view('registration-connection/register');
+        //$this->middleware();
+        $client = new HTTPClient();
+        $httpRequest = new HTTPRequest('get', 'http://127.0.0.1:8080/users',
+            ['body' => 'application/json'],'{"email":"'.$request->email.'"}'
+        );
+        $response = json_decode($client->send($httpRequest)->getBody()->getContents());
+        if(count($response->result)>0){
+            if(Hash::check($request->password, $response->result[0]->password)){
+                $request->session()->put('authenticated',$response->result[0]);
+                if($request->session()->has('loginRedirect')){
+                    $redirect = $request->session()->get('loginRedirect');
+                    $request->forget('loginRedirect');
+                    return redirect($redirect);
+                }
+                return redirect('home');
+            }
+        }
+        $errors->login[] = "La combinaison mot de passe/email est invalide";
+        return redirect('login')->withErrors($errors);
     }
 
-    public function logout()
+    public function logout(Request $request)
     {
-        return redirect('home');
+        $request->session()->forget('authenticated');
+        return redirect('login');
     }
 
     public function register(RegisterForm $request)
     {
         $client = new HTTPClient();
-        $password = bcrypt($request->password);
+        $password = Hash::make($request->password);
         $httpRequest = new HTTPRequest('post', 'http://127.0.0.1:8080/users',
             ['body' => 'application/json'],'
             {
@@ -40,7 +62,12 @@ class LoginController extends Controller
             }'
         );
         $response = json_decode($client->send($httpRequest)->getBody()->getContents());
-        dd($response);
-        return view('registration-connection/register');
+        $request->session()->put('authenticated',$response->result);
+        if($request->session()->has('loginRedirect')){
+            $redirect = $request->session()->get('loginRedirect');
+            $request->session()->forget('loginRedirect');
+            return redirect($redirect);
+        }
+        return redirect('home');
     }
 }
