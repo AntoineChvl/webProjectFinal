@@ -28,7 +28,7 @@
                         <article class="singleEvent col-md-4">
                             <h3>{{$event->name}}</h3>
                             <!-- Event image to manage -->
-                            <img src="https://via.placeholder.com/150">
+                            <img src="{{ asset('storage/imagesUploaded/'.$event->image->path) }}" class="eventMainImage" alt="Image décrivant l'évènement organisé par le BDE !">
                             <a href="{{route('events.show', $event->id )}}" class="btn btn-dark">Visiter l'évènement</a>
                         </article>
 
@@ -37,7 +37,7 @@
                     @foreach($past_events as $past_event)
                         <article class="singleEvent col-md-4">
                             <h3>{{$past_event->name}}</h3>
-                            <img src="https://via.placeholder.com/150">
+                            <img src="{{ asset('storage/imagesUploaded/'.$past_event->image->path) }}" class="eventMainImage" alt="Image décrivant l'évènement organisé par le BDE !">
                             <a href="{{route('events.show', $past_event->id )}}" class="btn btn-dark">Visiter
                                 l'évènement</a>
                         </article>

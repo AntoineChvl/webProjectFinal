@@ -16,7 +16,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::latest()->whereDate('date', '>=', now())->limit(3)->get();
+        $events = Event::with('image')->latest()->whereDate('date', '>=', now())->limit(3)->get();
         $past_events = Event::whereDate('date', '<', now())->limit(3)->get();
         $eventsGroup = ['du mois', 'passés'];
         return view('events.eventsIndex', compact('events', 'past_events', 'eventsGroup'));
@@ -55,6 +55,8 @@ class EventsController extends Controller
     {
 
         Event::create($this->validateEvent());
+        $this->storeImage();
+
         $lastEventId = Event::latest()->first();
 
         /*The user id is still not being considered. It will be changed later.*/
@@ -73,7 +75,7 @@ class EventsController extends Controller
      */
     public function edit(Event $event)
     {
-
+        $this->storeImage();
         return view('events.editEvent', compact('event'));
     }
 
@@ -87,8 +89,8 @@ class EventsController extends Controller
     public function update(Event $event)
     {
         $event->update($this->validateEvent());
-
-        return redirect('events.show', $event);
+        $this->storeImage();
+        return redirect('events');
     }
 
     /**
@@ -108,15 +110,15 @@ class EventsController extends Controller
             'name' => 'required|min:3|string',
             'description' => 'required|min:10',
             'location' => 'required|min:3',
-            'image' => 'nullable|image',
             'date' => 'required|date|after:today',
             'price' => 'nullable|integer|max:15',
+            'image' => 'required',
         ]);
     }
 
-
-
-
-
-
+    public function storeImage()
+    {
+        $imageController = new ImagesController();
+        $imageController->store(request());
+    }
 }

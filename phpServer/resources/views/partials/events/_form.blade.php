@@ -23,9 +23,12 @@
     @enderror
 </div>
 
-<div class="custom-file">
-    <input type="file" class="custom-file-input form-control" id="image" name="image">
-    <label class="custom-file-label" for="image">Choisir une image pour l'évènement</label>
+<div class="form-group d-flex flex-column">
+    <label for="image" >Image pour l'évènement</label>
+    <input type="file" name="image"  class="py-2" >
+    @error('image')
+    <p>{{ $errors->first('image') }}</p>
+    @enderror
 </div>
 
 

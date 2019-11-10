@@ -21,9 +21,11 @@
         <h1 class="createEvent">Modifier l'évènement {{ $event->name }}</h1>
 
 
-        <form action="{{route('events.store')}}" method="POST">
+        <form action="{{route('events.update', $event->id)}}" method="POST" enctype="multipart/form-data">
 
             @csrf
+
+            @method('PUT')
 
             @include('partials.events._form')
 

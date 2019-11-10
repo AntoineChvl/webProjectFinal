@@ -7,11 +7,11 @@ use Illuminate\Database\Eloquent\Model;
 class Event extends Model
 {
     protected $fillable = [
-        'name', 'description', 'location', 'date', 'price'
+        'name', 'description', 'location', 'date', 'price', 'image_id'
     ];
 
     public function image()
     {
-        return $this->hasOne(Images::class, 'image_id');
+        return $this->belongsTo(Images::class);
     }
 }

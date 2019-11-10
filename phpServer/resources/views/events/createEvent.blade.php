@@ -21,7 +21,7 @@
         <h1 class="createEvent">Créer un évènement pour le BDE</h1>
 
 
-        <form action="{{route('events.store')}}" method="POST">
+        <form action="{{route('events.store')}}" method="POST" enctype="multipart/form-data">
 
             @csrf
 

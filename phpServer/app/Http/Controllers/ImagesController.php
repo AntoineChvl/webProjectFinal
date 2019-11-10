@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Images;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
@@ -32,58 +33,42 @@ class ImagesController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param Event $event
+     * @return Request
      */
     public function store(Request $request)
     {
 
-        dd('upload à implémenter, fait ce we');
+       if($request->hasfile('image'))
+       {
+           $this->validateImage();
+
+           $image = $request->file('image');
+
+           $imageExtension = $image->getClientOriginalExtension();
+
+           $imageName = time().'.'.$imageExtension;
+           $image->storeAs('imagesUploaded', $imageName, 'public');
+           Image::make(public_path('storage/imagesUploaded/'.$imageName))->resize(300,300)->save();
+
+           $storedImage = Images::insertGetId([
+              'path' => $imageName,
+              'user_id' => 1,
+           ]);
+
+           Event::latest()->first()->update([
+               'image_id' => $storedImage,
+           ]);
+
+       }
 
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param \App\Images $images
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Images $images)
+    public function validateImage()
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param \App\Images $images
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Images $images)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Images $images
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Images $images)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Images $images
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Images $images)
-    {
-        //
+        return request()->validate([
+            'image' => 'required|file|image|max:5000|mimes:jpeg,jpg,png,gif',
+        ]);
     }
 }
