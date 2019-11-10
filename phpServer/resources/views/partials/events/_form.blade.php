@@ -25,7 +25,7 @@
 
 <div class="form-group d-flex flex-column">
     <label for="image" >Image pour l'évènement</label>
-    <input type="file" name="image"  class="py-2" >
+    <input type="file" name="image"  class="py-2" id="imageReadyToUpload">
     @error('image')
     <p>{{ $errors->first('image') }}</p>
     @enderror
