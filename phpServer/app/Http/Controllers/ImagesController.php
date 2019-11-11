@@ -92,4 +92,16 @@ class ImagesController extends Controller
         return $storedImage;
     }
 
+
+    public function show(Event $event, ImagesPastEvent $image)
+    {
+        // Check if the image is associated with the event
+        if(ImagesPastEvent::find($image->id)->event_id == $event->id)
+        {
+            return view('events.imageEvent', compact('image', 'event'));
+        }
+
+        return redirect('events');
+    }
+
 }

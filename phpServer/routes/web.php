@@ -47,4 +47,10 @@ Route::post('/imagePastEvent', 'ImagesController@uploadImagePastEvent')->name('i
 Route::post('/likeImage', 'LikesController@addLike');
 Route::post('/unlikeImage', 'LikesController@removeLike');
 
+Route::post('/addComment', 'CommentsController@add');
+Route::post('/removeComment', 'CommentsController@remove');
+Route::get('/getComments', 'CommentsController@index');
 
+Route::resource('events.images', 'ImagesController')->except([
+    'index', 'create', 'store', 'update', 'edit', 'destroy'
+]);

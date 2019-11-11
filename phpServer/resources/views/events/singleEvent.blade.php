@@ -20,7 +20,7 @@
 
 @section('content')
 
-    <a href="{{route('events.index')}}" class="btn btn-light" id="backToEvents">Retour aux évènements</a>
+    <a href="{{route('events.index')}}" class="btn btn-light backToEvents">Retour aux évènements</a>
 
     <h1 id="singleEventTitle">{{$event->name}}</h1>
 
@@ -48,11 +48,18 @@
     <div class="row">
         @if($event->date < now())
 
-            <div class="row col-12">
-                <button type="button" class="btn submit-button" data-toggle="modal" data-target="#exampleModal">
-                    Ajouter une photo
-                </button>
+            <div class="container">
+                <div class="row col-12">
+                    <button type="button" class="btn submit-button" data-toggle="modal" data-target="#exampleModal">
+                        Ajouter une photo
+                    </button>
+                </div>
+
+                <div class="row col-12 justify-content-center" id="pastEventImagesTitle">
+                    <h4>Images postées par les utilisateurs ayant participé à l'évènement</h4>
+                </div>
             </div>
+
 
             <div class="modal" tabindex="-1" role="dialog" id="exampleModal">
                 <div class="modal-dialog" role="document">
@@ -85,29 +92,36 @@
                 </div>
             </div>
 
-            <div class="row col-12 justify-content-center" id="pastEventImagesTitle">
-                <h4>Images postées par les utilisateurs ayant participé à l'évènement</h4>
-            </div>
+
 
             <!-- Display images posted by users that have participated -->
             <div class="row">
                 @foreach($event->imagesPostedByUsers as $pastImage)
-                    <div class="flex-column col-md-2 col-4 imagePastEvent">
-                        <a href="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}"
-                           data-lightbox="pastEvent"><img
-                                src="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}"
-                                alt="Image décrivant l'évènement organisé par le BDE !"></a>
-                        <div class="flex-row">
-                            <i class="@if($pastImage->likes->where('user_id', '=', 1)->count() >0) fas @else far @endif fa-heart heartLike" id="{{$pastImage->id}}"></i>
+                    <!-- Display only validated images -->
+                    @if($pastImage->is_validated)
+                        <div class="flex-column col-md-3 col-lg-3 col-4 imagePastEvent">
+                            <a href="{{route('events.images.show', ['event' => $event, 'image' => $pastImage])}}" class="imageModal">
+                                <img src="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}"alt="Image décrivant l'évènement organisé par le BDE !">
+                            </a>
+                            <div class="flex-row">
+                                <i class="@if($pastImage->likes->where('user_id', '=', 1)->count() >0) fas @else far @endif fa-heart heartLike"
+                                   id="{{$pastImage->id}}"></i>
+                                <a href="{{route('events.images.show', ['event' => $event, 'image' => $pastImage])}}">Commenter...</a>
+                            </div>
 
-                            <a href="">Commenter</a>
                         </div>
-                    </div>
+                    @endif
+
                 @endforeach
             </div>
 
         @else
-            <a href="#" class="btn submit-button" id="participateToEvent">Participer à l'évènement</a>
+            <div class="container">
+                <div class="row col-12">
+                    <button type="button" class="btn submit-button" id="participateToEvent">Participer à l'évènement</button>
+                </div>
+
+            </div>
         @endif
     </div>
 
@@ -118,4 +132,5 @@
     <script src="{{ asset('js/project-js/lightbox/lightbox.min.js') }}"></script>
     <script src="https://kit.fontawesome.com/1d7bafa102.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/project-js/like.js') }}"></script>
+    <script src="{{ asset('js/project-js/interact-image.js') }}"></script>
 @endpush

@@ -9,11 +9,14 @@ $(document).ready(function () {
                 }
             });
 
-            const imageId = $(this).attr('id');
-            if($('#'+imageId).hasClass('far'))
+            let url = $(location).attr('href');
+            let urlsplit = url.split('/');
+            const imageId = urlsplit[urlsplit.length-1];
+
+            if($('#like').hasClass('far'))
             {
-                $('#'+imageId).removeClass('far');
-                $('#'+imageId).addClass('fas');
+                $('#like').removeClass('far');
+                $('#like').addClass('fas');
 
                 $.ajax({
                     method: 'POST', // Type of response and matches what we said in the route
@@ -33,8 +36,8 @@ $(document).ready(function () {
 
             } else {
 
-                $('#'+imageId).removeClass('fas');
-                $('#'+imageId).addClass('far');
+                $('#like').removeClass('fas');
+                $('#like').addClass('far');
 
                 $.ajax({
                     method: 'POST', // Type of response and matches what we said in the route

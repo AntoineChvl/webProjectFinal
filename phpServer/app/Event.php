@@ -17,6 +17,6 @@ class Event extends Model
 
     public function imagesPostedByUsers()
     {
-        return $this->hasMany(ImagesPastEvent::class);
+        return $this->hasMany(ImagesPastEvent::class)->orderBy('updated_at','DESC');
     }
 }

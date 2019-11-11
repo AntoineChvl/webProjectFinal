@@ -20,7 +20,10 @@ class ImagesPastEvent extends Model
         return $this->hasMany(Like::class, 'images_past_events_id');
     }
 
-
+    public function event()
+    {
+        return $this->belongsTo(Event::class);
+    }
 
 
 }
