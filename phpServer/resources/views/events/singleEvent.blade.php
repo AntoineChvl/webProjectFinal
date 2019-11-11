@@ -8,6 +8,10 @@
     Le bureau des élèves de Saint-Nazaire organise une nouvelle activité, c'est {{ $event->name }}, qui consiste à {{ $event->description }}
 @endsection
 
+@push('head-meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endpush
+
 @push('stylesheet')
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
     <link href="{{ asset('css/project-css/lightbox/lightbox.css') }}" rel="stylesheet">
@@ -89,8 +93,15 @@
             <div class="row">
                 @foreach($event->imagesPostedByUsers as $pastImage)
                     <div class="flex-column col-md-2 col-4 imagePastEvent">
-                        <a href="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}" data-lightbox="pastEvent"><img src="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}"  alt="Image décrivant l'évènement organisé par le BDE !"></a>
-                        <a href="#">Like</a>
+                        <a href="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}"
+                           data-lightbox="pastEvent"><img
+                                src="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}"
+                                alt="Image décrivant l'évènement organisé par le BDE !"></a>
+                        <div class="flex-row">
+                            <i class="@if($pastImage->likes->where('user_id', '=', 1)->count() >0) fas @else far @endif fa-heart heartLike" id="{{$pastImage->id}}"></i>
+
+                            <a href="">Commenter</a>
+                        </div>
                     </div>
                 @endforeach
             </div>
@@ -105,4 +116,6 @@
 @push('script')
     <script src="{{ asset('js/project-js/preview-image.js') }}"></script>
     <script src="{{ asset('js/project-js/lightbox/lightbox.min.js') }}"></script>
+    <script src="https://kit.fontawesome.com/1d7bafa102.js" crossorigin="anonymous"></script>
+    <script src="{{ asset('js/project-js/like.js') }}"></script>
 @endpush

@@ -44,5 +44,6 @@ Route::get('/loginTest', function() {
 Route::post('/image', 'ImagesController@publishImage')->name('image');
 Route::post('/imagePastEvent', 'ImagesController@uploadImagePastEvent')->name('imagePastEvent');
 
-
+Route::post('/likeImage', 'LikesController@addLike');
+Route::post('/unlikeImage', 'LikesController@removeLike');
 

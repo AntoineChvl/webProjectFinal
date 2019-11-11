@@ -15,6 +15,11 @@ class ImagesPastEvent extends Model
         return $this->belongsTo(Images::class);
     }
 
+    public function likes()
+    {
+        return $this->hasMany(Like::class, 'images_past_events_id');
+    }
+
 
 
 

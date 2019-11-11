@@ -8,6 +8,7 @@
     <!-- Sections to put the title and meta description tags -->
     <title>@yield('head-title',env('APP_NAME'))</title>
     <meta name="description" content="@yield('head-meta-description','')">
+    @stack('head-meta')
     <link rel="stylesheet" type="text/css" href="{{ asset('css/bootstrap/bootstrap.css') }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/project-css/master-layout.css') }}"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">

@@ -141,4 +141,20 @@ form
     margin-bottom: 1%;
 }
 
+.heartLike
+{
+    color: #FFC252;
+}
+
+.heartLike:hover
+{
+    color: red;
+    transition: .4s;
+}
+.fas
+{
+    color: red;
+    transition: .4s;
+}
+
 
