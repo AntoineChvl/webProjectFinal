@@ -92,10 +92,4 @@ class ImagesController extends Controller
         return $storedImage;
     }
 
-
-
-
-
-
-
 }

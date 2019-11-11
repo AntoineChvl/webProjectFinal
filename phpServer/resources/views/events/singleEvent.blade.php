@@ -88,8 +88,10 @@
             <!-- Display images posted by users that have participated -->
             <div class="row">
                 @foreach($event->imagesPostedByUsers as $pastImage)
-                    <a href="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}" data-lightbox="pastEvent" class="col-md-2 col-4 imagePastEvent"><img src="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}"  alt="Image décrivant l'évènement organisé par le BDE !"></a>
-
+                    <div class="flex-column col-md-2 col-4 imagePastEvent">
+                        <a href="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}" data-lightbox="pastEvent"><img src="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}"  alt="Image décrivant l'évènement organisé par le BDE !"></a>
+                        <a href="#">Like</a>
+                    </div>
                 @endforeach
             </div>
 

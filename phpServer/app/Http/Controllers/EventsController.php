@@ -118,6 +118,6 @@ class EventsController extends Controller
     public function storeImage()
     {
         $imageController = new ImagesController();
-        $imageController->store(request());
+        $imageController->publishImage(request());
     }
 }
