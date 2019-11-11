@@ -1,5 +1,13 @@
 @extends('layouts.master')
 
+@section('head-title')
+    BDE Saint-Nazaire - Notre boutique
+@endsection
+
+@section('head-meta-description')
+    Le bureau des élèves de Saint-Nazaire possède une boutique avec plein de produits à son effigie !
+@endsection
+
 @push('stylesheet')
     <link href="{{ asset('css/project-css/shop.css') }}" rel="stylesheet">
 @endpush
@@ -39,7 +47,7 @@
     <div class="transition">
         <section>
             <p class="p-scroll">Découvrez tous nos produits !</p>
-            <a href="#" class="scroll-down" address="true"></a>
+            <a href="#" class="scroll-down"></a>
         </section>
 
         <section class="cat-products">
@@ -55,25 +63,16 @@
         </section>
     </div>
 
-    <!--
-    <div class="product-gallery">
-        @foreach ($products as $product)
-            <div class="product">
-                <a href="#"><img src="https://via.placeholder.com/480/blue/fff.png" alt="product"></a>
-                <p class="product-name">{{ $product->name }}</p>
-            </div>
-        @endforeach
-    </div>
-    -->
-
-    <div class="eventsList row">
+    <div class="product-list row">
             @foreach($products as $product)
                 <article class="product col-3">
-                    <a href="#"><img src="https://via.placeholder.com/480/blue/fff.png" alt="product"></a>
+                    <a href={{ "product/$product->id" }}><img src={{ asset('storage/imagesUploaded/'.$product->image->path) }} alt="product"></a>
                     <p class="product-name">{{ $product->name }}</p>
                 </article>
             @endforeach
     </div>
+
+    <div class="separate"></div>
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="{{ asset('js/project-js/shop.js') }}"></script>

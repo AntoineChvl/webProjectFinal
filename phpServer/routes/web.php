@@ -30,7 +30,7 @@ Route::resource('events.comments','Controller');
 
 //Page d'Accueil du magasin
 Route::get('/shop', 'ShopController@index')->name('shop');
-Route::resource('shop/product','Controller');
+Route::resource('/product','ShopController');
 
 Route::get('/accueilTest', function() {
     return view('home.home');

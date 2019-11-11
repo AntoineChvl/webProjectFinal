@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use App\Product;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
 
 class ShopController extends Controller
 {
@@ -16,7 +16,7 @@ class ShopController extends Controller
     public function index()
     {
         //
-        $products = Product::inRandomOrder()->get();
+        $products = Product::all();
         return view('shop/shop')->with('products', $products);
     }
 
@@ -50,6 +50,12 @@ class ShopController extends Controller
     public function show($id)
     {
         //
+        $product = Product::find($id);
+        if ($product) {
+            return view('shop/product', ['product' => Product::find($id)]);
+        } else {
+            return '<p>Le produit que vous recherchez n\'existe pas !</p>';
+        }
     }
 
     /**
