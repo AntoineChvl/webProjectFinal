@@ -47,3 +47,4 @@ Route::post('/imagePastEvent', 'ImagesController@uploadImagePastEvent')->name('i
 Route::post('/likeImage', 'LikesController@addLike');
 Route::post('/unlikeImage', 'LikesController@removeLike');
 
+

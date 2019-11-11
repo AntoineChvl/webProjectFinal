@@ -78,3 +78,4 @@
     <script src="{{ asset('js/project-js/shop.js') }}"></script>
 
 @endsection
+

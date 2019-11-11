@@ -56,6 +56,7 @@ class ShopController extends Controller
         } else {
             return '<p>Le produit que vous recherchez n\'existe pas !</p>';
         }
+
     }
 
     /**
