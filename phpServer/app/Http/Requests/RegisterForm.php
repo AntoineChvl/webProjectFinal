@@ -31,6 +31,7 @@ class RegisterForm extends FormRequest
             'email' => ['required','email',new UniqueEmail],
             'password' => 'required|min:6|max:32|confirmed|regex:/.*[0-9].*/i|regex:/.*[A-Z].*/i',
             'password_confirmation' => 'required',
+            'legalIssuesConsent' => 'required',
         ];
     }
 }

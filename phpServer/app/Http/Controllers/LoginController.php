@@ -10,6 +10,7 @@ use GuzzleHttp\Psr7\Request as HTTPRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use mysql_xdevapi\Result;
+use App\User;
 
 class LoginController extends Controller
 {

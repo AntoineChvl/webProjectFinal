@@ -23,10 +23,16 @@ Route::get('/logout', 'LoginController@logout')->name('logout');//page de deconn
 Route::post('/login', 'LoginController@login')->name('login');//reception du formulaire de connection -> redirection
 Route::post('/register', 'LoginController@register')->name('register');//reception du formulaire d'inscription -> redirection
 
-//activité
-Route::resource('events','EventsController');
-Route::resource('events.comments','Controller');
-//Route::get('/events', 'Controller@exemple')->name('events');
+
+
+Route::get('/events', 'EventsController@index')->name('events.index');
+Route::post('/events', 'EventsController@store')->name('events.store')->middleware('authBDE');
+Route::get('/events/create', 'EventsController@create')->name('events.create')->middleware('authBDE');
+Route::get('/events/{event}/edit', 'EventsController@edit')->name('events.edit')->middleware('authBDE');
+Route::get('/events/{event}', 'EventsController@show')->name('events.show');
+Route::put('/events/{event}', 'EventsController@update')->name('events.update')->middleware('authBDE');
+Route::delete('/events/{event}', 'EventsController@destroy')->name('events.destroy')->middleware('authBDE');
+
 
 //Page d'Accueil du magasin
 Route::get('/shop', 'ShopController@index')->name('shop');

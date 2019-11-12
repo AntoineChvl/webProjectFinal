@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Images;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -41,6 +42,7 @@ class EventsController extends Controller
      */
     public function create()
     {
+        $this->middleware('authBDE');
         return view('events.createEvent');
     }
 
@@ -52,7 +54,7 @@ class EventsController extends Controller
      */
     public function store()
     {
-
+        $this->middleware('authBDE');
         Event::create($this->validateEvent());
         $this->storeImage();
 
@@ -74,6 +76,7 @@ class EventsController extends Controller
      */
     public function edit(Event $event)
     {
+        $this->middleware('authBDE');
         $this->storeImage();
         return view('events.editEvent', compact('event'));
     }
@@ -87,6 +90,7 @@ class EventsController extends Controller
      */
     public function update(Event $event)
     {
+        $this->middleware('authBDE');
         $event->update($this->validateEvent());
         $this->storeImage();
         return redirect('events');

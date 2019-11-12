@@ -104,8 +104,6 @@
                                 <img src="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}"alt="Image décrivant l'évènement organisé par le BDE !">
                             </a>
                             <div class="flex-row">
-                                <i class="@if($pastImage->likes->where('user_id', '=', 1)->count() >0) fas @else far @endif fa-heart heartLike"
-                                   id="{{$pastImage->id}}"></i>
                                 <a href="{{route('events.images.show', ['event' => $event, 'image' => $pastImage])}}">Commenter...</a>
                             </div>
 

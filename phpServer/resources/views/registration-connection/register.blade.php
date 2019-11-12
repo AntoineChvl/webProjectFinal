@@ -15,7 +15,7 @@
                     @csrf
                     <div class="form-label-group ">
                         <label for="emailLogin">Adresse mail :</label>
-                        <input type="email" id="emailLogin" name="email" class="form-control" value="{{$errors->has('login')? old('email') : ''}}" 
+                        <input type="email" id="emailLogin" name="email" class="form-control" value="{{$errors->has('login')? old('email') : ''}}"
                         placeholder="robert.dupont@orange.fr" required>
                     </div>
 
@@ -99,7 +99,7 @@
 
                     <div class="form-label-group ">
                         <div class="custom-control custom-checkbox">
-                            <input type="checkbox" class="custom-control-input" id="legalIssuesConsent">
+                            <input type="checkbox" class="custom-control-input" id="legalIssuesConsent" name="legalIssuesConsent">
                             <label class="custom-control-label" for="legalIssuesConsent">J'accepte les mentions légales</label>
                         </div>
                     </div>
