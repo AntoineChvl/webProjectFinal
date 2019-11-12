@@ -3,10 +3,10 @@ function UserController(connection) {
     this.validator = new require('./validator')(this.query);
     this.index = async function (request, res) {
         if (request.body.email !== undefined) {
-            let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id WHERE email=?', request.body.email);
+            let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status,status.id as statusLvl FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id WHERE email=?', request.body.email);
             res.json({status: 'success', 'result': result});
         } else {
-            let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id');
+            let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status,status.id as statusLvl FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id');
             res.json({status: 'success', 'result': result});
         }
     }
@@ -76,7 +76,7 @@ function UserController(connection) {
     }
 
     this.showFromId = async function (res, id) {
-        let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id WHERE users.id=?', id);
+        let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status,status.id as statusLvl FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id WHERE users.id=?', id);
         if (result[0]) {
             res.json({status: 'success', 'result': result[0]});
         } else {
