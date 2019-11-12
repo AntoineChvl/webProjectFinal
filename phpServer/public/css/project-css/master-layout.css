@@ -216,6 +216,9 @@ footer ul
     }
 }
 
-
+.logoFooter {
+    max-height: 50px;
+    margin: 10px;
+}
 
 
