@@ -1,19 +1,21 @@
 .top-center {
     display: flex;
-    margin: 40px;
+    margin: 30px;
 }
 
 h1 {
     text-align: center;
 }
 
-.sum {
-    text-align: justify;
+.cart {
+    text-align: center;
     width: 180px;
     font-size: 20px;
     margin-left: auto;
     padding: 5px 30px 5px 30px;
     border-bottom : 2px solid #FFC252;
+    color: black;
+    height: 42px;
 }
 
 @media (max-width: 1080px) {
@@ -27,7 +29,7 @@ img:hover {
 }
 
 .top-block-image {
-    margin-top: 5px;
+    margin-top: 40px;
 }
 
 .top-block-image p {
