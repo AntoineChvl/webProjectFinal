@@ -88,6 +88,9 @@ li
     border-right: 1px white groove;
 }
 
+a.nav-link.padd {
+    padding-left: 10px;
+}
 
 .mainNavbar #navbarUl li a:hover, #dropdownMenuButton:hover
 {
@@ -98,6 +101,7 @@ li
 .mainNavbar #dropdownMenuButton
 {
     height: 100%;
+    padding-left: 10px;
 }
 
 .eventsDropdown
@@ -108,6 +112,8 @@ li
 .mainNavbar #navTitle
 {
     color: #FFC252;
+    margin-right: 20px;
+    margin-left: 20px;
 }
 
 /* FOOTER */
@@ -196,6 +202,20 @@ footer ul
         border-bottom: 1px solid #fcbc50;
     }
 }
+
+.short-text {
+    display: none;
+}
+
+@media (max-width: 1490px) {
+    .short-text {
+        display: inline-block;
+    }
+    .full-text {
+        display: none;
+    }
+}
+
 
 
 
