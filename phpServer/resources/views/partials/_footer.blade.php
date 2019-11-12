@@ -11,20 +11,20 @@
             </ul>
         </div>
         <div class="elementFooter">
-            <p>Le CESI (anciennement centre des études supérieures industrielles) est l'une des 205 écoles d'ingénieurs
-                françaises accréditées au 1er septembre 2018 à délivrer un diplôme d'ingénieur1. Il s'agit d'un groupe
-                d'enseignement supérieur et de formation professionnelle privé français, spécialisé dans la formation
-                des ingénieurs, des cadres, des techniciens et des agents de maîtrise. Son activité se décline autour de
-                cinq marques : ei.CESI, exia.CESI, CESI Entreprises, CESI Alternance et CESI Certification, réparties
-                dans 29 campus en France, en Espagne, en Algérie et au Cameroun</p>
+            <p>Partenaires <br>
+                <a href="https://cge.asso.fr/"><img src="{{'assets/imgs/CGE.Blanc.jpg'}}" class="logoFooter"></a>
+                <a href="https://www.cti-commission.fr/"><img src="{{'assets/imgs/cti.jpg'}}" class="logoFooter"></a>
+                <a href="https://www.hesam.eu/"><img src="{{'assets/imgs/HESAM.jpg'}}" class="logoFooter"></a>
+                <a href="http://www.cdio.org/"><img src="{{'assets/imgs/cdio.jpg'}}" class="logoFooter"></a>
+                <a href="https://certification.afnor.org/marque/afaq"><img src="{{'assets/imgs/Afaq.jpg'}}" class="logoFooter"></a>
+            <p>Copyright © CESI.FR</p>
         </div>
         <div class="elementFooter">
             <ul>
                <li><a href="#">Mentions légales</a></li>
                <li><a href="#">Conditions générales de ventes</a></li>
-               <li><a href="#">Rejoindre le CESI</a></li>
+               <li><a href="#">A propos</a></li>
             </ul>
-
         </div>
     </div>
 </footer>
