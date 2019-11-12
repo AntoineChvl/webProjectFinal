@@ -38,7 +38,7 @@ class LoginController extends Controller
             }
         }
         $errors->login[] = "La combinaison mot de passe/email est invalide";
-        return redirect('login')->withErrors($errors);
+        return view('registration-connection/register')->withErrors($errors)->withEmail($request->email);
     }
 
     public function logout(Request $request)
@@ -62,7 +62,7 @@ class LoginController extends Controller
             }'
         );
         $response = json_decode($client->send($httpRequest)->getBody()->getContents());
-        $request->session()->put('authenticated',$response->result);
+        $request->session()->put('authenticated',new User($response->result));
         if($request->session()->has('loginRedirect')){
             $redirect = $request->session()->get('loginRedirect');
             $request->session()->forget('loginRedirect');

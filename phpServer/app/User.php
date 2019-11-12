@@ -57,4 +57,12 @@ class User
         }
         return $users;
     }
+
+    public static function auth()
+    {
+        if(session()->has('authenticated')){
+            return session()->get('authenticated');
+        }
+        return NULL;
+    }
 }

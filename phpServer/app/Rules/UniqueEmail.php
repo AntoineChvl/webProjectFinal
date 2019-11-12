@@ -29,7 +29,7 @@ class UniqueEmail implements Rule
     public function passes($attribute, $value)
     {
         $client = new HTTPClient();
-        $httpRequest = new HTTPRequest('get', 'http://127.0.0.1:8080/users',
+        $httpRequest = new HTTPRequest('get', 'http://' . env('ACCOUNT_SERVER_IP') . '/users',
             ['body' => 'application/json'],'{"email":"'.$value.'"}'
         );
         $response = json_decode($client->send($httpRequest)->getBody()->getContents());
