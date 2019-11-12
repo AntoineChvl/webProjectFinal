@@ -22,7 +22,7 @@ class LoginController extends Controller
     {
         //$this->middleware();
         $client = new HTTPClient();
-        $httpRequest = new HTTPRequest('get', 'http://127.0.0.1:8080/users',
+        $httpRequest = new HTTPRequest('get', 'http://' . env('ACCOUNT_SERVER_IP') . '/users',
             ['body' => 'application/json'],'{"email":"'.$request->email.'"}'
         );
         $response = json_decode($client->send($httpRequest)->getBody()->getContents());
@@ -31,7 +31,7 @@ class LoginController extends Controller
                 $request->session()->put('authenticated',$response->result[0]);
                 if($request->session()->has('loginRedirect')){
                     $redirect = $request->session()->get('loginRedirect');
-                    $request->forget('loginRedirect');
+                    $request->session()->forget('loginRedirect');
                     return redirect($redirect);
                 }
                 return redirect('home');
@@ -44,14 +44,14 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $request->session()->forget('authenticated');
-        return redirect('login');
+        return redirect('home');
     }
 
     public function register(RegisterForm $request)
     {
         $client = new HTTPClient();
         $password = Hash::make($request->password);
-        $httpRequest = new HTTPRequest('post', 'http://127.0.0.1:8080/users',
+        $httpRequest = new HTTPRequest('post', 'http://' . env('ACCOUNT_SERVER_IP') . '/users',
             ['body' => 'application/json'],'
             {
                 "firstname":"'.$request->firstName.'",
