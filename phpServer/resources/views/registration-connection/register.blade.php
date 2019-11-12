@@ -5,8 +5,8 @@
 @endpush
 
 @section('content')
-<div class="container" id="loginForm">
 
+<div class="container" id="loginForm">
     <div class="col-sm-9 col-md-7 col-lg-5 mx-auto">
         <div class="card card-signin my-5">
             <div class="card-body">
@@ -31,7 +31,7 @@
                         passe</label>
                     </div>
                     @if($errors->has('login'))
-                    <div class="alert alert-danger">
+                    <div class="error alert alert-danger">
                         @foreach($errors->get('login') as $error)
                         {{ $error }}
                         @endforeach
@@ -67,13 +67,28 @@
                         </div>
                     </div>
 
-
+                    @if($errors->has('firstName') || $errors->has('lastName')) 
+                    <div class="error alert alert-danger">
+                        @foreach($errors->get('firstName') as $error)
+                        {{ $error }}<br>
+                        @endforeach
+                        @foreach($errors->get('lastName') as $error)
+                        {{ $error }}<br>
+                        @endforeach
+                    </div>
+                    @endif
                     <div class="form-label-group ">
                         <label for="emailInscription">Adresse mail :</label>
                         <input type="email" id="emailInscription" name="email" class="form-control"
                         placeholder="robert.dupont@orange.fr" value="{{old('email')}}" required>
                     </div>
-
+                    @if($errors->has('email')) 
+                    <div class="error alert alert-danger">
+                        @foreach($errors->get('email') as $error)
+                        {{ $error }}<br>
+                        @endforeach
+                    </div>
+                    @endif
                     <div class="form-label-group ">
                         <label for="campusList">Campus :</label>
                         <select id="campusList" class="custom-select" name="campus">
@@ -82,12 +97,26 @@
                             <option {{ old('campus')=="Rouen"? 'selected' : '' }} value="Rouen">Rouen</option>
                         </select>
                     </div>
+                    @if($errors->has('campus')) 
+                    <div class="error alert alert-danger">
+                        @foreach($errors->get('campus') as $error)
+                        {{ $error }}<br>
+                        @endforeach
+                    </div>
+                    @endif
 
                     <div class="form-label-group ">
                         <label for="passwordInscription">Mot de passe : </label>
                         <input type="password" id="passwordInscription" name="password"
                         class="form-control champ" placeholder="qodpfjsdjgAJjfd!45" required>
                     </div>
+                    @if($errors->has('password')) 
+                    <div class="error alert alert-danger">
+                        @foreach($errors->get('password') as $error)
+                        {{ $error }}<br>
+                        @endforeach
+                    </div>
+                    @endif
 
                     <div class="form-label-group ">
                         <label for="passwordConfirmation">Confirmation mot de passe : </label>
@@ -103,6 +132,14 @@
                             <label class="custom-control-label" for="legalIssuesConsent">J'accepte les mentions légales</label>
                         </div>
                     </div>
+                    @if($errors->has('legalIssuesConsent')) 
+                    <div class="error alert alert-danger">
+                        @foreach($errors->get('legalIssuesConsent') as $error)
+                        {{ $error }}<br>
+                        @endforeach
+                    </div>
+                    @endif
+
 
                     <div class="form-label-group " id="inscriptionButton">
                         <button class="btn btn-lg btn-primary btn-block text-uppercase rounded-0" type="submit">

@@ -39,6 +39,7 @@ class LoginController extends Controller
             }
         }
         $errors->login[] = "La combinaison mot de passe/email est invalide";
+        //return redirect('login');
         return view('registration-connection/register')->withErrors($errors)->withEmail($request->email);
     }
 
