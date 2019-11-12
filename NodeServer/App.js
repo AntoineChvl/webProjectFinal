@@ -8,13 +8,14 @@ const DATABASE_USER = 'root';
 const DATABASE_PASSWORD = '';
 
 
-var app = require('express')();
-var mysql = require('mysql');
-var userController = require('./UserController.js');
-var bodyCatcher = require('./bodyCatcher.js');
+const app = require('express')();
+const mysql = require('mysql');
+const bodyCatcher = require('./bodyCatcher.js');
+const jwt = require('jsonwebtoken');
+const fs = require('fs');
 
 
-var connection = mysql.createConnection({
+const connection = mysql.createConnection({
     database: DATABASE_NAME,
     host: DATABASE_HOST,
     port: DATABASE_PORT,
@@ -28,7 +29,7 @@ connection.connect(function (error) {
     console.log("Connected!");
 });
 
-var userController = new require('./UserController.js')(connection);
+const userController = new require('./UserController.js')(connection);
 
 
 
@@ -40,14 +41,40 @@ app.use(
         next();
     }
 );
+//app.use(require('body-parser').json());
+app.get('/getToken', (req, res) => {
+    let privateKey = fs.readFileSync('./private.pem', 'utf8');
+    let token = jwt.sign({},privateKey, { algorithm: 'HS256'});
+    res.send(token);
+});
+
+function isAuthenticated(req, res, next) {
+    if (typeof req.headers.authorization !== "undefined") {
+        let token = req.headers.authorization;
+        let privateKey = fs.readFileSync('./private.pem', 'utf8');
+        jwt.verify(token, privateKey, { algorithm: "HS256" }, (err, user) => {
+            if (err) {
+                res.status(500).json({ error: "Not Authorized" });
+            }
+            return next();
+        });
+    } else {
+        res.status(500).json({ error: "Not Authorized (no keys)" });
+    }
+}
+
+//app.use(isAuthenticated());
 
 
-app.get('/users', (req, res) => userController.index(req, res));
-app.post('/users', (req, res) => userController.store(req, res));
-app.get('/users/:id', (req, res) => userController.show(req, res));
-app.put('/users/:id', (req, res) => userController.update(req, res));
-app.patch('/users/:id', (req, res) => userController.update(req, res));
-app.delete('/users/:id', (req, res) => userController.destroy(req, res));
+
+
+
+app.get('/users',isAuthenticated, (req, res) => userController.index(req, res));
+app.post('/users',isAuthenticated, (req, res) => userController.store(req, res));
+app.get('/users/:id',isAuthenticated, (req, res) => userController.show(req, res));
+app.put('/users/:id',isAuthenticated, (req, res) => userController.update(req, res));
+app.patch('/users/:id',isAuthenticated, (req, res) => userController.update(req, res));
+app.delete('/users/:id',isAuthenticated, (req, res) => userController.destroy(req, res));
 
 
 // app.use(bodyParser.json());
