@@ -31,9 +31,8 @@ class User
 
     public static function find($id)
     {
-        $client = new HTTPClient();
-        $httpRequest = new HTTPRequest('get', 'http://' . env('ACCOUNT_SERVER_IP') . '/users/' . $id);
-        $response = json_decode($client->send($httpRequest)->getBody()->getContents());
+
+        $response = httpRequest('get','/users/' . $id);
 
         if ($response->status == 'success') {
             $user = new User($response->result);
@@ -46,12 +45,10 @@ class User
 
     public static function all()
     {
-        $client = new HTTPClient();
-        $httpRequest = new HTTPRequest('get', 'http://' . env('ACCOUNT_SERVER_IP') . '/users');
-        $response = json_decode($client->send($httpRequest)->getBody()->getContents());
+        $response = httpRequest('get','/users');
         $users = [];
         if ($response->status == 'success') {
-            foreach($response->result as $user){
+            foreach ($response->result as $user) {
                 $users[] = new User($user);
             }
         }
@@ -60,7 +57,7 @@ class User
 
     public static function auth()
     {
-        if(session()->has('authenticated')){
+        if (session()->has('authenticated')) {
             return session()->get('authenticated');
         }
         return NULL;

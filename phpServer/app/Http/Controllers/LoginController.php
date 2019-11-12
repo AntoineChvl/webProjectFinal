@@ -21,12 +21,7 @@ class LoginController extends Controller
 
     public function login(LoginForm $request)
     {
-        //$this->middleware();
-        $client = new HTTPClient();
-        $httpRequest = new HTTPRequest('get', 'http://' . env('ACCOUNT_SERVER_IP') . '/users',
-            ['body' => 'application/json'],'{"email":"'.$request->email.'"}'
-        );
-        $response = json_decode($client->send($httpRequest)->getBody()->getContents());
+        $response = httpRequest('get','/users','{"email":"'.$request->email.'"}');
         if(count($response->result)>0){
             if(Hash::check($request->password, $response->result[0]->password)){
                 $request->session()->put('authenticated',$response->result[0]);
@@ -39,6 +34,7 @@ class LoginController extends Controller
             }
         }
         $errors->login[] = "La combinaison mot de passe/email est invalide";
+        //return redirect('login');
         return view('registration-connection/register')->withErrors($errors)->withEmail($request->email);
     }
 
@@ -50,19 +46,15 @@ class LoginController extends Controller
 
     public function register(RegisterForm $request)
     {
-        $client = new HTTPClient();
         $password = Hash::make($request->password);
-        $httpRequest = new HTTPRequest('post', 'http://' . env('ACCOUNT_SERVER_IP') . '/users',
-            ['body' => 'application/json'],'
+        $response = httpRequest('post','/users','
             {
                 "firstname":"'.$request->firstName.'",
                 "lastname":"'.$request->lastName.'",
                 "email":"'.$request->email.'",
                 "password":"'.$password.'",
                 "campus":"'.$request->campus.'"
-            }'
-        );
-        $response = json_decode($client->send($httpRequest)->getBody()->getContents());
+            }');
         $request->session()->put('authenticated',new User($response->result));
         if($request->session()->has('loginRedirect')){
             $redirect = $request->session()->get('loginRedirect');

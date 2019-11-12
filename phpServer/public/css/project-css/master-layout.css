@@ -181,7 +181,6 @@ footer ul
 
 .elementFooter:nth-child(2){
     flex:2;
-    border-radius: 10px;
     border-right: 1px solid #fcbc50;
     border-left: 1px solid #fcbc50;
 }
@@ -190,7 +189,7 @@ footer ul
     flex:1;
 }
 
-.elementFooter:nth-child(1) p, .elementFooter:nth-child(3) p
+.elementFooter:nth-child(1) p, .elementFooter:nth-child(3) p, .elementFooter:nth-child(2) p
 {
     text-align: center;
 }
