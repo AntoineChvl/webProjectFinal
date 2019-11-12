@@ -59,7 +59,6 @@
 
              <hr class="hr-bottom">
          </article>
-
     @endforeach
 
     <a href="{{ route('shop') }}" class="btn btn-light" id="shop">Retour à la boutique</a>
