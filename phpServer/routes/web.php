@@ -37,6 +37,15 @@ Route::delete('/events/{event}', 'EventsController@destroy')->name('events.destr
 //Page d'Accueil du magasin
 Route::get('/shop', 'ShopController@index')->name('shop');
 Route::resource('/product','ShopController');
+Route::post('/shop/product/{id}/addToCart', 'ShopController@addToCart')->name('shop.addToCart');
+Route::get('/shop/product','ShopController@index')->name('shop.product.index');
+Route::get('/shop/product/create','ShopController@create')->name('shop.product.create');
+Route::post('/shop/product','ShopController@store')->name('shop.product.store');
+Route::get('/shop/product/{id}','ShopController@show')->name('shop.product.show');
+Route::get('/shop/product/{id}/edit','ShopController@edit')->name('shop.product.edit');
+Route::patch('/shop/product/{id}','ShopController@update')->name('shop.product.update');
+Route::delete('/shop/product/{id}','ShopController@destroy')->name('shop.product.destroy');
+
 
 Route::get('/accueilTest', function() {
     return view('home.home');
