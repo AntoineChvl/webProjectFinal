@@ -49,11 +49,13 @@
         @if($event->date < now())
 
             <div class="container">
+                @if($isConnected)
                 <div class="row col-12">
                     <button type="button" class="btn submit-button" data-toggle="modal" data-target="#exampleModal">
                         Ajouter une photo
                     </button>
                 </div>
+                @endif
 
                 <div class="row col-12 justify-content-center" id="pastEventImagesTitle">
                     <h4>Images postées par les utilisateurs ayant participé à l'évènement</h4>
@@ -96,12 +98,14 @@
 
             <!-- Display images posted by users that have participated -->
             <div class="row">
-                @foreach($event->imagesPostedByUsers as $pastImage)
-                    <!-- Display only validated images -->
+            @foreach($event->imagesPostedByUsers as $pastImage)
+                <!-- Display only validated images -->
                     @if($pastImage->is_validated)
                         <div class="flex-column col-md-3 col-lg-3 col-4 imagePastEvent">
-                            <a href="{{route('events.images.show', ['event' => $event, 'image' => $pastImage])}}" class="imageModal">
-                                <img src="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}"alt="Image décrivant l'évènement organisé par le BDE !">
+                            <a href="{{route('events.images.show', ['event' => $event, 'image' => $pastImage])}}"
+                               class="imageModal">
+                                <img src="{{ asset('storage/imagesUploaded/'.$pastImage->image->path) }}"
+                                     alt="Image décrivant l'évènement organisé par le BDE !">
                             </a>
                             <div class="flex-row">
                                 <a href="{{route('events.images.show', ['event' => $event, 'image' => $pastImage])}}">Commenter...</a>
@@ -114,12 +118,19 @@
             </div>
 
         @else
-            <div class="container">
-                <div class="row col-12">
-                    <button type="button" class="btn submit-button" id="participateToEvent">Participer à l'évènement</button>
+            @if($isConnected)
+                <div class="container">
+                    <div class="row col-12">
+                        <button type="button"
+                                class="btn  @if(\App\Participate::where('user_id', '=', $userId)->where('event_id', '=', $event->id)->count() >0) confirm-button @else submit-button @endif"
+                                id="participateToEvent">@if(\App\Participate::where('user_id', '=', $userId)->where('event_id', '=', $event->id)->count() >0) Inscris ! @else Participer à l'évènement @endif
+                        </button>
+                    </div>
                 </div>
 
-            </div>
+            @else
+                <a href="{{ route('login') }}" class="btn submit-button">Participer à l'évènement</a>
+            @endif
         @endif
     </div>
 
@@ -131,4 +142,5 @@
     <script src="https://kit.fontawesome.com/1d7bafa102.js" crossorigin="anonymous"></script>
     <script src="{{ asset('js/project-js/like.js') }}"></script>
     <script src="{{ asset('js/project-js/interact-image.js') }}"></script>
+    <script src="{{ asset('js/project-js/participateEvent.js') }}"></script>
 @endpush

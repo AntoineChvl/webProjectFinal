@@ -27,7 +27,7 @@ Route::post('/register', 'LoginController@register')->name('register');//recepti
 
 Route::get('/events', 'EventsController@index')->name('events.index');
 Route::post('/events', 'EventsController@store')->name('events.store')->middleware('authBDE');
-Route::get('/events/create', 'EventsController@create')->name('events.create')->middleware('authBDE');
+Route::get('/events/create', 'EventsController@create')->name('events.create')->middleware('authBDE')->middleware('auth');
 Route::get('/events/{event}/edit', 'EventsController@edit')->name('events.edit')->middleware('authBDE');
 Route::get('/events/{event}', 'EventsController@show')->name('events.show');
 Route::put('/events/{event}', 'EventsController@update')->name('events.update')->middleware('authBDE');
@@ -69,3 +69,6 @@ Route::get('/getComments', 'CommentsController@index');
 Route::resource('events.images', 'ImagesController')->except([
     'index', 'create', 'store', 'update', 'edit', 'destroy'
 ]);
+
+Route::post('/participateEvent', 'ParticipateController@participate');
+Route::post('/unparticipateEvent', 'ParticipateController@noLongerParticipate');

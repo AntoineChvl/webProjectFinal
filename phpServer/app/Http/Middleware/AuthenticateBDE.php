@@ -22,7 +22,7 @@ class AuthenticateBDE
             return $next($request);
         } else
         {
-            return redirect(url()->previous());
+            return redirect('login');
         }
 
     }

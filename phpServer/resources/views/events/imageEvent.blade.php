@@ -24,50 +24,53 @@
     <section>
 
 
-
         <h1 class="d-flex justify-content-center">{{$event->name}}</h1>
         <hr>
 
         <div class="container">
 
 
-
             <div class="row col-12 justify-content-center imageInteraction">
 
                 <div class="col-6">
-                    <img src="{{ asset('storage/imagesUploaded/'.$image->image->path) }}" alt="Image décrivant l'évènement organisé par le BDE !">
+                    <img src="{{ asset('storage/imagesUploaded/'.$image->image->path) }}"
+                         alt="Image décrivant l'évènement organisé par le BDE !">
                     <div class="row col-12 flex-row">
-                        <p><i class="@if($image->likes->where('user_id', '=', 1)->count() >0) fas @else far @endif fa-heart heartLike" id="like"></i></p>
+                        @if($isConnected && $userId > 0)
+                            <p><i class="@if(\App\Like::where('user_id', '=', $userId)->where('images_past_events_id', '=', $image->id)->count() > 0) fas @else far @endif fa-heart heartLike" id="like"></i></p>
+                        @endif
                     </div>
                 </div>
 
                 <div class="col-6 flex-column justify-content-end">
                     <div class="row d-flex flex-row align-items-center justify-content-around">
+                        @if($isConnected)
                         <div class="form-group">
                             <h6>Espace commentaires :</h6>
-                            <textarea name="" id="" cols="30" rows="1" class="form-control commentValue" placeholder="Votre commentaire..."></textarea>
+                            <textarea name="" id="" cols="30" rows="1" class="form-control commentValue"
+                                      placeholder="Votre commentaire..."></textarea>
                         </div>
                         <button type="button" class="btn submit-button addComment">Ajouter le commentaire</button>
+                        @else
+
+                        <div>
+                            <p>Vous devez être connecté pour ajouter des commentaires et liker la photo ! <a href="{{ route('login') }}">Connectez-vous</a></p>
+                        </div>
+
+                        @endif
                     </div>
 
-                    <div class="row comments">
+                    <div class="row">
+                        <div class="comments col-12">
+
+                        </div>
                     </div>
 
                 </div>
             </div>
 
 
-
-
-
-
-
         </div>
-
-
-
-
-
 
 
     </section>

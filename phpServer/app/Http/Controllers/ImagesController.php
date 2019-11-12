@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Images;
 use App\ImagesPastEvent;
+use App\Like;
+use App\User;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
@@ -98,7 +100,17 @@ class ImagesController extends Controller
         // Check if the image is associated with the event
         if(ImagesPastEvent::find($image->id)->event_id == $event->id)
         {
-            return view('events.imageEvent', compact('image', 'event'));
+
+            $isConnected = false;
+            $userId = 0;
+
+            if(User::auth())
+            {
+                $isConnected = true;
+                $userId = User::auth()->id;
+            }
+
+            return view('events.imageEvent', compact('image', 'event', 'userId', 'isConnected'));
         }
 
         return redirect('events');

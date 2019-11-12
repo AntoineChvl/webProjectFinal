@@ -42,6 +42,14 @@ li
     color: #FFC252;
 }
 
+
+.confirm-button
+{
+    background-color: lightgreen;
+    color: white;
+    border-radius: 0px;
+}
+
 /*NAVBAR */
 
 .mainNavbar nav
@@ -220,5 +228,6 @@ footer ul
     max-height: 50px;
     margin: 10px;
 }
+
 
 
