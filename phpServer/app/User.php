@@ -16,7 +16,7 @@ class User
     public $status;
     public $statusLvl;
 
-    public function __constructor($user = NULL)
+    public function __construct($user = NULL)
     {
         if ($user != NULL) {
             $this->id = $user->id;
@@ -58,6 +58,7 @@ class User
     public static function auth()
     {
         if (session()->has('authenticated')) {
+            session()->put('authenticated',static::find(session()->get('authenticated')->id));
             return session()->get('authenticated');
         }
         return NULL;
