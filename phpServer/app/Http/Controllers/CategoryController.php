@@ -5,8 +5,8 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddCategory;
-use Cassandra\Session;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
 {

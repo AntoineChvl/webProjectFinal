@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\Contain;
 use App\Http\Requests\AddProductRequest;
 use App\Http\Requests\EditProductRequest;
@@ -33,7 +34,7 @@ class ShopController extends Controller
      */
     public function create()
     {
-        return view("shop/createProduct")->withAction('create');
+        return view("shop/createProduct")->withAction('create')->withCategories(Category::all());
     }
 
     /**
@@ -45,7 +46,16 @@ class ShopController extends Controller
     public function store(AddProductRequest $request)
     {
         $product = Product::create($request->only('name', 'description', 'price') + ['user_id' => User::auth()->id] + ['image_id' => 1]);
-        return redirect('shop.product.show', $product->id);
+
+        //$product->categories()->detach();
+        foreach($request->except(['name', 'description', 'price' ,'_token']) as $key => $value){
+            $category = Category::find($key);
+            if($category && $value=='on'){
+                $product->categories()->attach($category);
+            }
+        }
+
+        return redirect(route('shop.product.show', $product->id));
     }
 
     /**
@@ -58,8 +68,8 @@ class ShopController extends Controller
     {
         $product = Product::find($id);
         if ($product) {
-            return view('shop.product', ['product' => Product::find($id)]);
             session()->flash('message flash', ['type' => 'success', 'content' => "L'article a bien été ajouté"]);
+            return view('shop.product', ['product' => Product::find($id)]);
         } else {
             return '<p>Le produit que vous recherchez n\'existe pas !</p>';
         }
@@ -75,7 +85,7 @@ class ShopController extends Controller
     {
         $product = Product::find($id);
         if ($product) {
-            return view("shop/createProduct")->withAction('edit')->withProduct($product);
+            return view("shop/createProduct")->withAction('edit')->withProduct($product)->withCategories(Category::all());
         } else {
             return '<p>Le produit que vous recherchez n\'existe pas !</p>';
         }

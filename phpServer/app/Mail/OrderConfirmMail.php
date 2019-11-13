@@ -20,7 +20,6 @@ class OrderConfirmMail extends Mailable
     public function __construct($order)
     {
         $this->order=$order;
-        //
     }
 
     /**
