@@ -23,8 +23,20 @@ Route::get('/logout', 'LoginController@logout')->name('logout');//page de deconn
 Route::post('/login', 'LoginController@login')->name('login');//reception du formulaire de connection -> redirection
 Route::post('/register', 'LoginController@register')->name('register');//reception du formulaire d'inscription -> redirection
 
-//Page du magasin
+
+
+Route::get('/events', 'EventsController@index')->name('events.index');
+Route::post('/events', 'EventsController@store')->name('events.store')->middleware('authBDE');
+Route::get('/events/create', 'EventsController@create')->name('events.create')->middleware('authBDE')->middleware('auth');
+Route::get('/events/{event}/edit', 'EventsController@edit')->name('events.edit')->middleware('authBDE');
+Route::get('/events/{event}', 'EventsController@show')->name('events.show');
+Route::put('/events/{event}', 'EventsController@update')->name('events.update')->middleware('authBDE');
+Route::delete('/events/{event}', 'EventsController@destroy')->name('events.destroy')->middleware('authBDE');
+
+
+//Page d'Accueil du magasin
 Route::get('/shop', 'ShopController@index')->name('shop');
+Route::resource('/product','ShopController');
 Route::post('/shop/product/{id}/addToCart', 'ShopController@addToCart')->name('shop.addToCart');
 Route::get('/shop/product','ShopController@index')->name('shop.product.index');
 Route::get('/shop/product/create','ShopController@create')->name('shop.product.create');
@@ -35,20 +47,15 @@ Route::patch('/shop/product/{id}','ShopController@update')->name('shop.product.u
 Route::delete('/shop/product/{id}','ShopController@destroy')->name('shop.product.destroy');
 
 
+Route::get('/accueilTest', function() {
+    return view('home.home');
+})->middleware('auth');
 
-//Page des events
-Route::get('/events', 'EventsController@index')->name('events.index');
-Route::post('/events', 'EventsController@store')->name('events.store')->middleware('authBDE');
-Route::get('/events/create', 'EventsController@create')->name('events.create')->middleware('authBDE');
-Route::get('/events/{event}/edit', 'EventsController@edit')->name('events.edit')->middleware('authBDE');
-Route::get('/events/{event}', 'EventsController@show')->name('events.show');
-Route::put('/events/{event}', 'EventsController@update')->name('events.update')->middleware('authBDE');
-Route::delete('/events/{event}', 'EventsController@destroy')->name('events.destroy')->middleware('authBDE');
 
-Route::post('/participateEvent', 'ParticipateController@participate');
-Route::post('/unparticipateEvent', 'ParticipateController@noLongerParticipate');
+Route::get('/loginTest', function() {
+    return view('registration-connection.register');
+});
 
-//images / comments / likes
 Route::post('/image', 'ImagesController@publishImage')->name('image');
 Route::post('/imagePastEvent', 'ImagesController@uploadImagePastEvent')->name('imagePastEvent');
 
@@ -63,4 +70,5 @@ Route::resource('events.images', 'ImagesController')->except([
     'index', 'create', 'store', 'update', 'edit', 'destroy'
 ]);
 
-
+Route::post('/participateEvent', 'ParticipateController@participate');
+Route::post('/unparticipateEvent', 'ParticipateController@noLongerParticipate');

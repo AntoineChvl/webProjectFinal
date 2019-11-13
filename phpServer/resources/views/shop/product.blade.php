@@ -9,14 +9,22 @@
 @endsection
 
 @push('stylesheet')
-    <link href="{{ asset('css/project-css/product.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/project-css/shop/product.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
 
     <div class="navigation">
-        <a href="{{route('shop')}}" class="btn btn-light" id="shop">Retour à la boutique</a>
-        <a href="{{route('shop')}}" class="btn submit-button" id="cart">Ajouter au panier</a>
+        <a href="{{ route('shop') }}" class="btn btn-light" id="shop">Retour à la boutique</a>
+
+        <form action="{{ route('shop.addToCart', $product->id) }}" method="post">
+            @csrf
+            <div class="container flex-column">
+                <input  class="btn submit-button quantity" type="number" name="quantity" value="1" min="1" required>
+                <button class="btn submit-button" id="cart" type="submit">Ajouter au panier</button>
+            </div>
+        </form>
+
         <hr class="hr-top">
     </div>
 
@@ -27,11 +35,11 @@
             </div>
 
             <div class="col">
-                <h1>{{$product->name}}</h1>
+                <h1>{{ $product->name }}</h1>
 
-                <p>Prix du produit : {{$product->price}} €</p>
+                <p>Prix du produit : {{ $product->price }} €</p>
                 <hr class="hr-desc">
-                <div class="description">{{$product->description}}</div>
+                <div class="description">{{ $product->description }}</div>
             </div>
         </div>
     </article>

@@ -9,14 +9,14 @@
 @endsection
 
 @push('stylesheet')
-    <link href="{{ asset('css/project-css/shop.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/project-css/shop/shop.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
 
     <div class="top-center">
         <h1>Boutique du bureau de élèves</h1>
-        <p class="sum">Panier : <b>0 €</b></p>
+        <a href="/shop/cart" class="cart">Mon panier</a>
     </div>
 
     <div class="container">
@@ -31,14 +31,14 @@
             <div class="col">
                 <div class="top-block-image">
                     <p>Vente - Top 1</p>
-                    <img src="https://via.placeholder.com/480/blue/fff.png" alt="top2">
+                    <img src="https://via.placeholder.com/480/blue/fff.png" alt="top1">
                 </div>
             </div>
 
             <div class="col">
                 <div class="top-block-image">
                     <p>Vente - Top 3</p>
-                    <img src="https://via.placeholder.com/480/blue/fff.png" alt="top2">
+                    <img src="https://via.placeholder.com/480/blue/fff.png" alt="top3">
                 </div>
             </div>
         </div>
@@ -66,7 +66,7 @@
     <div class="product-list row">
             @foreach($products as $product)
                 <article class="product col-3">
-                    <a href={{ "product/$product->id" }}><img src={{ asset('storage/imagesUploaded/'.$product->image->path) }} alt="product"></a>
+                    <a href={{ route('shop.product.show', $product->id) }}><img src={{ asset('storage/imagesUploaded/'.$product->image->path) }} alt="product"></a>
                     <p class="product-name">{{ $product->name }}</p>
                 </article>
             @endforeach

@@ -1,6 +1,5 @@
 .navigation {
     position: relative;
-    margin-top: 40px;
     width: 100%;
     z-index: 200;
 }
@@ -17,6 +16,13 @@
     width: 200px;
 }
 
+.quantity {
+    position: absolute;
+    right: 0;
+    top: 38px;
+    width: 200px;
+}
+
 @media (max-width: 480px) {
     #shop {
         top: -10px;
@@ -26,6 +32,13 @@
     #cart {
         top: 35px;
         right: auto;
+        left: 0;
+    }
+
+    .quantity {
+        top: 73px;
+        right: auto;
+        left: 0;
     }
 }
 
@@ -35,7 +48,7 @@
 
 article {
     box-shadow: 5px 5px 15px 5px;
-    margin-top: 120px;
+    margin-top: 150px;
     position: center;
 }
 
@@ -57,5 +70,6 @@ h1 {
 .description {
     height: 200px;
     max-width: 420px;
+    overflow: auto;
 }
 
