@@ -17,14 +17,15 @@
     @stack('stylesheet')
 </head>
 
-@include('partials._nav')
+
 
 <body>
 
-
+@include('partials._nav')
 <main>
 
         <div id="main-wrapper" class="container">
+@include('partials._flash')
             @yield('content')
         </div>
 
@@ -32,8 +33,8 @@
 
 
 </main>
-
 @include('partials._footer')
+
 
 
 

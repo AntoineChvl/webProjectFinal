@@ -8,10 +8,10 @@ class Order extends Model
 {
     //
     protected $fillable = [
-        'price'
+        'price','user_id'
     ];
 
-    public function products() {
+    public function contains() {
         return $this->hasMany(Contain::class);
     }
 
