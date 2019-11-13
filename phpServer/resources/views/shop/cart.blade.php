@@ -62,5 +62,6 @@
     @endforeach
 
     <a href="{{ route('shop') }}" class="btn btn-light" id="shop">Retour à la boutique</a>
+    <a href="{{ route('shop.order') }}" class="btn btn-light">HT</a>
 
 @endsection

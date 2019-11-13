@@ -7,8 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Contain extends Model
 {
     //
+    protected $table = 'contain';
+    public $timestamps = false;
     protected $fillable = [
-        'quantity'
+        'quantity','product_id','order_id'
     ];
 
     public function order()

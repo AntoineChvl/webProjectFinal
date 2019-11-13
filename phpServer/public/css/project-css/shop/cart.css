@@ -42,7 +42,10 @@ h1 {
 .short-text {
     display: none;
 }
-
+.description {
+    overflow: auto;
+    word-break: break-word;
+}
 @media (max-width: 1000px) {
     .description {
         display: none;
