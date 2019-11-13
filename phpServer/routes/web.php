@@ -36,7 +36,9 @@ Route::delete('/events/{event}', 'EventsController@destroy')->name('events.destr
 
 //Page d'Accueil du magasin
 Route::get('/shop', 'ShopController@index')->name('shop');
-Route::resource('/product','ShopController');
+Route::get('/shop/cart', 'ShopController@indexCart')->name('cart');
+Route::get('/shop/order', 'ShopController@order')->name('shop.order');
+Route::get('/shop/buy', 'ShopController@buy')->name('shop.buy');
 Route::post('/shop/product/{id}/addToCart', 'ShopController@addToCart')->name('shop.addToCart');
 Route::get('/shop/product','ShopController@index')->name('shop.product.index');
 Route::get('/shop/product/create','ShopController@create')->name('shop.product.create');
@@ -46,15 +48,10 @@ Route::get('/shop/product/{id}/edit','ShopController@edit')->name('shop.product.
 Route::patch('/shop/product/{id}','ShopController@update')->name('shop.product.update');
 Route::delete('/shop/product/{id}','ShopController@destroy')->name('shop.product.destroy');
 
-
-Route::get('/accueilTest', function() {
-    return view('home.home');
-})->middleware('auth');
-
-
-Route::get('/loginTest', function() {
-    return view('registration-connection.register');
-});
+Route::get('/shop/category','CategoryController@index')->name('shop.category.index');
+Route::get('/shop/category/create','CategoryController@create')->name('shop.category.create');
+Route::post('/shop/category','CategoryController@store')->name('shop.category.store');
+Route::delete('/shop/category/{id}','CategoryController@destroy')->name('shop.category.destroy');
 
 Route::post('/image', 'ImagesController@publishImage')->name('image');
 Route::post('/imagePastEvent', 'ImagesController@uploadImagePastEvent')->name('imagePastEvent');
