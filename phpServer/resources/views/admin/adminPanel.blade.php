@@ -27,78 +27,25 @@
 
     <div class="container row d-flex flex-row justify-content-around">
 
-        <a class="btn submit-button col-3" id="listUsers" href="{{ route('admin-images') }}">
+        <a class="btn submit-button col-3" id="listUsers" href="#">
             Accéder à la liste des inscrits par évènement
         </a>
 
-        <button class="btn submit-button col-3" id="checkPastEvents">
+        <a class="btn submit-button col-3" id="checkPastEvents" href="{{ route('admin-images') }}">
             Gérer les photos et commentaires des évènements passés
-        </button>
+        </a>
 
-        <button class="btn submit-button col-3" id="seeNotifications">
+        <a class="btn submit-button col-3" id="seeNotifications" href="#">
             Voir les notifications des membres du personnel CESI
-        </button>
+        </a>
 
     </div>
 
     <hr>
 
 
-
-    @for($i = 0; $i < $pastEventsNumber; $i++)
-
-
-        <div class="row flex-column d-none"  id="tablePE{{$i}}">
-            <h5>Évènement {{ $events[$i]->name }} </h5>
-            <table>
-                <thead>
-                <tr>
-                    <th>Column 1</th>
-                    <th>Column 2</th>
-                </tr>
-                </thead>
-                <tfoot>
-                <tr>
-                    <th>Column 1</th>
-                    <th>Column 2</th>
-                </tr>
-                </tfoot>
-            </table>
-        </div>
-
-
-
-    @endfor
-
-
-
-    <table id="table_id" class="d-none">
-        <thead>
-        <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-            <th>Column 1</th>
-            <th>Column 2</th>
-        </tr>
-        </tfoot>
-    </table>
-
 @endsection
 
 @push('script')
-    <script src="{{ asset('js/project-js/preview-image.js') }}"></script>
-    <script src="{{ asset('js/project-js/lightbox/lightbox.min.js') }}"></script>
     <script src="https://kit.fontawesome.com/1d7bafa102.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/project-js/like.js') }}"></script>
-    <script src="{{ asset('js/project-js/interact-image.js') }}"></script>
-    <script src="{{ asset('js/project-js/participateEvent.js') }}"></script>
-
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-
-
-    <script src="{{ asset('js/project-js/load-admin-data.js') }}"></script>
 @endpush

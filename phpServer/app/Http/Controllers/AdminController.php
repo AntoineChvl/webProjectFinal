@@ -14,7 +14,6 @@ class AdminController extends Controller
 
         $pastEventsNumber = Event::where('date', '<', now())->count();
         $events = Event::where('date', '<', now())->get();
-
         return view('admin.adminPanel', compact('pastEventsNumber', 'events'));
 
     }
@@ -23,11 +22,8 @@ class AdminController extends Controller
     public function images()
     {
         $events = Event::where('date', '<', now())->get();
-        $imagesEvent = [];
 
-
-
-        return view('admin.adminImages', compact('events', 'imagesEvent'));
+        return view('admin.adminImages', compact('events'));
     }
 
 

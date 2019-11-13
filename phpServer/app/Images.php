@@ -26,7 +26,7 @@ class Images extends Model
 
         $storedImage = self::insertGetId([
             'path' => $imageName,
-            'user_id' => 1,
+            'user_id' => User::auth()->id,
         ]);
 
         return $storedImage;

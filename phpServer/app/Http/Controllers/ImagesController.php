@@ -92,7 +92,7 @@ class ImagesController extends Controller
 
     public function updateImage(Request $request)
     {
-        $image = $request->input('image');
+        $image = $request->input('data');
         ImagesPastEvent::where('image_id', '=', $image)->first()->validate();
     }
 

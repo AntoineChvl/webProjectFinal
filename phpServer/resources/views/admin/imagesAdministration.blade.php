@@ -23,14 +23,17 @@
 
 @section('content')
 
+
+    <a href="{{ route('admin-panel') }}" class="btn btn-light backToEvents">Retour au panel administration</a>
+
+    <hr>
     <h1>Images postées sur les évènements passés</h1>
     <hr>
 
     <select name="eventChoice" id="eventChoice" class="form-control">
-
         <option value="">Choisir un évènement</option>
         @foreach($events as $event)
-            <option value="event{{$event->id}}">{{$event->name}} -- {{ $event->imagesPostedByUsers->count() }}</option>
+            <option value="event{{$event->id}}">{{$event->name}} / {{ $event->imagesPostedByUsers->where('is_validated', '=', '1')->count() }} image(s) </option>
         @endforeach
     </select>
 
@@ -53,18 +56,12 @@
         </tfoot>
     </table>
 
+
 @endsection
 
 @push('script')
     <script src="{{ asset('js/project-js/preview-image.js') }}"></script>
-    <script src="{{ asset('js/project-js/lightbox/lightbox.min.js') }}"></script>
-    <script src="https://kit.fontawesome.com/1d7bafa102.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/project-js/like.js') }}"></script>
-    <script src="{{ asset('js/project-js/interact-image.js') }}"></script>
-    <script src="{{ asset('js/project-js/participateEvent.js') }}"></script>
-
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-
-
-    <script src="{{ asset('js/project-js/load-admin-data.js') }}"></script>
+    <script src="{{ asset('js/project-js/adminTable.js') }}"></script>
+    <script src="{{ asset('js/project-js/loadImagesData.js') }}"></script>
 @endpush

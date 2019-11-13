@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     protected $fillable = [
-        'content', 'user_id', 'image_past_events_id'
+        'content', 'user_id', 'image_past_events_id', 'is_validated', 'restricted_at'
     ];
+
+    public function validate()
+    {
+        $this->is_validated = 0;
+        $this->restricted_at = now();
+        $this->save();
+    }
 }

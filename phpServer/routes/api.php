@@ -18,3 +18,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::get('/events/images/all', 'ImagesController@imagesByEvent');
+
+Route::get('/events/images/comments', 'CommentsController@allByEvent');
+
+Route::post('/espace-admin/images/validate/', 'ImagesController@updateImage');
+
+Route::post('/espace-admin/comments/validate/', 'CommentsController@updateCommentStatus');
+
+Route::get('/espace-admin/comments/validate/{uploadImageId}', 'CommentsController@commentsEvent');
