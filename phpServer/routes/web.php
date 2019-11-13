@@ -73,3 +73,19 @@ Route::post('/unparticipateEvent', 'ParticipateController@noLongerParticipate');
 Route::get('/espace-admin', 'AdminController@index')->name('admin-images')->middleware('authBDE')->middleware('auth');
 Route::get('/espace-admin/images', 'AdminController@images')->middleware('authBDE')->middleware('auth');
 Route::post('/espace-admin/images/validate/', 'ImagesController@updateImage')->middleware('authBDE')->middleware('auth');
+
+Route::get('/contact', function() {
+    return view('infos/contact');
+})->name('contact');
+
+Route::get('/propos', function() {
+    return view('infos/propos');
+})->name('propos');
+
+Route::get('/privacy_politicy', function() {
+    return view('infos/privacy_politicy');
+})->name('privacy_politicy');
+
+Route::get('/legal_mention', function() {
+    return view('infos/legal_mention');
+})->name('legal_mention');
