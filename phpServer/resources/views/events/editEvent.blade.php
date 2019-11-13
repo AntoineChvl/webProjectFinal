@@ -16,7 +16,6 @@
 @section('content')
 
 
-
     <section>
         <h1 class="createEvent">Modifier l'évènement {{ $event->name }}</h1>
 

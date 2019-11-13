@@ -70,6 +70,7 @@ h1 {
 #eventDescription {
     height: 485px;
     overflow: auto;
+    word-break: break-word;
 }
 
 .eventInformations
