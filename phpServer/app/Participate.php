@@ -10,12 +10,6 @@ class Participate extends Model
         'event_id', 'user_id'
     ];
 
-
-    public function __construct(array $attributes = [])
-    {
-        parent::__construct($attributes);
-        $this->table = "participate";
-    }
-
+    protected $table= "participate";
 
 }

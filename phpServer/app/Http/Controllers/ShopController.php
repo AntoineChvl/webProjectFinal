@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\AddProductRequest;
 use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -16,8 +17,7 @@ class ShopController extends Controller
     public function index()
     {
         //
-        $products = Product::all();
-        return view('shop/shop')->with('products', $products);
+        return view('shop/shop')->withProducts(Product::all());
     }
 
     /**
@@ -27,7 +27,7 @@ class ShopController extends Controller
      */
     public function create()
     {
-        //
+        return view('shop/createProduct');
     }
 
     /**
@@ -36,7 +36,7 @@ class ShopController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(AddProductRequest $request)
     {
         //
     }
