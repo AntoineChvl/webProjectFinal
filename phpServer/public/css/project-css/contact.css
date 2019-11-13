@@ -1,0 +1,50 @@
+#boxContact {
+    display: flex;
+}
+
+.elementContact {
+    height: 825px;
+    margin-top: 55px;
+    padding: 10px;
+    padding-left: 50px;
+    padding-right: 50px;
+    background-color: white;
+    box-shadow: 0 5px 7px 0 gray, 0 6px 10px 0 gray;
+}
+
+.elementContact:nth-child(1) {
+    flex: 2;
+    background-image: url("src={{asset('assets/imgs/activites.jpg')}}");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin-left: 70px;
+    justify-content: center;
+}
+
+.elementContact:nth-child(2) {
+    padding-top: 200px;
+    padding-left: 150px;
+    flex: 1;
+    margin-right: 70px;
+    font-size: 20px;
+}
+
+.titreContact {
+    margin-top: 200px;
+    color: white;
+    background-color: transparent;
+    text-align: center;
+    font-size: 70px;
+}
+
+@media screen and (max-width: 1000px) {
+    .elementContact:nth-child(1){
+        display: none;
+    }
+
+    .elementContact:nth-child(2){
+        margin-left: 70px;
+    }
+}
+
