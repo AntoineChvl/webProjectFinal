@@ -16,7 +16,7 @@ class User
     public $status;
     public $statusLvl;
 
-    public function __constructor($user = NULL)
+    public function __construct($user = NULL)
     {
         if ($user != NULL) {
             $this->id = $user->id;
