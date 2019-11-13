@@ -21,10 +21,7 @@
         </div>
         <div class="elementFooter">
             <ul>
-                <li><a href="{{ route('legal_mention') }}">Mentions légales</a></li>
-                <li><a href="{{ route('privacy_politicy') }}">Conditions générales de ventes</a></li>
-                <li><a href="{{ route('propos') }}">A propos</a></li>
-                <li><a href="{{ route('contact') }}">Contact</a></li>
+
             </ul>
         </div>
     </div>

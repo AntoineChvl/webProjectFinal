@@ -70,6 +70,9 @@ Route::resource('events.images', 'ImagesController')->except([
 Route::post('/participateEvent', 'ParticipateController@participate');
 Route::post('/unparticipateEvent', 'ParticipateController@noLongerParticipate');
 
-Route::get('/espace-admin', 'AdminController@index')->name('admin-images')->middleware('authBDE')->middleware('auth');
-Route::get('/espace-admin/images', 'AdminController@images')->middleware('authBDE')->middleware('auth');
-Route::post('/espace-admin/images/validate/', 'ImagesController@updateImage')->middleware('authBDE')->middleware('auth');
+Route::get('/espace-admin', 'AdminController@index')->middleware('authBDE')->middleware('auth')->name('admin-panel');
+Route::get('/espace-admin/images', 'AdminController@images')->middleware('authBDE')->middleware('auth')->name('admin-images');
+Route::get('/espace-admin/events/users', 'AdminController@eventsUsers')->middleware('authBDE')->middleware('auth')->name('admin-event-users');
+
+
+

@@ -31,7 +31,7 @@ class CommentsController extends Controller
        $imagePastEventId = ImagesPastEvent::where('image_id', '=', $uploadedImageId)->first()->id;
        $imageToCheckComments = Images::where('id', '=', $uploadedImageId)->first();
 
-       return view('admin.adminComments', compact('imagePastEventId', 'imageToCheckComments'));
+       return view('admin.commentsAdministration', compact('imagePastEventId', 'imageToCheckComments'));
     }
 
     public function allByEvent()

@@ -23,7 +23,14 @@ class AdminController extends Controller
     {
         $events = Event::where('date', '<', now())->get();
 
-        return view('admin.adminImages', compact('events'));
+        return view('admin.imagesAdministration', compact('events'));
+    }
+
+
+    public function eventsUsers()
+    {
+        $events = Event::latest()->get();
+        return view('admin.usersDisplay', compact('events'));
     }
 
 

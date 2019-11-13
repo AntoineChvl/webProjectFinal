@@ -6,12 +6,12 @@ $(document).ready(function () {
         var selectedOption = $(this).children('option:selected').val().split('t');
         var eventSelected = selectedOption[selectedOption.length-1];
         var route = $('meta[name="route-name"]').attr('content');
-        var validateRoute = "/api/espace-admin/images/validate/";
-        var tableName = "eventImages";
+       // var validateRoute = "/api/espace-admin/images/validate/";
+       // var tableName = "eventImages";
 
         $('#eventImages').removeClass('d-none');
 
-        removeElement(validateRoute, tableName, 'image_id');
+        //removeElement(validateRoute, tableName, 'image_id');
 
         $('#eventImages').DataTable( {
             destroy: true,
@@ -21,7 +21,7 @@ $(document).ready(function () {
                 "type": "GET",
                 "url": route,
                 "data": {
-                    "event": eventSelected
+                    "event_id": eventSelected
                 }
             },
             "columns":[

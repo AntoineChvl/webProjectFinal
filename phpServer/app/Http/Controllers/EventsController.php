@@ -8,6 +8,7 @@ use App\Participate;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class EventsController extends Controller
 {
@@ -128,6 +129,21 @@ class EventsController extends Controller
     {
         $imageController = new ImagesController();
         $imageController->publishImage(request());
+    }
+
+    public function users()
+    {
+        $eventId = request()->input('event_id');
+        $users_id = Participate::where('event_id', '=', $eventId)->get();
+        $users = [];
+
+        for($i = 0; $i < $users_id->count(); $i++)
+        {
+            $users[$i] = array('user_id' => $users_id[$i]->user_id, 'user_first_name' => User::find($users_id[$i]->user_id)->firstname, 'user_last_name' => User::find($users_id[$i]->user_id)->lastname);
+        }
+
+        return Response::json(array('data' => $users));
+
     }
 
 
