@@ -5,9 +5,9 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use Intervention\Image\Facades\Image;
+use Intervention\Image\Facades\Image as ImagesIntervention;
 
-class Images extends Model
+class Image extends Model
 {
     protected $fillable = [
         'path', 'user_id'
@@ -22,7 +22,7 @@ class Images extends Model
 
         $imageName = time().'.'.$imageExtension;
         $image->storeAs('imagesUploaded', $imageName, 'public');
-        Image::make(public_path('storage/imagesUploaded/'.$imageName))->resize(300,300)->save();
+        ImagesIntervention::make(public_path('storage/imagesUploaded/'.$imageName))->resize(300,300)->save();
 
         $storedImage = self::insertGetId([
             'path' => $imageName,
@@ -31,8 +31,4 @@ class Images extends Model
 
         return $storedImage;
     }
-
-
-
-
 }

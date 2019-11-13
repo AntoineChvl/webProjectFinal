@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Event;
-use App\Images;
-use App\ImagesPastEvent;
+use App\Image;
+use App\ImagePastEvent;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -15,10 +15,10 @@ use ZanySoft\Zip\Zip;
 class ImagesController extends Controller
 {
 
-    public function show(Event $event, ImagesPastEvent $image)
+    public function show(Event $event, ImagePastEvent $image)
     {
         // Check if the image is associated with the event
-        if(ImagesPastEvent::find($image->id)->event_id == $event->id)
+        if(ImagePastEvent::find($image->id)->event_id == $event->id)
         {
 
             $isConnected = false;
@@ -36,39 +36,6 @@ class ImagesController extends Controller
         return redirect('events');
     }
 
-
-    public function publishImage(Request $request)
-    {
-
-       if($request->hasfile('image'))
-       {
-           $this->validateImage();
-           $imageName = $request->file('image');
-           $storedImage = Images::storeImage($imageName);
-
-           Event::latest()->first()->update([
-               'image_id' => $storedImage,
-           ]);
-       }
-    }
-
-
-    public function publishPastEvent(Request $request, $previousEventNId)
-    {
-        if($request->hasfile('image'))
-        {
-            $this->validateImage();
-            $imageName = $request->file('image');
-            $storedImage = Images::storeImage($imageName);
-
-            ImagesPastEvent::insert([
-               'event_id' => $previousEventNId,
-               'image_id' => $storedImage,
-            ]);
-        }
-    }
-
-
     public function uploadImagePastEvent(Request $request)
     {
         /*Get the event number from which the request has been made*/
@@ -78,36 +45,47 @@ class ImagesController extends Controller
         // If the event exists
         if(Event::where('id', '=', $previousEventId)->count() > 0)
         {
-            $this->publishPastEvent($request, $previousEventId);
+            $storedImage = $this->publishImage($request);
+            ImagePastEvent::insert([
+                'event_id' => $previousEventId,
+                'image_id' => $storedImage,
+            ]);
         }
         return back();
     }
 
+    public function publishImage(Request $request)
+    {
+       if($request->hasfile('image'))
+       {
+           $this->validateImage();
+           $storedImage = Image::storeImage($request->file('image'));
+           return $storedImage;
+       }
+    }
 
     public function imagesByEvent()
     {
         $eventInput = request()->input('event_id');
-        return ImagesPastEvent::imagesByEvent($eventInput);
+        return ImagePastEvent::imagesByEvent($eventInput);
     }
 
     public function updateImage(Request $request)
     {
-        $image = $request->input('data');
-        ImagesPastEvent::where('image_id', '=', $image)->first()->validate();
-    }
-
-
-    public function validateImage()
-    {
-        return request()->validate([
-            'image' => 'required|file|image|max:5000|mimes:jpeg,jpg,png,gif',
-        ]);
+        ImagePastEvent::where('image_id', '=', $request->input('data'))->first()->validate();
     }
 
     public function download()
     {
         $zip = Zip::create(public_path('images.zip'))->add(public_path('storage/imagesUploaded/', true))->close();
         return Response::download('images.zip')->deleteFileAfterSend(true);
+    }
+
+    public function validateImage()
+    {
+        return request()->validate([
+            'image' => 'required|file|image|max:5000|mimes:jpeg,jpg,png,gif',
+        ]);
     }
 
 }

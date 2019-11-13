@@ -6,7 +6,7 @@ use App\Category;
 use App\Contain;
 use App\Http\Requests\AddProductRequest;
 use App\Http\Requests\EditProductRequest;
-use App\Images;
+use App\Image;
 use App\Mail\OrderConfirmMail;
 use App\User;
 use Illuminate\Support\Facades\Cookie;
@@ -46,7 +46,7 @@ class ShopController extends Controller
      */
     public function store(AddProductRequest $request)
     {
-        $image = Images::storeImage($request->image);
+        $image = Image::storeImage($request->image);
         $product = Product::create($request->only('name', 'description', 'price') + ['user_id' => User::auth()->id] + ['image_id' => $image]);
         //$product->categories()->detach();
         foreach($request->except(['name', 'description', 'price' ,'_token','image']) as $key => $value){
@@ -106,7 +106,7 @@ class ShopController extends Controller
             $product->update($request->only('name', 'description', 'price'));
             session()->flash('message flash', ['type' => 'success', 'content' => "L'article a bien été modifié"]);
             if ($request->image) {
-                $image = Images::storeImage($request->image);
+                $image = Image::storeImage($request->image);
                 $product->update(['image_id'=>$image]);
             }
             return redirect(route('shop.product.show', $product->id));

@@ -14,12 +14,12 @@ $(document).ready(function () {
             if($('#like').hasClass('far'))
             {
                 changeHeartAppearance('far', 'fas');
-                postAjax('/likeImage', imageId);
+                postAjax('/likeImage/', imageId);
 
             } else {
 
                 changeHeartAppearance('fas', 'far');
-                postAjax('/unlikeImage', imageId);
+                postAjax('/unlikeImage/', imageId);
             }
         });
 });

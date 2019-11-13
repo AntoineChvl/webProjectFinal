@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class LikesController extends Controller
 {
 
-    public function addLike(Request $request)
+    public function add(Request $request)
     {
         if(User::auth())
         {
@@ -19,7 +19,7 @@ class LikesController extends Controller
     }
 
 
-    public function removeLike(Request $request)
+    public function remove(Request $request)
     {
         if(User::auth())
         {

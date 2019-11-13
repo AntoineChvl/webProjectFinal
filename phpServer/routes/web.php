@@ -56,22 +56,23 @@ Route::delete('/shop/category/{id}','CategoryController@destroy')->name('shop.ca
 Route::post('/image', 'ImagesController@publishImage')->name('image');
 Route::post('/imagePastEvent', 'ImagesController@uploadImagePastEvent')->name('imagePastEvent');
 
-Route::post('/likeImage', 'LikesController@addLike');
-Route::post('/unlikeImage', 'LikesController@removeLike');
-
-Route::post('/addComment', 'CommentsController@add');
-Route::post('/removeComment', 'CommentsController@remove');
-
-Route::resource('events.images', 'ImagesController')->except([
-    'index', 'create', 'store', 'update', 'edit', 'destroy'
-]);
-
-Route::post('/participateEvent', 'ParticipateController@participate');
-Route::post('/unparticipateEvent', 'ParticipateController@noLongerParticipate');
+Route::get('/events/{event}/images/{image}', 'ImagesController@show')->name('events.images.show');
 
 Route::get('/espace-admin', 'AdminController@index')->middleware('authBDE')->middleware('auth')->name('admin-panel');
 Route::get('/espace-admin/images', 'AdminController@images')->middleware('authBDE')->middleware('auth')->name('admin-images');
 Route::get('/espace-admin/events/users', 'AdminController@eventsUsers')->middleware('authBDE')->middleware('auth')->name('admin-event-users');
 
+
 Route::get('/espace-admin/images/download', 'ImagesController@download')->name('images-download');
+
+Route::post('/likeImage', 'LikesController@add');
+Route::post('/unlikeImage', 'LikesController@remove');
+
+
+Route::post('/addComment', 'CommentsController@add');
+
+Route::post('/participateEvent', 'ParticipateController@participate');
+Route::post('/unparticipateEvent', 'ParticipateController@noLongerParticipate');
+
+
 

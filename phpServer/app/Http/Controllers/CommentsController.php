@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Comment;
-use App\Images;
-use App\ImagesPastEvent;
+use App\Image;
+use App\ImagePastEvent;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
@@ -21,15 +21,19 @@ class CommentsController extends Controller
 
     public function add(Request $request)
     {
-        $commentData = array('content' => $request->input('content'), 'user_id' => $request->input('user_id'), 'image_past_events_id' => $request->input('image_past_events_id'));
-        Comment::create($commentData);
+        if(User::auth())
+        {
+            $commentData = array('content' => $request->input('content'), 'user_id' => User::auth()->id, 'image_past_events_id' => $request->input('image_past_events_id'));
+            Comment::create($commentData);
+        }
+
     }
 
     public function commentsEvent($uploadedImageId)
     {
 
-       $imagePastEventId = ImagesPastEvent::where('image_id', '=', $uploadedImageId)->first()->id;
-       $imageToCheckComments = Images::where('id', '=', $uploadedImageId)->first();
+       $imagePastEventId = ImagePastEvent::where('image_id', '=', $uploadedImageId)->first()->id;
+       $imageToCheckComments = Image::where('id', '=', $uploadedImageId)->first();
 
        return view('admin.commentsAdministration', compact('imagePastEventId', 'imageToCheckComments'));
     }
@@ -45,13 +49,11 @@ class CommentsController extends Controller
         }
 
         return Response::json(array('data' =>$commentsJSON));
-
     }
 
     public function updateCommentStatus(Request $request)
     {
-        $comment = $request->input('data');
-        Comment::where('id', '=', $comment)->first()->validate();
+        Comment::where('id', '=', $request->input('data'))->first()->validate();
     }
 
 }

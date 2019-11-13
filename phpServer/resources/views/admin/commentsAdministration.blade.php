@@ -61,7 +61,6 @@
 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
-    <script src="{{ asset('js/project-js/adminTable.js') }}"></script>
-    <script src="{{ asset('js/project-js/loadImagesData.js') }}"></script>
-    <script src="{{ asset('js/project-js/loadAdminImageComments.js') }}"></script>
+    <script src="{{ asset('js/project-js/admin/adminTable.js') }}"></script>
+    <script src="{{ asset('js/project-js/admin/loadImageComments.js') }}"></script>
 @endpush

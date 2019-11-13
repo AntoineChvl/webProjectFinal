@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Event;
 use App\Participate;
 use App\User;
 use Illuminate\Http\Request;
@@ -29,20 +30,19 @@ class ParticipateController extends Controller
         }
     }
 
-
-    public function getUsers()
+    public function users()
     {
-        $users = Participate::where('event_id', '=', 2)->get();
-        $userDetails = [];
+        $eventId = request()->input('event_id');
+        $users_id = Participate::where('event_id', '=', $eventId)->get();
+        $users = [];
 
-        $testUser = User::find(19);
+        for($i = 0; $i < $users_id->count(); $i++)
+        {
+            $users[$i] = array('event_id' => Event::find($eventId)->first()->id,'event_name' => Event::find($eventId)->first()->name,'user_id' => $users_id[$i]->user_id, 'user_first_name' => User::find($users_id[$i]->user_id)->firstname, 'user_last_name' => User::find($users_id[$i]->user_id)->lastname);
+        }
 
-        // work in progress...
-
-        return Response::json($users);
+        return Response::json(array('data' => $users));
     }
-
-
 
 
 
