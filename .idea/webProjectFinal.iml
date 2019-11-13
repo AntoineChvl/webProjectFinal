@@ -95,6 +95,7 @@
       <excludeFolder url="file://$MODULE_DIR$/phpServer/vendor/tijsverkoyen/css-to-inline-styles" />
       <excludeFolder url="file://$MODULE_DIR$/phpServer/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/phpServer/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/phpServer/vendor/zanysoft/laravel-zip" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

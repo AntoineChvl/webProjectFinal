@@ -9,11 +9,13 @@ $(document).ready(function () {
 
         $('#usersParticipation').removeClass('d-none');
 
-        //removeElement(validateRoute, tableName, 'comment_id');
-
         $('#usersParticipation').DataTable( {
             destroy: true,
-            responsive: true,
+            dom: 'Bfrtip',
+            buttons: [
+                'csvHtml5',
+                'pdfHtml5',
+            ],
 
             "ajax": {
                 "type": "GET",
@@ -23,19 +25,15 @@ $(document).ready(function () {
                 }
             },
             "columns":[
+                { "data": "event_id" },
+                { "data": "event_name" },
                 { "data": "user_id" },
                 { "data": "user_first_name" },
                 { "data": "user_last_name" },
             ],
         } );
 
-
-
-
     }))
-
-
-
 
 });
 

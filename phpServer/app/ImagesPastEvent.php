@@ -46,5 +46,4 @@ class ImagesPastEvent extends Model
         return Response::json(array('data' => $imagesPath));
     }
 
-
 }

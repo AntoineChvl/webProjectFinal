@@ -61,7 +61,6 @@ Route::post('/unlikeImage', 'LikesController@removeLike');
 
 Route::post('/addComment', 'CommentsController@add');
 Route::post('/removeComment', 'CommentsController@remove');
-Route::get('/getComments', 'CommentsController@index');
 
 Route::resource('events.images', 'ImagesController')->except([
     'index', 'create', 'store', 'update', 'edit', 'destroy'
@@ -74,5 +73,5 @@ Route::get('/espace-admin', 'AdminController@index')->middleware('authBDE')->mid
 Route::get('/espace-admin/images', 'AdminController@images')->middleware('authBDE')->middleware('auth')->name('admin-images');
 Route::get('/espace-admin/events/users', 'AdminController@eventsUsers')->middleware('authBDE')->middleware('auth')->name('admin-event-users');
 
-
+Route::get('/espace-admin/images/download', 'ImagesController@download')->name('images-download');
 

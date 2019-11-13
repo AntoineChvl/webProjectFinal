@@ -28,3 +28,7 @@ Route::post('/espace-admin/comments/validate/', 'CommentsController@updateCommen
 Route::get('/espace-admin/comments/validate/{uploadImageId}', 'CommentsController@commentsEvent');
 
 Route::get('/espace-admin/events/users/all', 'EventsController@users');
+
+
+
+

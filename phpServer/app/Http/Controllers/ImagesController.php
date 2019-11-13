@@ -5,12 +5,12 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Images;
 use App\ImagesPastEvent;
-use App\Like;
 use App\User;
-use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
-use Intervention\Image\Facades\Image;
+use phpDocumentor\Reflection\File;
+use ZanySoft\Zip\Zip;
+
 
 class ImagesController extends Controller
 {
@@ -86,7 +86,7 @@ class ImagesController extends Controller
 
     public function imagesByEvent()
     {
-        $eventInput = request()->input('event');
+        $eventInput = request()->input('event_id');
         return ImagesPastEvent::imagesByEvent($eventInput);
     }
 
@@ -104,6 +104,10 @@ class ImagesController extends Controller
         ]);
     }
 
-
+    public function download()
+    {
+        $zip = Zip::create(public_path('images.zip'))->add(public_path('storage/imagesUploaded/', true))->close();
+        return Response::download('images.zip')->deleteFileAfterSend(true);
+    }
 
 }
