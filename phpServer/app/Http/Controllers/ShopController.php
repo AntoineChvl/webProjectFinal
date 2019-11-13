@@ -6,6 +6,7 @@ use App\Category;
 use App\Contain;
 use App\Http\Requests\AddProductRequest;
 use App\Http\Requests\EditProductRequest;
+use App\Images;
 use App\Mail\OrderConfirmMail;
 use App\User;
 use Illuminate\Support\Facades\Cookie;
@@ -45,10 +46,10 @@ class ShopController extends Controller
      */
     public function store(AddProductRequest $request)
     {
-        $product = Product::create($request->only('name', 'description', 'price') + ['user_id' => User::auth()->id] + ['image_id' => 1]);
-
+        $image = Images::storeImage($request->image);
+        $product = Product::create($request->only('name', 'description', 'price') + ['user_id' => User::auth()->id] + ['image_id' => $image]);
         //$product->categories()->detach();
-        foreach($request->except(['name', 'description', 'price' ,'_token']) as $key => $value){
+        foreach($request->except(['name', 'description', 'price' ,'_token','image']) as $key => $value){
             $category = Category::find($key);
             if($category && $value=='on'){
                 $product->categories()->attach($category);
@@ -102,11 +103,11 @@ class ShopController extends Controller
     {
         $product = Product::find($id);
         if ($product) {
-            $product->update([$request->only('name', 'description', 'price')]);
+            $product->update($request->only('name', 'description', 'price'));
             session()->flash('message flash', ['type' => 'success', 'content' => "L'article a bien été modifié"]);
             if ($request->image) {
-                //TODO ajout image
-                //$product->image()->associate($image);
+                $image = Images::storeImage($request->image);
+                $product->update(['image_id'=>$image]);
             }
             return redirect(route('shop.product.show', $product->id));
         } else {
