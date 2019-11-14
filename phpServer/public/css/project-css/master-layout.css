@@ -90,6 +90,7 @@ li
     justify-content: center;
     color: white;
     align-items: center;
+    transition-duration: 0.4s;
 }
 .mainNavbar #navbarUl li, #navbarEventDropdown
 {
@@ -134,6 +135,7 @@ footer {
 
 footer a {
     color: white;
+    transition-duration: 0.5s;
 }
 
 footer a:hover{

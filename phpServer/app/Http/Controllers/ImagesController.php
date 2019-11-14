@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Image;
 use App\ImagePastEvent;
+use App\Mail\NotificationMembers;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 use phpDocumentor\Reflection\File;
 use ZanySoft\Zip\Zip;
@@ -72,7 +74,21 @@ class ImagesController extends Controller
 
     public function updateImage(Request $request)
     {
-        ImagePastEvent::where('image_id', '=', $request->input('data'))->first()->validate();
+        if(User::auth())
+        {
+            $imageChecked = ImagePastEvent::where('image_id', '=', $request->input('data'))->first();
+            $imageChecked->validate();
+            $imageData = array('type' => 'IMAGE', 'content' => $imageChecked->image->path, 'user' => User::find($imageChecked->image->user_id)->lastname.' '.User::find($imageChecked->image->user_id)->firstname);
+
+            if(User::auth()->statusLvl == 3)
+            {
+                Mail::to(User::auth()->email)->send(new NotificationMembers($imageData));
+            }
+
+            return Response::json($imageData);
+        }
+
+
     }
 
     public function download()

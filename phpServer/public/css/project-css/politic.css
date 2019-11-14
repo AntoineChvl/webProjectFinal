@@ -1,9 +1,13 @@
 #boxPolitique {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .elementPolitique {
-    height: 940px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: auto;
     margin-right: 40px;
     margin-left: 40px;
     padding: 10px;
@@ -24,4 +28,8 @@ h3 {
     background-clip: content-box;
 }
 
+a:hover {
+    text-decoration: none;
+    color: #fcbc50;
+}
 

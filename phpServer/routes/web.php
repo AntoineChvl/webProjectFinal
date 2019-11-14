@@ -89,6 +89,9 @@ Route::get('/member_space_modification', function() {
 
 Route::post('/espace-admin/comments/validate', 'CommentsController@updateCommentStatus');
 Route::get('/espace-admin/comments/validate/{uploadImageId}', 'CommentsController@commentsEvent');
+Route::post('/espace-admin/images/validate', 'ImagesController@updateImage');
+
+Route::get('/cgv','StaticPagesController@cgv')->name('cgv');
 
 
 
