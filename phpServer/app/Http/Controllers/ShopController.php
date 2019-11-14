@@ -55,7 +55,7 @@ class ShopController extends Controller
                 $product->categories()->attach($category);
             }
         }
-
+        session()->flash('message flash', ['type' => 'success', 'content' => "L'article a bien été ajouté"]);
         return redirect(route('shop.product.show', $product->id));
     }
 
@@ -69,7 +69,6 @@ class ShopController extends Controller
     {
         $product = Product::find($id);
         if ($product) {
-            session()->flash('message flash', ['type' => 'success', 'content' => "L'article a bien été ajouté"]);
             return view('shop.product', ['product' => Product::find($id)]);
         } else {
             return '<p>Le produit que vous recherchez n\'existe pas !</p>';
