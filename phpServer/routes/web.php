@@ -51,6 +51,7 @@ Route::delete('/shop/product/{id}','ShopController@destroy')->name('shop.product
 
 Route::get('/shop/category','CategoryController@index')->name('shop.category.index');
 Route::get('/shop/category/create','CategoryController@create')->name('shop.category.create');
+Route::get('/shop/category/{id}','CategoryController@show')->name('shop.category.show');
 Route::post('/shop/category','CategoryController@store')->name('shop.category.store');
 Route::delete('/shop/category/{id}','CategoryController@destroy')->name('shop.category.destroy');
 

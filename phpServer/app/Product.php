@@ -19,4 +19,8 @@ class Product extends Model
     {
         return $this->belongsToMany(Category::class,"have");
     }
+    public function contained()
+    {
+        return $this->hasMany(Contain::class);
+    }
 }

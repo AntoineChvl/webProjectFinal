@@ -20,27 +20,30 @@ Le bureau des élèves de Saint-Nazaire possède une boutique avec plein de prod
     <h1>Boutique du bureau de élèves</h1>
     <a href="/shop/cart" class="cart">Mon panier</a>
 </div>
-
+@if(!$category)
 <div class="container">
     <div class="row">
         <div class="col">
             <div class="top-block-image">
                 <p>Vente - Top 2</p>
-                <img src="https://via.placeholder.com/480/blue/fff.png" alt="top2">
+                <p>{{ $bestSeller[1]->name }}</p>
+                <a href="{{route('shop.product.show',$bestSeller[1])}}"><img src="{{ asset('storage/imagesUploaded/'.$bestSeller[1]->image->path) }}" alt="top2"></a>
             </div>
         </div>
 
         <div class="col">
             <div class="top-block-image">
                 <p>Vente - Top 1</p>
-                <img src="https://via.placeholder.com/480/blue/fff.png" alt="top1">
+                <p>{{ $bestSeller[0]->name }}</p>
+                <a href="{{route('shop.product.show',$bestSeller[0])}}"><img src="{{ asset('storage/imagesUploaded/'.$bestSeller[0]->image->path) }}" alt="top1"></a>
             </div>
         </div>
 
         <div class="col">
             <div class="top-block-image">
                 <p>Vente - Top 3</p>
-                <img src="https://via.placeholder.com/480/blue/fff.png" alt="top3">
+                <p>{{ $bestSeller[2]->name }}</p>
+                <a href="{{route('shop.product.show',$bestSeller[2])}}"><img src="{{ asset('storage/imagesUploaded/'.$bestSeller[2]->image->path) }}" alt="top3"></a>
             </div>
         </div>
     </div>
@@ -65,6 +68,7 @@ Le bureau des élèves de Saint-Nazaire possède une boutique avec plein de prod
     </section>
 </div>
 
+@endif
 
 @if(App\User::auth() && App\User::auth()->statusLvl==2)
 <a href="{{ route('shop.product.create') }}"><button class="btn submit-button bde" type="submit">Ajouter un produit</button></a>

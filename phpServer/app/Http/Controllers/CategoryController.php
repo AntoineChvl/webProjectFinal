@@ -20,6 +20,12 @@ class CategoryController extends Controller
         return view('shop.showCategories')->withCategories(Category::all());
     }
 
+    public function show(Category $id)
+    {
+        $category = Category::find($id)->first();
+        return view('shop.shop')->withProducts($category->products)->withCategory($category);
+    }
+
     /**
      * Show the form for creating a new resource.
      *
