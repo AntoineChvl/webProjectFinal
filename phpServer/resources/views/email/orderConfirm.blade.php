@@ -18,17 +18,15 @@
             <p>Référence de la commande : #{{ $order->id }}</p>
         </div>
 
-        <p>Merci d'avoir choisi la boutique du CESI</p>
         <img src="{{ asset('assets/imgs/cesi_logo.png') }}" alt="CESI Logo">
+        <p>Merci d'avoir choisi la boutique du CESI</p>
 
         <hr>
 
         <div>
             <p>Ceci est un mail automatique, merci de ne pas y répondre.</p>
-            <p>Pour nous contacter, veuillez cliquer sur le bouton "Contact" en haut du site</p>
+            <p>Pour nous contacter, veuillez cliquer sur le lien suivant : <a href="{{ route('contact') }}">Contact</a></p>
         </div>
-
-        <a href="LA FICHE CONTACT DE JACQUES">Contact</a>
 
         <div>
             <p>Chère cliente, cher client,</p>
