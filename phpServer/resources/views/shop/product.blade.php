@@ -44,7 +44,7 @@
         </div>
     </article>
 
-    @if(App\User::auth()->statusLvl == 2)
+    @if(App\User::auth() && App\User::auth()->statusLvl == 2)
         <div class="update">
             <a class="row btn submit-button col-12" href="/shop/product/{{ $product->id }}/edit">
                 Modifier l'article
