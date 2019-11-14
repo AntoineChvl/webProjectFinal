@@ -44,10 +44,6 @@
                     <div class="elementActivitesInscrits">
                         Activités inscrits
                     </div>
-                    <div class="elementActivitesInscrits">
-                        <a href="#">
-                            <button type="button" class="boutonActivites">test</button></a>
-                    </div>
                     @foreach($user->futureEvents() as $event)
                     <div class="elementActivitesInscrits">
                         <a href="{{route('events.show',$event)}}">
