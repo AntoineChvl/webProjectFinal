@@ -25,6 +25,7 @@ Route::post('/register', 'LoginController@register')->name('register');//recepti
 
 
 
+Route::get('/events/all', 'EventsController@allFormatted');
 Route::get('/events', 'EventsController@index')->name('events.index');
 Route::post('/events', 'EventsController@store')->name('events.store')->middleware('authBDE');
 Route::get('/events/create', 'EventsController@create')->name('events.create')->middleware('authBDE')->middleware('auth');
@@ -95,6 +96,7 @@ Route::post('/espace-admin/images/validate', 'ImagesController@updateImage');
 Route::get('/cgv','StaticPagesController@cgv')->name('cgv');
 Route::get('/espace-admin/products/all', 'AdminController@products')->name('admin-products');
 Route::get('/espace-admin/categories/all','AdminController@categories')->name('admin-categories');
+Route::get('/espace-admin/events/all', 'AdminController@events')->name('admin-events');
 
 Route::get('/shop/products/all', 'ShopController@allFormatted');
 Route::get('/shop/categories/all', 'CategoryController@allFormatted');

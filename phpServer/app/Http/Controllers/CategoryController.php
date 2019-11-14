@@ -60,9 +60,6 @@ class CategoryController extends Controller
         $cat = Category::find($id);
         if ($cat) {
             $cat->delete();
-            Session::flash('message flash', ['type' => 'success', 'content' => "La catégorie a bien été supprimée"]);
-        }else{
-            Session::flash('message flash', ['type' => 'danger', 'content' => "La catégorie n'existe pas"]);
         }
     }
 

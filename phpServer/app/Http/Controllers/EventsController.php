@@ -109,9 +109,12 @@ class EventsController extends Controller
      * @param  \App\Event  $event
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Event $event)
+    public function destroy($id)
     {
-        //
+        $event = Event::find($id);
+        if ($event) {
+            $event->delete();
+        }
     }
 
     public function validateEvent()
@@ -130,6 +133,20 @@ class EventsController extends Controller
     {
         $imageController = new ImagesController();
         return $imageController->publishImage(request());
+    }
+
+    public function allFormatted()
+    {
+        $events = Event::all();
+        $eventsDetails = [];
+
+        for($i = 0; $i < $events->count(); $i++)
+        {
+            $eventsDetails[$i] = array('event_name' => $events[$i]->name,'event_image' => $events[$i]->image->path,'event_description' => $events[$i]->description, 'event_location' =>  $events[$i]->location, 'event_price' => $events[$i]->price, 'event_id' => $events[$i]->id);
+
+        }
+
+        return Response::json(array('data' => $eventsDetails));
     }
 
 }

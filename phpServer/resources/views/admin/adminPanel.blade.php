@@ -33,7 +33,7 @@
                 Ajouter un évènement
             </a>
 
-            <a class="row btn submit-button col-12" id="checkPastEvents" href="">
+            <a class="row btn submit-button col-12" id="checkPastEvents" href="{{ route('admin-events') }}">
                 Gérer les évènements
             </a>
 
