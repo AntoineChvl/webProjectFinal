@@ -12,11 +12,11 @@
         </div>
         <div class="elementFooter">
             <p>Partenaires <br>
-                <a href="https://cge.asso.fr/"><img src="{{asset('assets/imgs/CGE.Blanc.jpg')}}" class="logoFooter"></a>
-                <a href="https://www.cti-commission.fr/"><img src="{{asset('assets/imgs/cti.jpg')}}" class="logoFooter"></a>
-                <a href="https://www.hesam.eu/"><img src="{{asset('assets/imgs/HESAM.jpg')}}" class="logoFooter"></a>
-                <a href="http://www.cdio.org/"><img src="{{asset('assets/imgs/cdio.jpg')}}" class="logoFooter"></a>
-                <a href="https://certification.afnor.org/marque/afaq"><img src="{{asset('assets/imgs/Afaq.jpg')}}" class="logoFooter"></a>
+                <a href="https://cge.asso.fr/"><img src="{{asset('assets/imgs/CGE.Blanc.jpg')}}" class="logoFooter" alt="CGE"></a>
+                <a href="https://www.cti-commission.fr/"><img src="{{asset('assets/imgs/cti.jpg')}}" class="logoFooter" alt="Cti"></a>
+                <a href="https://www.hesam.eu/"><img src="{{asset('assets/imgs/HESAM.jpg')}}" class="logoFooter" alt="Hesam"></a>
+                <a href="http://www.cdio.org/"><img src="{{asset('assets/imgs/cdio.jpg')}}" class="logoFooter" alt="CDIO"></a>
+                <a href="https://certification.afnor.org/marque/afaq"><img src="{{asset('assets/imgs/Afaq.jpg')}}" class="logoFooter" alt="Afao"></a>
             <p>Copyright © CESI.FR</p>
         </div>
         <div class="elementFooter">
