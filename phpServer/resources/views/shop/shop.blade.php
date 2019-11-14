@@ -17,7 +17,7 @@ Le bureau des élèves de Saint-Nazaire possède une boutique avec plein de prod
 @section('content')
 
 <div class="top-center">
-    <h1>Boutique du bureau de élèves</h1>
+    <h1>Boutique du bureau des élèves</h1>
     <a href="/shop/cart" class="cart">Mon panier</a>
 </div>
 @if(!isset($category))
@@ -51,21 +51,38 @@ Le bureau des élèves de Saint-Nazaire possède une boutique avec plein de prod
 
 <div class="transition">
     <section>
-        <p class="p-scroll">Découvrez tous nos produits !</p>
+
+            <p class="p-scroll">Découvrez tous nos produits !</p>
+
         <a href="#" class="scroll-down"></a>
     </section>
 
-    <section class="cat-products">
-        <br><br>
-        <hr class="top-bar">
-        <nav class="cat">
-            <label><a class="yellow" href="#">T-Shirt</a></label>
-            <label><a class="yellow" href="#">Casquette</a></label>
-            <label><a class="yellow" href="#">Mug</a></label>
-            <label><a class="yellow" href="#">Stylo</a></label>
-        </nav>
-        <hr>
-    </section>
+    <div class="section-scroll"></div>
+
+    <article>
+        <div>
+            <hr class="top-bar">
+            <p>
+                <div class="centerCol">
+                <button class="btn submit-button" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                    Trier par catégories
+                </button>
+            </div>
+            </p>
+            <div class="collapse" id="collapseExample">
+                <div class="card card-body">
+                    <div class="row">
+                    @foreach(App\Category::all() as $category)
+                            <div class="col-3">
+                                <a class="btn submit-button w-100" href="{{ route('shop.category.show', $category) }}">{{ $category->name }}</a>
+                            </div>
+                    @endforeach
+                    </div>
+                </div>
+            </div>
+            <hr>
+        </div>
+    </article>
 </div>
 
 @endif
@@ -75,10 +92,10 @@ Le bureau des élèves de Saint-Nazaire possède une boutique avec plein de prod
 
 <div class="product-list row">
     @foreach($products as $product)
-    <article class="product col-3">
-        <a href={{ route('shop.product.show', $product->id) }}><img src={{ asset('storage/imagesUploaded/'.$product->image->path) }} alt="product"></a>
-        <p class="product-name">{{ $product->name }}</p>
-    </article>
+        <article class="product col-3">
+            <a href={{ route('shop.product.show', $product->id) }}><img src={{ asset('storage/imagesUploaded/'.$product->image->path) }} alt="product"></a>
+            <p class="product-name">{{ $product->name }}</p>
+        </article>
     @endforeach
 </div>
 
