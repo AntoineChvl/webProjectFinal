@@ -52,23 +52,19 @@
 {{ $user->campus }}
                     </div>
                 </div>
-            </div>.
-            {{ $user->futureEvents() }}
+            </div>
             <div class="elementEspaceMembre">
-                <p><a type="button" class="boutonDeconnexion" href="{{route('logout')}}">Se déconnecter</a></p><br><br>
+                <p><a href="{{route('logout')}}"><button  type="button" class="boutonDeconnexion">Se déconnecter</button></a></p><br><br>
                 <div id="boxActivitesInscrits">
                     <div class="elementActivitesInscrits">
                         Activités inscrits
                     </div>
+                    @foreach($user->futureEvents() as $event)
                     <div class="elementActivitesInscrits">
-                        <button type="button" class="boutonActivites">Activités 1</button>
+                        <a href="{{route('events.show',$event)}}">
+                        <button type="button" class="boutonActivites">{{$event->name}}</button></a>
                     </div>
-                    <div class="elementActivitesInscrits">
-                        <button type="button" class="boutonActivites">Activités 2</button>
-                    </div>
-                    <div class="elementActivitesInscrits">
-                        <button type="button" class="boutonActivites">Activités 3</button>
-                    </div>
+                        @endforeach
                 </div>
             </div>
         </div>

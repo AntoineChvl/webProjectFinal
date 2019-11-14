@@ -66,7 +66,15 @@ class User
 
     public function futureEvents()
     {
-        return Event::where('user_id',$this->id)->where('date','>',now())->orderBy('date', 'desc');
+        $events = Event::where('date','>',now())->orderBy('date', 'asc')->get();
+        $futureEvents = [];
+        foreach ($events as $event){
+            $p = Participate::where('user_id',$this->id)->where('event_id',$event->id)->first();
+            if($p){
+                $futureEvents[] = $event;
+            }
+        }
+        return $futureEvents;
     }
 
 }
