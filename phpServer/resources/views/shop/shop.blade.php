@@ -68,6 +68,13 @@
         </section>
     </div>
 
+
+    @if(App\User::auth() && App\User::auth()->statusLvl==2)
+        <a href="{{ route('shop.product.create') }}"><button class="btn submit-button" id="add" type="submit">Ajouter un produit</button></a>
+    @endif
+
+        <input type="text" placeholder="Recherchez...">
+
     <div class="product-list row">
             @foreach($products as $product)
                 <article class="product col-3">
@@ -79,8 +86,10 @@
 
     <div class="separate"></div>
 
+@endsection
+
+@push('script')
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
     <script src="{{ asset('js/project-js/shop.js') }}"></script>
-
-@endsection
+@endpush
 

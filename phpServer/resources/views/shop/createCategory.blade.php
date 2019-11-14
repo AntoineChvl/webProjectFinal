@@ -1,5 +1,16 @@
 @extends('layouts.master')
 
+@section('head-title')
+    BDE Saint-Nazaire - Création de produit
+@endsection
+
+@section('head-title')
+    BDE Saint-Nazaire - Création de catégories
+@endsection
+
+@section('head-meta-description')
+    Page de création/modification des catégories directement disponibles
+@endsection
 
 @section('content')
 

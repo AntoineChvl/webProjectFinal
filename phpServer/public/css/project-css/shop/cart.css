@@ -35,6 +35,15 @@ h1 {
     height: 15px;
 }
 
+img#del {
+    height: 25px;
+    width: 25px;
+}
+
+.yellow {
+    background-color: #FFC252;
+}
+
 .full-text {
     display: initial;
 }
@@ -42,10 +51,12 @@ h1 {
 .short-text {
     display: none;
 }
+
 .description {
     overflow: auto;
     word-break: break-word;
 }
+
 @media (max-width: 1000px) {
     .description {
         display: none;
@@ -70,7 +81,13 @@ h1 {
 
 #shop {
     display: block;
-    margin: 40px auto 60px auto;
+    margin: 40px auto 0px auto;
+    width: 350px;
+}
+
+#order {
+    display: block;
+    margin: 40px auto 0px auto;
     width: 350px;
 }
 

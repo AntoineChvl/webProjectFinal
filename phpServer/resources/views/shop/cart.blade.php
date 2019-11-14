@@ -12,6 +12,10 @@
     <link href="{{ asset('css/project-css/shop/cart.css') }}" rel="stylesheet">
 @endpush
 
+@push('head-meta')
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+@endpush
+
 @section('content')
 
     <div class="top-center">
@@ -22,7 +26,12 @@
     @foreach($products as $product)
          <article class="container">
              <div class="row title">
-                 <div class="col"></div>
+                 <div class="col">
+                     <form action="{{ route('shop.delToCart', $product->product->id) }}" method="post">
+                         @csrf
+                         <button class="yellow" type="submit"><img src="{{ asset('assets/imgs/close.png') }}" id="del"></button>
+                     </form>
+                </div>
                  <div class="col-4"><span class="full-text">Article</span><span class="short-text">Art</span></div>
                  <div class="col"><span class="full-text">Quantité</span><span class="short-text">Qté</span></div>
                  <div class="col"><span class="full-text">Prix Unitaire</span><span class="short-text">P. Uni</span></div>
@@ -34,23 +43,23 @@
 
              <div class="row">
                  <div class="col">
-                     <img src={{ asset('storage/imagesUploaded/'.$product['productDetails']->image->path) }} alt="product">
+                     <img src={{ asset('storage/imagesUploaded/'.$product->product->image->path) }} alt="product">
                  </div>
                  <div class="col-4">
-                     <p class="product-name">{{ $product['productDetails']['name'] }}</p>
-                     <div class="description">{{ substr($product['productDetails']['description'], 0, 100) }}...</div>
+                     <p class="product-name">{{ $product->product->name }}</p>
+                     <div class="description">{{ substr($product->product->description, 0, 100) }}...</div>
                  </div>
                  <div class="col">
-                     <div class="product-quantity">{{ $quantity = $product['quantity'] }}</div>
+                     <div class="product-quantity">{{ $product->quantity }}</div>
                  </div>
                  <div class="col">
-                     <div class="product-price">{{ $price = $product['productDetails']['price'] }}€</div>
+                     <div class="product-price">{{ $product->product->price }}€</div>
                  </div>
                  <div class="col">
-                     <div class="product-price">{{ $price * $quantity }}€</div>
+                     <div class="product-price">{{ $product->product->price * $product->quantity }}€</div>
                  </div>
                  <div class="col">
-                     <a href={{ route('shop.product.show', $product['productDetails']['id']) }}>
+                     <a href={{ route('shop.product.show', $product->product->id) }}>
                          <span class="full-text">Voir dans la boutique</span>
                          <span class="short-text">Voir</span>
                      </a>
@@ -62,6 +71,6 @@
     @endforeach
 
     <a href="{{ route('shop') }}" class="btn btn-light" id="shop">Retour à la boutique</a>
-    <a href="{{ route('shop.order') }}" class="btn btn-light">HT</a>
+    <a href="{{ route('shop.order') }}" class="btn submit-button" id="order">Valider la commande</a>
 
 @endsection
