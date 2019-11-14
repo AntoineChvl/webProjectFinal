@@ -2,7 +2,7 @@ $(document).ready(function () {
 
         var route = $('meta[name="route-name"]').attr('content');
         var imageUploadedId = $('meta[name="imagePastEventId"]').attr('content');
-        var validateRoute = "/api/espace-admin/comments/validate/";
+        var validateRoute = "/espace-admin/comments/validate/";
         var tableName = "imageComments";
 
         $('#imageComments').removeClass('d-none');

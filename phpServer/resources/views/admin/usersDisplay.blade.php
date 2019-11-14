@@ -54,6 +54,8 @@
         </thead>
         <tfoot>
         <tr>
+            <th>Id de l'évènement</th>
+            <th>Nom de l'utilisateur</th>
             <th>Id de l'utilisateur</th>
             <th>Prénom de l'utilisateur</th>
             <th>Nom de l'utilisateur</th>

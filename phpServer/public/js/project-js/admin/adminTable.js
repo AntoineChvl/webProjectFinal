@@ -13,6 +13,7 @@ const removeElement = function (validateRoute, tableName, fieldContent)
                 console.log("success");
             },
             error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
+                console.log('fail');
             }
         });
         table

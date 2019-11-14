@@ -10,7 +10,7 @@
 
 @push('head-meta')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="route-name" content="/api/events/images/comments">
+    <meta name="route-name" content="/events/images/comments">
     <meta name="imagePastEventId" content="{{ $imagePastEventId }}">
 @endpush
 

@@ -58,6 +58,7 @@ Route::post('/imagePastEvent', 'ImagesController@uploadImagePastEvent')->name('i
 
 Route::get('/events/{event}/images/{image}', 'ImagesController@show')->name('events.images.show');
 
+Route::post('/espace-admin/comments/validate/', 'CommentsController@updateCommentStatus');
 Route::get('/espace-admin', 'AdminController@index')->middleware('authBDE')->middleware('auth')->name('admin-panel');
 Route::get('/espace-admin/images', 'AdminController@images')->middleware('authBDE')->middleware('auth')->name('admin-images');
 Route::get('/espace-admin/events/users', 'AdminController@eventsUsers')->middleware('authBDE')->middleware('auth')->name('admin-event-users');
@@ -84,4 +85,9 @@ Route::get('/myProfile', 'StaticPagesController@showUser')->name('member_space')
 Route::get('/member_space_modification', function() {
     return view('registration-connection/member_space_modification');
 })->name('member_space_modification');
+
+
+
+Route::get('/events/images/comments', 'CommentsController@allByEvent');
+
 

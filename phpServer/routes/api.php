@@ -19,9 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 Route::get('/getComments', 'CommentsController@index');
-Route::post('/espace-admin/comments/validate/', 'CommentsController@updateCommentStatus');
 Route::get('/espace-admin/comments/validate/{uploadImageId}', 'CommentsController@commentsEvent');
-Route::get('/events/images/comments', 'CommentsController@allByEvent');
 
 
 
