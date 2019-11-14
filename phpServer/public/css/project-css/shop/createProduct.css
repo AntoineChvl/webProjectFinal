@@ -1,0 +1,39 @@
+#back {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 50px auto 50px;
+}
+
+h1 {
+    font-size: 48px;
+    text-align: center;
+    vertical-align:middle;
+    margin-top: 50px;
+}
+
+.selectCat {
+    margin-top: 50px;
+    font-size: 20px;
+}
+
+.propArt {
+    font-size: 20px;
+    margin-top: 10px;
+    margin-bottom: 50px;
+}
+
+.category-list {
+    margin: 60px auto;
+}
+
+#sub {
+    margin: 20px auto 50px auto;
+}
+
+input, textarea {
+    margin-bottom: 10px;
+}
+
+.form-control {
+    width: 300px;
+}

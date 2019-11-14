@@ -31,12 +31,12 @@
         <a href="LA FICHE CONTACT DE JACQUES">Contact</a>
 
         <div>
-            <p>Chrère cliente, cher client,</p>
+            <p>Chère cliente, cher client,</p>
             <p>Vous avez passé commande sur notre site et nous vous en remercions.</p>
             <p>IMPORTANT - Suite à ce mail, vous avez été directement mis en relation avec un membre de l'équipe.
-                Il/Elle vous contactera dans les plus bref délai quanc à la bonne procédure de la commande.</p>
-            <p>A la date de réception de votre colis, vous bénéficiez d'un délai de 14 jours pour nous signaler votre intention de vous rétracter,
-                puis vous avez un nouveau délai de 14 jours pour nous retourner le(s) produit(s) concerné(s).</p>
+                Il/Elle vous contactera dans les plus bref délai quand à la bonne procédure de la commande.</p>
+            <p>A la date de réception de votre colis, vous bénéficirez d'un délai de 14 jours pour nous signaler votre intention de vous rétracter,
+                puis vous aurez un nouveau délai de 14 jours pour nous retourner le(s) produit(s) concerné(s).</p>
             <p>Merci de votre compréhension,</p>
             <p>L'équipe du BDE</p>
         </div>
