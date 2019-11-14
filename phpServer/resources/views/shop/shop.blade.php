@@ -12,6 +12,11 @@
     <link href="{{ asset('css/project-css/shop/shop.css') }}" rel="stylesheet">
 @endpush
 
+@push('script')
+    <script src="{{ asset('js/project-js/shop/shopAutocomplete.js') }}"></script>
+@endpush
+
+
 @section('content')
 
     <div class="top-center">

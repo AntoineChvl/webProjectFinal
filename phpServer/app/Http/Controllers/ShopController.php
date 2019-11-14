@@ -15,9 +15,21 @@ use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use stdClass;
 
 class ShopController extends Controller
 {
+    public function apiProductIndex()
+    {
+        $response = [];
+        foreach (Product::all() as $product){
+            $obj = new stdClass;
+            $obj->name = $product->name;
+            $obj->productLink = route('shop.product.show',$product);
+            $response[] = $obj;
+        }
+        return $response;
+    }
     /**
      * Display a listing of the resource.
      *
