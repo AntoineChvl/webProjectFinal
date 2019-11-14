@@ -39,8 +39,17 @@ class ShopController extends Controller
      */
     public function index()
     {
-        //$bestSeller = Product::
-        return view('shop.shop')->with('products', Product::all());
+        $products = Product::all();
+        foreach ($products as $product) {
+            $sellCount = 0;
+            foreach ($product->contained as $order){
+                $sellCount+=$order->quantity;
+            }
+            $product->sellCount = $sellCount;
+        }
+        //$products =$products->toArray();
+        $products->sort(function($a, $b) { return $a->sellCount - $b->sellCount; });
+        return view('shop.shop')->withProducts(Product::all())->withBestSeller($products);
     }
 
     /**

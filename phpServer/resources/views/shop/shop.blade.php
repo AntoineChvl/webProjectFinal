@@ -20,7 +20,7 @@ Le bureau des élèves de Saint-Nazaire possède une boutique avec plein de prod
     <h1>Boutique du bureau de élèves</h1>
     <a href="/shop/cart" class="cart">Mon panier</a>
 </div>
-@if(!$category)
+@if(!isset($category))
 <div class="container">
     <div class="row">
         <div class="col">
