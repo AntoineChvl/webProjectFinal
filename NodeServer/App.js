@@ -29,7 +29,7 @@ connection.connect(function (error) {
     console.log("Connected!");
 });
 
-const userController = new require('./UserController.js')(connection);
+const Controller = new require('./Controller.js')(connection);
 
 
 
@@ -69,12 +69,13 @@ function isAuthenticated(req, res, next) {
 
 
 
-app.get('/users',isAuthenticated, (req, res) => userController.index(req, res));
-app.post('/users',isAuthenticated, (req, res) => userController.store(req, res));
-app.get('/users/:id',isAuthenticated, (req, res) => userController.show(req, res));
-app.put('/users/:id',isAuthenticated, (req, res) => userController.update(req, res));
-app.patch('/users/:id',isAuthenticated, (req, res) => userController.update(req, res));
-app.delete('/users/:id',isAuthenticated, (req, res) => userController.destroy(req, res));
+app.get('/campus',isAuthenticated, (req, res) => Controller.campusIndex(req, res));
+app.get('/users',isAuthenticated, (req, res) => Controller.index(req, res));
+app.post('/users',isAuthenticated, (req, res) => Controller.store(req, res));
+app.get('/users/:id',isAuthenticated, (req, res) => Controller.show(req, res));
+app.put('/users/:id',isAuthenticated, (req, res) => Controller.update(req, res));
+app.patch('/users/:id',isAuthenticated, (req, res) => Controller.update(req, res));
+app.delete('/users/:id',isAuthenticated, (req, res) => Controller.destroy(req, res));
 
 
 // app.use(bodyParser.json());

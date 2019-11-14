@@ -1,6 +1,10 @@
-function UserController(connection) {
+function Controller(connection) {
     this.executeQuery = (new require('./query')(connection)).executeQuery;
     this.validator = new require('./validator')(this.query);
+    this.campusIndex = async function (request, res) {
+        let result = await this.executeQuery('SELECT * FROM `campus`');
+        res.json({status: 'success', 'result': result});
+    }
     this.index = async function (request, res) {
         if (request.body.email !== undefined) {
             let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status,status.id as statusLvl FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id WHERE email=?', request.body.email);
@@ -87,5 +91,5 @@ function UserController(connection) {
 };
 
 
-module.exports = UserController;
+module.exports = Controller;
 
