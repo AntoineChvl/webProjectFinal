@@ -56,17 +56,17 @@ class CommentsController extends Controller
 
     public function updateCommentStatus(Request $request)
     {
-        Comment::where('id', '=', $request->input('data'))->first()->validate();
-        $commentupdated = Comment::find($request->input('data'))->first();
-        $commentUser = User::find($commentupdated->user_id);
-
-        $commentToMail = array('contenu' => $commentupdated->content, 'date' => $commentupdated->updated_at, 'user' => $commentUser->firstname.' '.$commentUser->lastname);
-
-        if(User::auth() && User::auth()->statusLvl == 3)
+        if(User::auth())
         {
-            Mail::to(User::auth()->email)->send(new NotificationMembers($commentToMail));
+            Comment::where('id', '=', $request->input('data'))->first()->validate();
+            $commentupdated = Comment::find($request->input('data'))->first();
+            $commentUser = User::find($commentupdated->user_id);
+            $commentToMail = array('type' => 'commentaire', 'content' => $commentupdated->content, 'date' => $commentupdated->updated_at, 'user' => $commentUser->firstname.' '.$commentUser->lastname);
+            if(User::auth()->statusLvl == 3)
+            {
+                Mail::to(User::auth()->email)->send(new NotificationMembers($commentToMail));
+            }
         }
-
     }
 
 }

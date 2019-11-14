@@ -1,5 +1,6 @@
 const removeElement = function (validateRoute, tableName, fieldContent)
 {
+
     $('#'+tableName).on('click', '.remove', function (e) {
         e.preventDefault();
 
@@ -10,7 +11,7 @@ const removeElement = function (validateRoute, tableName, fieldContent)
             url: validateRoute, // This is the url we gave in the route
             data: {'data' : rowObject}, // a JSON object to send back
             success: function(response){ // What to do if we succeed
-                console.log("success");
+                console.log(response);
             },
             error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
                 console.log('fail');

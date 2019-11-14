@@ -10,16 +10,16 @@ use Illuminate\Queue\SerializesModels;
 class NotificationMembers extends Mailable
 {
     use Queueable, SerializesModels;
-    private $notification;
+    public $notification;
 
     /**
      * Create a new message instance.
      *
-     * @return void
+     * @param $message
      */
-    public function __construct($notification)
+    public function __construct($message)
     {
-        $this->notification = $notification;
+        $this->notification = $message;
     }
 
     /**
@@ -29,6 +29,6 @@ class NotificationMembers extends Mailable
      */
     public function build()
     {
-        return $this->view('email.notificationMembers');
+        return $this->view('email.notificationMembers')->with('data',$this->notification);
     }
 }
