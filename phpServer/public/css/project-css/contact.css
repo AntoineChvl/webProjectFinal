@@ -14,7 +14,7 @@
 
 .elementContact:nth-child(1) {
     flex: 2;
-    background-image: url("src={{asset('assets/imgs/activites.jpg')}}");
+    background-image: url("/assets/imgs/imageContact.jpg");
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
