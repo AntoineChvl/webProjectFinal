@@ -36,10 +36,11 @@ Route::delete('/events/{event}', 'EventsController@destroy')->name('events.destr
 
 //Page d'Accueil du magasin
 Route::get('/shop', 'ShopController@index')->name('shop');
-Route::get('/shop/cart', 'ShopController@indexCart')->name('cart');
+Route::get('/shop/cart', 'ShopController@indexCart')->name('shop.cart');
 Route::get('/shop/order', 'ShopController@order')->name('shop.order');
 Route::get('/shop/buy', 'ShopController@buy')->name('shop.buy');
 Route::post('/shop/product/{id}/addToCart', 'ShopController@addToCart')->name('shop.addToCart');
+Route::post('/shop/product/{id}/delToCart', 'ShopController@delToCart')->name('shop.delToCart');
 Route::get('/shop/product','ShopController@index')->name('shop.product.index');
 Route::get('/shop/product/create','ShopController@create')->name('shop.product.create');
 Route::post('/shop/product','ShopController@store')->name('shop.product.store');
@@ -80,9 +81,7 @@ Route::get('/propos','StaticPagesController@propos')->name('propos');
 Route::get('/legal_mention','StaticPagesController@legalMention')->name('legal_mention');
 Route::get('/privacy_politicy','StaticPagesController@privacyPoliticy')->name('privacy_politicy');
 
-Route::get('/member_space', function() {
-    return view('registration-connection/member_space');
-})->name('member_space');
+Route::get('/myProfile', 'StaticPagesController@showUser')->name('member_space');
 
 Route::get('/member_space_modification', function() {
     return view('registration-connection/member_space_modification');

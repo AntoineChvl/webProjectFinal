@@ -11,5 +11,7 @@ class Participate extends Model
     ];
 
     protected $table= "participate";
-
+    public function event(){
+        return $this->hasOne(Event::class);
+    }
 }

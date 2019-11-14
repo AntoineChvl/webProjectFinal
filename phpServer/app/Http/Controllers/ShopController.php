@@ -22,14 +22,15 @@ class ShopController extends Controller
     public function apiProductIndex()
     {
         $response = [];
-        foreach (Product::all() as $product){
+        foreach (Product::all() as $product) {
             $obj = new stdClass;
             $obj->name = $product->name;
-            $obj->productLink = route('shop.product.show',$product);
+            $obj->productLink = route('shop.product.show', $product);
             $response[] = $obj;
         }
         return $response;
     }
+
     /**
      * Display a listing of the resource.
      *
@@ -37,6 +38,7 @@ class ShopController extends Controller
      */
     public function index()
     {
+        //$bestSeller = Product::
         return view('shop.shop')->with('products', Product::all());
     }
 
@@ -61,9 +63,9 @@ class ShopController extends Controller
         $image = Image::storeImage($request->image);
         $product = Product::create($request->only('name', 'description', 'price') + ['user_id' => User::auth()->id] + ['image_id' => $image]);
         //$product->categories()->detach();
-        foreach($request->except(['name', 'description', 'price' ,'_token','image']) as $key => $value){
+        foreach ($request->except(['name', 'description', 'price', '_token', 'image']) as $key => $value) {
             $category = Category::find($key);
-            if($category && $value=='on'){
+            if ($category && $value == 'on') {
                 $product->categories()->attach($category);
             }
         }
@@ -118,7 +120,7 @@ class ShopController extends Controller
             session()->flash('message flash', ['type' => 'success', 'content' => "L'article a bien été modifié"]);
             if ($request->image) {
                 $image = Image::storeImage($request->image);
-                $product->update(['image_id'=>$image]);
+                $product->update(['image_id' => $image]);
             }
             return redirect(route('shop.product.show', $product->id));
         } else {
@@ -147,17 +149,17 @@ class ShopController extends Controller
     public function indexCart()
     {
         //
-        $idProd = Cookie::get('cart');
-        $cart = json_decode($idProd);
+        $cart = json_decode(Cookie::get('cart'));
         $totalPrice = 0;
+        $products = [];
 
         if (!$cart) {
             $cart = [];
         }
 
         foreach ($cart as $product) {
-            $product = array('productDetails' => Product::find($product->productId), 'quantity' => $product->quantity);
-            $totalPrice += $product['productDetails']['price'] * $product['quantity'];
+            $product->product = Product::find($product->id);
+            $totalPrice += $product->product->price * $product->quantity;
             $products[] = $product;
         }
 
@@ -174,18 +176,38 @@ class ShopController extends Controller
         }
 
         foreach ($cart as $product) {
-            if (in_array($id, (array)$product)) {
+            if ($product->id == $id) {
                 $product->quantity += $request->input('quantity');
                 $isInCart = true;
             }
         }
 
         if (!$isInCart) {
-            $cart[] = array('productId' => $id, 'quantity' => $request->input('quantity'));
+            $obj = new stdClass();
+            $obj->id = $id;
+            $obj->quantity = $request->input('quantity');
+            $cart[] = $obj;
         }
-        return redirect('shop')->cookie('cart', json_encode($cart), 24 * 60);
+        return redirect('shop')->cookie('cart', json_encode($cart), 24 * 60 * 2);
     }
 
+    public function delToCart(Request $request, $id)
+    {
+        $cart = json_decode($request->cookie('cart'));
+        $newCart = [];
+
+        if (!$cart) {
+            $cart = [];
+        }
+
+        foreach ($cart as $product) {
+            if ($product->id != $id) {
+                $newCart[] = $product;
+            }
+        }
+
+        return redirect('/shop/cart')->cookie('cart', json_encode($newCart), 24 * 60 * 2);
+    }
 
     public function order()
     {
@@ -201,17 +223,20 @@ class ShopController extends Controller
             $cart = [];
         }
         $products = [];
-        foreach ($cart as $key => $product) {
-            $products[$key] = Product::find($product->productId);
-            $totalPrice += $products[$key]->price * $product->quantity;
+        foreach ($cart as $key => $cartProduct) {
+            $products[$key] = Product::find($cartProduct->id);
+            $totalPrice += $products[$key]->price * $cartProduct->quantity;
         }
 
-        $order = Order::create(['price'=>$totalPrice,'user_id'=>User::auth()->id]);
-        foreach ($products as $key => $product){
-            Contain::create(['order_id'=>$order->id,'product_id'=>$product->id,'quantity'=>$cart[$key]->quantity]);
+        if (count($cart)>0) {
+            $order = Order::create(['price' => $totalPrice, 'user_id' => User::auth()->id]);
+            foreach ($products as $key => $product) {
+                Contain::create(['order_id' => $order->id, 'product_id' => $product->id, 'quantity' => $cart[$key]->quantity]);
+            }
+
+            Mail::to(User::auth()->email)->send(new OrderConfirmMail($order));
         }
 
-        Mail::to(User::auth()->email)->send(new OrderConfirmMail($order));
-        //return redirect('home');
+        return redirect('shop')->cookie('cart', json_encode([]));
     }
 }

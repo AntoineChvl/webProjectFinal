@@ -32,7 +32,7 @@ class User
     public static function find($id)
     {
 
-        $response = httpRequest('get','/users/' . $id);
+        $response = httpRequest('get', '/users/' . $id);
 
         if ($response->status == 'success') {
             $user = new User($response->result);
@@ -45,7 +45,7 @@ class User
 
     public static function all()
     {
-        $response = httpRequest('get','/users');
+        $response = httpRequest('get', '/users');
         $users = [];
         if ($response->status == 'success') {
             foreach ($response->result as $user) {
@@ -58,9 +58,23 @@ class User
     public static function auth()
     {
         if (session()->has('authenticated')) {
-            session()->put('authenticated',static::find(session()->get('authenticated')->id));
+            session()->put('authenticated', static::find(session()->get('authenticated')->id));
             return session()->get('authenticated');
         }
         return NULL;
     }
+
+    public function futureEvents()
+    {
+        $events = Event::where('date','>',now())->orderBy('date', 'asc')->get();
+        $futureEvents = [];
+        foreach ($events as $event){
+            $p = Participate::where('user_id',$this->id)->where('event_id',$event->id)->first();
+            if($p){
+                $futureEvents[] = $event;
+            }
+        }
+        return $futureEvents;
+    }
+
 }
