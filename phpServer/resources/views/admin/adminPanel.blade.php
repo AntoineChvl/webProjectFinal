@@ -27,7 +27,6 @@
 
     <div class="container-fluid" id="optionsContainer">
 
-        @if($user->statusLvl == 2)
             <a class="row btn submit-button col-12" id="listUsers" href="{{ route('admin-event-users') }}">
                 Accéder à la liste des inscrits par évènement
             </a>
@@ -40,7 +39,6 @@
                 Voir les notifications des membres du personnel CESI
             </a>
 
-        @endif
 
             <a class="row btn submit-button col-12" id="downloadImages" href="{{ route('images-download') }}">
                 Télécharger l'ensemble des photos postées par les étudiants et les membres du BDE

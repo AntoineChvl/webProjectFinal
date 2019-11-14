@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Image;
 use App\ImagePastEvent;
+use App\Mail\NotificationMembers;
 use App\Mail\OrderConfirmMail;
 use App\User;
 use Illuminate\Http\Request;
@@ -56,14 +57,15 @@ class CommentsController extends Controller
     public function updateCommentStatus(Request $request)
     {
         Comment::where('id', '=', $request->input('data'))->first()->validate();
+        $commentupdated = Comment::find($request->input('data'))->first();
+        $commentUser = User::find($commentupdated->user_id);
 
+        $commentToMail = array('contenu' => $commentupdated->content, 'date' => $commentupdated->updated_at, 'user' => $commentUser->firstname.' '.$commentUser->lastname);
 
-
-        if(User::auth() && User::auth()->id)
+        if(User::auth() && User::auth()->statusLvl == 3)
         {
-            Mail::to(User::auth()->email)->send(new OrderConfirmMail($comment));
+            Mail::to(User::auth()->email)->send(new NotificationMembers($commentToMail));
         }
-
 
     }
 

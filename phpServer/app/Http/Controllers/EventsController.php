@@ -22,6 +22,7 @@ class EventsController extends Controller
         $events = Event::with('image')->latest()->whereDate('date', '>=', now())->limit(3)->get();
         $past_events = Event::whereDate('date', '<', now())->limit(3)->get();
         $eventsGroup = ['du mois', 'passés'];
+
         return view('events.eventsIndex', compact('events', 'past_events', 'eventsGroup'));
 
     }
