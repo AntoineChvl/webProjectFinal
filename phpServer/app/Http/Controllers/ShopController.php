@@ -47,9 +47,8 @@ class ShopController extends Controller
             }
             $product->sellCount = $sellCount;
         }
-        //$products =$products->toArray();
-        $products->sort(function($a, $b) { return $a->sellCount - $b->sellCount; });
-        return view('shop.shop')->withProducts(Product::all())->withBestSeller($products);
+        $products = $products->sort(function($a, $b) { return $b->sellCount - $a->sellCount; });
+        return view('shop.shop')->withProducts(Product::all())->withBestSeller($products->values());
     }
 
     /**
