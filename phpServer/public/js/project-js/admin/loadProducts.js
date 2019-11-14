@@ -7,7 +7,6 @@ $(document).ready(function () {
     });
 
     var route = $('meta[name="route-name"]').attr('content');
-    var imageUploadedId = $('meta[name="imagePastEventId"]').attr('content');
     var validateRoute = "/shop/product/";
     var tableName = "productsList";
 
@@ -23,11 +22,7 @@ $(document).ready(function () {
 
         "ajax": {
             "type": "GET",
-            "url": route,
-            "data": {
-                "uploadedImageId": imageUploadedId
-            }
-        },
+            "url": route },
         "columns":[
             { "data": "product_name" },
             { "data": "product_image",
@@ -41,7 +36,7 @@ $(document).ready(function () {
                 "render": function(data,type,row)
                 {
                     validateRoute ='/shop/product/'+ data;
-                    return '<a class="btn submit-button remove" id='+data+' href=/shop/product/'+data+'>Supprimer le produit</a>';
+                    return '<a class="btn submit-button remove" id='+data+' href=/shop/product/'+data+'>Supprimer le produit</a>'+' '+'<a class="btn submit-button" id='+data+' href=/shop/product/'+data+'/edit >Modifier le produit</a>';
                 }
             },
         ],

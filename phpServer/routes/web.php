@@ -94,6 +94,7 @@ Route::post('/espace-admin/images/validate', 'ImagesController@updateImage');
 
 Route::get('/cgv','StaticPagesController@cgv')->name('cgv');
 Route::get('/espace-admin/products/all', 'AdminController@products')->name('admin-products');
+Route::get('/espace-admin/categories/all','AdminController@categories')->name('admin-categories');
 
-Route::get('/shop/products/all', 'shopController@allFormatted');
-
+Route::get('/shop/products/all', 'ShopController@allFormatted');
+Route::get('/shop/categories/all', 'CategoryController@allFormatted');

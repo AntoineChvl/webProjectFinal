@@ -6,6 +6,7 @@ use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
 
 class CategoryController extends Controller
@@ -64,4 +65,20 @@ class CategoryController extends Controller
             Session::flash('message flash', ['type' => 'danger', 'content' => "La catégorie n'existe pas"]);
         }
     }
+
+    public function allFormatted()
+    {
+        $categories = Category::all();
+        $categoriesDetails = [];
+
+        for($i = 0; $i < $categories->count(); $i++)
+        {
+            $categoriesDetails[$i] = array('category_name' => $categories[$i]->name,'category_id' => $categories[$i]->id);
+
+        }
+
+        return Response::json(array('data' => $categoriesDetails));
+    }
+
+
 }
