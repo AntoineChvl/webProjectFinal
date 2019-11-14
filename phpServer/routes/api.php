@@ -25,7 +25,6 @@ Route::get('/getComments', 'CommentsController@index');
 
 Route::get('/events/images/all', 'ImagesController@imagesByEvent');
 
-Route::post('/espace-admin/images/validate/', 'ImagesController@updateImage');
 
 Route::get('/espace-admin/events/users/all', 'ParticipateController@users');
 

@@ -66,10 +66,6 @@ Le bureau des élèves de Saint-Nazaire possède une boutique avec plein de prod
 </div>
 
 
-@if(App\User::auth() && App\User::auth()->statusLvl==2)
-<a href="{{ route('shop.product.create') }}"><button class="btn submit-button bde" type="submit">Ajouter un produit</button></a>
-<a href="{{ route('shop.category.create') }}"><button class="btn submit-button bde" type="submit">Ajouter une catégorie</button></a>
-@endif
 
 <input type="text" placeholder="Recherchez..." id="search-bar">
 

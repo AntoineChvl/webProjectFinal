@@ -10,6 +10,8 @@
 
 @section('content')
 
+
+
     {{ $errors }}
     <form method="POST" action="{{ $action=='create'? route('shop.product.store') : route('shop.product.update',$product)}}" enctype="multipart/form-data">
         {{$action}}

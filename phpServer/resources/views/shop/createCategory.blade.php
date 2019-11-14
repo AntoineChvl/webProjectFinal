@@ -14,6 +14,7 @@
 
 @section('content')
 
+
 {{ $errors }}
 <form method="POST" action="{{route('shop.category.store')}}">
 	@csrf

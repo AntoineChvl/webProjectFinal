@@ -8,12 +8,20 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Alerte : Un membre du personnel CESI vous informe d'une anomalie sur un(e) {{ $notification['type'] }}</h1>
+<h1>Alerte : Un membre du personnel CESI vous informe d'une anomalie sur un(e) {{ $data['type'] }}</h1>
 
-<p>{{ $notification['type'] }} bloqué : {{ $notification['content']  }}</p>
-<p>Posté par {{ $notification['user'] }}</p>
 
-<p>Le/la {{ $notification['type'] }} a été bloqué(e)</p>
+<p>{{ $data['type'] }} bloqué : {{ $data['content']  }}</p>
+
+@if($data['type'] == 'IMAGE')
+<p>Aperçu visuel :</p>
+<img src="{{ asset('storage/imagesUploaded/'.$data['content']) }}" alt="">
+@endif
+
+<p>Posté par {{ $data['user'] }}</p>
+<p>Le/la {{ $data['type'] }} a été bloqué(e).</p>
+
+<p>Ceci est un message automatique. Merci de ne pas répondre. Vous adresser directement à l'administration.</p>
 
 </body>
 </html>

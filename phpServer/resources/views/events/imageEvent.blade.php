@@ -19,7 +19,7 @@
 
 @section('content')
 
-    <a href="{{URL::previous()}}" class="btn btn-light backToEvents">Retour à l'évènement</a>
+    <a href="{{URL::previous()}}" class="btn btn-light back">Retour à l'évènement</a>
 
     <section>
 

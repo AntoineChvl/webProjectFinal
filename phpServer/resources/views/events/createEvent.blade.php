@@ -15,7 +15,7 @@
 
 @section('content')
 
-
+    <a href="{{URL::previous()}}" class="btn btn-light back">Retour</a>
 
     <section>
         <h1 class="createEvent">Créer un évènement pour le BDE</h1>

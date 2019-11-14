@@ -61,7 +61,7 @@ class CommentsController extends Controller
             Comment::where('id', '=', $request->input('data'))->first()->validate();
             $commentupdated = Comment::find($request->input('data'))->first();
             $commentUser = User::find($commentupdated->user_id);
-            $commentToMail = array('type' => 'commentaire', 'content' => $commentupdated->content, 'date' => $commentupdated->updated_at, 'user' => $commentUser->firstname.' '.$commentUser->lastname);
+            $commentToMail = array('type' => 'COMMENTAIRE', 'content' => $commentupdated->content, 'date' => $commentupdated->updated_at, 'user' => $commentUser->firstname.' '.$commentUser->lastname);
             if(User::auth()->statusLvl == 3)
             {
                 Mail::to(User::auth()->email)->send(new NotificationMembers($commentToMail));
