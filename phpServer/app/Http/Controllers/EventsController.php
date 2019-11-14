@@ -37,12 +37,14 @@ class EventsController extends Controller
     {
         $isConnected = false;
         $userId = 0;
+        $userStatus = 0;
         if(User::auth())
         {
             $isConnected = true;
             $userId = User::auth()->id;
+            $userStatus = User::auth()->statusLvl;
         }
-        return view('events.singleEvent', compact('event', 'isConnected','userId'));
+        return view('events.singleEvent', compact('event', 'isConnected','userId', 'userStatus'));
     }
 
     /**

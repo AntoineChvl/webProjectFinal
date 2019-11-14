@@ -15,6 +15,7 @@
 
 @section('content')
 
+    <a href="{{URL::previous()}}" class="btn btn-light back">Retour</a>
 
     <section>
         <h1 class="createEvent">Modifier l'évènement {{ $event->name }}</h1>

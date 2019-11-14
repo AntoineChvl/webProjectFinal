@@ -1,7 +1,10 @@
+tbody tr td {
+    height: 200px;
+}
 
 tbody tr td img{
     width: 50%;
-    height: 50%;
+    height: 100%;
 }
 
 .optionsContainer

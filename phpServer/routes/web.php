@@ -92,7 +92,7 @@ Route::get('/espace-admin/comments/validate/{uploadImageId}', 'CommentsControlle
 Route::post('/espace-admin/images/validate', 'ImagesController@updateImage');
 
 Route::get('/cgv','StaticPagesController@cgv')->name('cgv');
+Route::get('/espace-admin/products/all', 'AdminController@products')->name('admin-products');
 
-
-
+Route::get('/shop/products/all', 'shopController@allFormatted');
 
