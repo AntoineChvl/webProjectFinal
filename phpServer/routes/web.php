@@ -74,5 +74,8 @@ Route::post('/addComment', 'CommentsController@add');
 Route::post('/participateEvent', 'ParticipateController@participate');
 Route::post('/unparticipateEvent', 'ParticipateController@noLongerParticipate');
 
-
+Route::get('/contact','StaticPagesController@contact')->name('contact');
+Route::get('/propos','StaticPagesController@propos')->name('propos');
+Route::get('/legal_mention','StaticPagesController@legalMention')->name('legal_mention');
+Route::get('/privacy_politicy','StaticPagesController@privacyPoliticy')->name('privacy_politicy');
 

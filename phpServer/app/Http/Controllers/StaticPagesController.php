@@ -16,4 +16,20 @@ class StaticPagesController extends Controller
     {
         return view('home/home');
     }
+
+    public function contact() {
+        return view('infos/contact');
+    }
+
+    public function legalMention() {
+        return view('infos/legal_mention');
+    }
+
+    public function propos() {
+        return view('infos/propos');
+    }
+
+    public function privacyPoliticy() {
+        return view('infos/privacy_politicy');
+    }
 }
