@@ -23,7 +23,7 @@
             @endif
             @csrf
 
-            <h1>Création d'une produit</h1>
+            <h1>Création d'un produit</h1>
             <hr>
                 <p class="selectCat">Sélectionnez une ou plusieurs catégorie(s)</p>
                 <div class="category-list row">
@@ -78,7 +78,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <button class="btn submit-button" id="sub" type="submit">Submit</button>
+                        <button class="btn submit-button" id="sub" type="submit">Valider</button>
                     </div>
                     </div>
                 </div>
