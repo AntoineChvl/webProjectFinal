@@ -9,10 +9,27 @@
     @endpush
 
 @section('content')
-    <main>
         <div id="boxPolitique">
             <div class="elementPolitique">
-                <h3>Mentions légales</h3>
+                <h3>Mentions légales</h3> <br> <br>
+                <h4>Editeur : Association CESI</h4>
+                <p>
+                    SIREN : 775 722 572 <br>
+                    Siège social : <br>
+                    1, avenue du Général de Gaulle <br>
+                    Tour PB5 <br>
+                    92074 Paris La Défense <br>
+                    Tél : 01 44 45 92 00 <br>
+                    Fax : 01 44 45 92 98 <br>
+                    e-mail : contact@cesi.fr
+                </p>
+                <h4>Développement et hébergement</h4>
+                <p>Etudiants Exia <br>
+                    Campus CESI, Boulevard de l'université <br>
+                    44600 Saint-nazaire <br>
+                    02 40 00 17 00 <br>
+                    e-mail : bde@viacesi.fr
+                </p>
                 <h4>Respect de la vie privée et collecte des Données Personnelles</h4>
                 <p>Soucieux de protéger la vie privée de ses clients, CESI s’engage dans la protection des données personnelles. Une politique sur la protection des données personnelles rappelle nos principes et nos actions visant au respect de la réglementation applicable en matière de protection des données à caractère personnel.</p>
                 <p><a href="#">Pour lire l’intégralité de notre politique sur la Protection des données personnelles cliquez-ici</a></p>
@@ -23,5 +40,4 @@
                 <p><a href="#">Pour plus d’informations, vous pouvez vous référer à la Politique sur le Protection des Données Personnelles en cliquant-ici</a></p>
             </div>
         </div>
-    </main>
 @endsection

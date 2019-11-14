@@ -9,7 +9,6 @@
 @endpush
 
 @section('content')
-    <main>
         <div id="boxPolitique">
             <div class="elementPolitique">
                 <h3>A propos de notre école</h3>
@@ -21,5 +20,4 @@
                 <p>« Être CESI » c’est devenir acteur de son parcours personnalisé et diplômant, avoir l’assurance d’évoluer tout au long de sa carrière, au rythme des transformations des entreprises et de la société. C’est, enfin, bénéficier d’une culture de l’opérationnalité reconnue par les entreprises pour une employabilité forte et durable.</p>
             </div>
         </div>
-    </main>
 @endsection

@@ -9,7 +9,6 @@
 @endpush
 
 @section('content')
-    <main>
         <div id="boxContact">
             <div class="elementContact">
                 <h2 class="titreContact">Nous contacter</h2>
@@ -18,14 +17,13 @@
                 <p>
                 <h2><i class="fas fa-phone"></i>  Par téléphone</h2><br>
                 02 40 74 58 89
-                </p>
+                </p> <br>
                 <p>
                 <h2><i class="fas fa-envelope"></i>  Par mail</h2><br>
                 Une question précise ? Ecrivez au BDE à l'adresse suivante : <br> <em>adresse.bde@viacesi.fr</em>
                 </p>
             </div>
         </div>
-    </main>
 @endsection
 
 

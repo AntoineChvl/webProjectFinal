@@ -9,16 +9,7 @@
 @endpush
 
 @section('content')
-    <main>
         <div id="boxEspaceMembre">
-            <div class="elementEspaceMembre">
-                <p>
-                    <figure>
-                        <img src="{{asset('assets/imgs/Tom.jpg')}}" class="photoProfil">
-                    </figure>
-                </p>
-                <button type="button" class="boutonModification">Modifier les informations personnelles</button>
-            </div>
             <div class="elementEspaceMembre">
                 <div id="boxInfo">
                     <div class="elementInfo">
@@ -39,14 +30,8 @@
                     <div class="elementInfo">
 {{ $user->email }}
                     </div>
-<!--                     <div class="elementInfo">
-                        <p>Téléphone</p>
-                    </div>
                     <div class="elementInfo">
-                        0700000000
-                    </div> -->
-                    <div class="elementInfo">
-                        <p>Rôle</p>
+                        <p>Campus</p>
                     </div>
                     <div class="elementInfo">
 {{ $user->campus }}
@@ -59,6 +44,10 @@
                     <div class="elementActivitesInscrits">
                         Activités inscrits
                     </div>
+                    <div class="elementActivitesInscrits">
+                        <a href="#">
+                            <button type="button" class="boutonActivites">test</button></a>
+                    </div>
                     @foreach($user->futureEvents() as $event)
                     <div class="elementActivitesInscrits">
                         <a href="{{route('events.show',$event)}}">
@@ -68,5 +57,4 @@
                 </div>
             </div>
         </div>
-    </main>
 @endsection

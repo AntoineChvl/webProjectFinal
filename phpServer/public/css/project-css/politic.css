@@ -1,9 +1,11 @@
 #boxPolitique {
     display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .elementPolitique {
-    height: 940px;
+    height: auto;
     margin-right: 40px;
     margin-left: 40px;
     padding: 10px;
