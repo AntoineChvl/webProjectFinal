@@ -135,7 +135,7 @@ label:hover {
     transition: all ease 1s;
 }
 
-#add {
+.bde {
     display: block;
     margin: 60px auto 40px auto;
     width: 350px;
