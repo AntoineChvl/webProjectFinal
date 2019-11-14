@@ -1,5 +1,6 @@
 tbody tr td {
     height: 150px;
+    overflow: scroll;
 }
 
 tbody tr td img{

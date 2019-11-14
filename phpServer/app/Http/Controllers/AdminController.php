@@ -41,5 +41,10 @@ class AdminController extends Controller
         return view('admin.categoriesDisplay');
     }
 
+    public function events()
+    {
+        return view('admin.eventsDisplay');
+    }
+
 
 }
