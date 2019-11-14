@@ -20,7 +20,7 @@
 
 @section('content')
 
-    <a href="{{route('events.index')}}" class="btn btn-light backToEvents">Retour aux évènements</a>
+    <a href="{{route('events.index')}}" class="btn btn-light back">Retour aux évènements</a>
 
     <h1 id="singleEventTitle">{{$event->name}}</h1>
 
@@ -119,13 +119,19 @@
 
         @else
             @if($isConnected)
-                <div class="container">
-                    <div class="row col-12">
+                <div class="container flex-column">
+                    <div class="row col-3">
                         <button type="button"
                                 class="btn  @if(\App\Participate::where('user_id', '=', $userId)->where('event_id', '=', $event->id)->count() >0) confirm-button @else submit-button @endif"
                                 id="participateToEvent">@if(\App\Participate::where('user_id', '=', $userId)->where('event_id', '=', $event->id)->count() >0) Inscris ! @else Participer à l'évènement @endif
                         </button>
+                        @if($userStatus == 2)
+                                <a href="{{ route('events.edit', ['event' => $event]) }}" class="btn submit-button" id="editEvent">Éditer l'évènement</a>
+                        @elseif($userStatus == 3)
+                            <a href="" class="btn submit-button" id="editEvent">Éditer l'évènement</a>
+                        @endif
                     </div>
+
                 </div>
 
             @else

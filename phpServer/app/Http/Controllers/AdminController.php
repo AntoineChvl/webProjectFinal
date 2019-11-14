@@ -31,5 +31,10 @@ class AdminController extends Controller
         return view('admin.usersDisplay', compact('events'));
     }
 
+    public function products()
+    {
+        return view('admin.productsDisplay');
+    }
+
 
 }

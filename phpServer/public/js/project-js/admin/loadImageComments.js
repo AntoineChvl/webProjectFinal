@@ -14,7 +14,7 @@ $(document).ready(function () {
 
         $('#imageComments').removeClass('d-none');
 
-        removeElement(validateRoute, tableName, 'comment_id');
+        removeElement(validateRoute, 'POST', tableName, 'comment_id');
 
         $('#imageComments').DataTable( {
             destroy: true,

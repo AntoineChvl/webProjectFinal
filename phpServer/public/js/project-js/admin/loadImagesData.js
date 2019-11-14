@@ -12,12 +12,12 @@ $(document).ready(function () {
         var selectedOption = $(this).children('option:selected').val().split('t');
         var eventSelected = selectedOption[selectedOption.length-1];
         var route = $('meta[name="route-name"]').attr('content');
-        var validateRoute = "/api/espace-admin/images/validate/";
+        var validateRoute = "/espace-admin/images/validate";
         var tableName = "eventImages";
 
         $('#eventImages').removeClass('d-none');
 
-        removeElement(validateRoute, tableName, 'image_id');
+        removeElement(validateRoute, 'load', tableName, 'image_id');
 
         $('#eventImages').DataTable( {
             destroy: true,
@@ -42,7 +42,7 @@ $(document).ready(function () {
                 { "data": "image_id",
                     "render": function(data,type,row)
                     {
-                        return '<a class="btn submit-button remove" id='+data+' href="/api/espace-admin/images/validate/'+data+'">Supprimer la photo</a>'+' '+'<a class="btn submit-button" id='+data+' href=/espace-admin/comments/validate/'+data+'>Commentaires</a>';
+                        return '<a class="btn submit-button remove" id='+data+' href="/espace-admin/images/validate/'+data+'">Supprimer la photo</a>'+' '+'<a class="btn submit-button" id='+data+' href=/espace-admin/comments/validate/'+data+'>Commentaires</a>';
                     }
                 },
             ],

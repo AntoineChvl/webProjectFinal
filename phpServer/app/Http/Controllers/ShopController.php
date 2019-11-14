@@ -15,6 +15,7 @@ use App\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Response;
 use stdClass;
 
 class ShopController extends Controller
@@ -139,10 +140,6 @@ class ShopController extends Controller
         $product = Product::find($id);
         if ($product) {
             $product->delete();
-            session()->flash('message flash', ['type' => 'success', 'content' => "L'article a bien été supprimé"]);
-            return redirect('shop.product.index');
-        } else {
-            return '<p>Le produit que vous recherchez n\'existe pas !</p>';
         }
     }
 
@@ -239,4 +236,21 @@ class ShopController extends Controller
 
         return redirect('shop')->cookie('cart', json_encode([]));
     }
+
+    public function allFormatted()
+    {
+        $products = Product::all();
+        $productsDetails = [];
+
+        for($i = 0; $i < $products->count(); $i++)
+        {
+            $productsDetails[$i] = array('product_name' => $products[$i]->name,'product_image' => $products[$i]->image->path,'product_price' => $products[$i]->price, 'product_id' => $products[$i]->id);
+
+        }
+        return Response::json(array('data' => $productsDetails));
+    }
+
+
+
+
 }

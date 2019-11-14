@@ -16,4 +16,11 @@ class Comment extends Model
         $this->restricted_at = now();
         $this->save();
     }
+
+    public function imagePastEvent()
+    {
+        return $this->belongsTo(ImagePastEvent::class);
+    }
+
+
 }

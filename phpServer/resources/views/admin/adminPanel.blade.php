@@ -22,31 +22,47 @@
 
 @section('content')
 
-    <h1>Partie administration</h1>
+    <h1>Panel d'administration</h1>
     <hr>
 
-    <div class="container-fluid" id="optionsContainer">
+    <div class="container-fluid optionsContainer">
+
+        <h2>Évènements</h2>
+        @if($user->statusLvl == 2)
+            <a class="row btn submit-button col-12" id="checkPastEvents" href="{{ route('events.create') }}">
+                Ajouter un évènement
+            </a>
 
             <a class="row btn submit-button col-12" id="listUsers" href="{{ route('admin-event-users') }}">
                 Accéder à la liste des inscrits par évènement
             </a>
+        @endif
 
-            <a class="row btn submit-button col-12" id="checkPastEvents" href="{{ route('admin-images') }}">
-                Gérer les photos et commentaires des évènements passés
-            </a>
+        <a class="row btn submit-button col-12" id="checkPastEvents" href="{{ route('admin-images') }}">
+            Gérer les photos et commentaires des évènements passés
+        </a>
 
-            <a class="row btn submit-button col-12" id="seeNotifications" href="#">
-                Voir les notifications des membres du personnel CESI
-            </a>
-
-
-            <a class="row btn submit-button col-12" id="downloadImages" href="{{ route('images-download') }}">
-                Télécharger l'ensemble des photos postées par les étudiants et les membres du BDE
-            </a>
+        <a class="row btn submit-button col-12" id="downloadImages" href="{{ route('images-download') }}">
+            Télécharger l'ensemble des photos postées par les étudiants et les membres du BDE
+        </a>
 
     </div>
 
     <hr>
+
+    @if($user->statusLvl == 2)
+    <div class="container-fluid optionsContainer">
+
+        <h2>Boutique</h2>
+
+        <a href="{{ route('shop.product.create') }}" class="row btn submit-button col-12">Ajouter un produit</a>
+        <a href="{{ route('shop.category.create') }}" class="row btn submit-button col-12">Ajouter une catégorie</a>
+        <a href="{{ route('admin-products') }}" class="row btn submit-button col-12">Modifier/supprimer les produits</a>
+
+    </div>
+
+    <hr>
+    @endif
 
 
 @endsection

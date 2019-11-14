@@ -1,0 +1,35 @@
+#back {
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 50px auto 50px;
+}
+
+
+h1 {
+    font-size: 48px;
+    text-align: center;
+    vertical-align:middle;
+    margin-top: 50px;
+}
+
+hr {
+    width: 70%;
+    border-width: 2px;
+}
+
+.add {
+    position: relative;
+    display: flex;
+    margin: 60px auto;
+}
+
+.form-control {
+    width: 25%;
+    margin-left: auto;
+    margin-right: 20px;
+}
+
+#sub {
+    margin-right: auto;
+}
+

@@ -1,4 +1,4 @@
-const removeElement = function (validateRoute, tableName, fieldContent)
+const removeElement = function (validateRoute, ajaxMethod, tableName, fieldContent)
 {
 
     $('#'+tableName).on('click', '.remove', function (e) {
@@ -6,15 +6,22 @@ const removeElement = function (validateRoute, tableName, fieldContent)
 
         var table = $('#'+tableName).DataTable();
         var rowObject = table.row($(this).closest('tr')).data()[fieldContent];
+
+        if(ajaxMethod == 'DELETE')
+        {
+            validateRoute += rowObject;
+        }
+
+
         $.ajax({
-            method: 'POST', // Type of response and matches what we said in the route
+            method: ajaxMethod, // Type of response and matches what we said in the route
             url: validateRoute, // This is the url we gave in the route
             data: {'data' : rowObject}, // a JSON object to send back
             success: function(response){ // What to do if we succeed
-                console.log(response);
             },
             error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
-                console.log('fail');
+                console.log(textStatus);
+                console.log(jqXHR);
             }
         });
         table

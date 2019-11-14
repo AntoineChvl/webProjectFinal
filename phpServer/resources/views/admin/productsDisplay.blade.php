@@ -10,8 +10,7 @@
 
 @push('head-meta')
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="route-name" content="/events/images/comments">
-    <meta name="imagePastEventId" content="{{ $imagePastEventId }}">
+    <meta name="route-name" content="/shop/products/all">
 @endpush
 
 @push('stylesheet')
@@ -28,28 +27,26 @@
 
 
     <a href="{{ URL::previous() }}" class="btn btn-light back">Retour au panel administration</a>
-
     <hr>
-    <h1>Image postée sur l'évènement</h1>
-    <hr>
-    <img src="{{ asset('storage/imagesUploaded/'.$imageToCheckComments->path) }}" alt="Image avec les commentaires à vérifier !" id="imagePreview">
-
+    <h1>Articles postés sur la boutique</h1>
     <hr>
 
 
-    <table id="imageComments" class="d-none" width="100%" cellspacing="0">
+    <table id="productsList" class="d-none" width="100%" cellspacing="0">
         <thead>
         <tr>
-            <th>Contenu du commentaire</th>
-            <th>Nom de l'utilisateur</th>
-            <th>Administration</th>
+            <th>Nom du produit</th>
+            <th>Image de l'article</th>
+            <th>Prix de l'article</th>
+            <th>Gérer l'article</th>
         </tr>
         </thead>
         <tfoot>
         <tr>
-            <th>Contenu du commentaire</th>
-            <th>Nom de l'utilisateur</th>
-            <th>Administration</th>
+            <th>Nom du produit</th>
+            <th>Image de l'article</th>
+            <th>Prix de l'article</th>
+            <th>Gérer l'article</th>
         </tr>
         </tfoot>
     </table>
@@ -62,5 +59,5 @@
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
 
     <script src="{{ asset('js/project-js/admin/adminTable.js') }}"></script>
-    <script src="{{ asset('js/project-js/admin/loadImageComments.js') }}"></script>
+    <script src="{{ asset('js/project-js/admin/loadProducts.js') }}"></script>
 @endpush

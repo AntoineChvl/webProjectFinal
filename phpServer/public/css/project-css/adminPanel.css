@@ -1,10 +1,13 @@
+tbody tr td {
+    height: 200px;
+}
 
 tbody tr td img{
     width: 50%;
-    height: 50%;
+    height: 100%;
 }
 
-#optionsContainer
+.optionsContainer
 {
     display: flex;
     flex-direction: column;
@@ -12,7 +15,7 @@ tbody tr td img{
     justify-content: space-between;
 }
 
-#optionsContainer a
+.optionsContainer a
 {
     margin-top: 1%;
     margin-bottom: 1%;

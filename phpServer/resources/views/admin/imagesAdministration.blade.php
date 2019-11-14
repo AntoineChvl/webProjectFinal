@@ -26,7 +26,7 @@
 @section('content')
 
 
-    <a href="{{ route('admin-panel') }}" class="btn btn-light backToEvents">Retour au panel administration</a>
+    <a href="{{ route('admin-panel') }}" class="btn btn-light back">Retour au panel administration</a>
 
     <hr>
     <h1>Images postées sur les évènements passés</h1>

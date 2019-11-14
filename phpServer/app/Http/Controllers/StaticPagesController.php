@@ -34,6 +34,10 @@ class StaticPagesController extends Controller
         return view('infos/privacy_politicy');
     }
 
+    public function cgv() {
+        return view('infos/cgv');
+    }
+
     public function showUser() {
         return view('registration-connection/member_space')->withUser(User::auth());
     }
