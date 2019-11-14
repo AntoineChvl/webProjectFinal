@@ -79,3 +79,6 @@ Route::get('/propos','StaticPagesController@propos')->name('propos');
 Route::get('/legal_mention','StaticPagesController@legalMention')->name('legal_mention');
 Route::get('/privacy_politicy','StaticPagesController@privacyPoliticy')->name('privacy_politicy');
 
+Route::get('/events/images/comments', 'CommentsController@allByEvent');
+
+

@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Comment;
 use App\Image;
 use App\ImagePastEvent;
+use App\Mail\OrderConfirmMail;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 
 class CommentsController extends Controller
@@ -54,6 +56,15 @@ class CommentsController extends Controller
     public function updateCommentStatus(Request $request)
     {
         Comment::where('id', '=', $request->input('data'))->first()->validate();
+
+
+
+        if(User::auth() && User::auth()->id)
+        {
+            Mail::to(User::auth()->email)->send(new OrderConfirmMail($comment));
+        }
+
+
     }
 
 }

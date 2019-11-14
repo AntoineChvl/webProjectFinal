@@ -62,12 +62,11 @@ class EventsController extends Controller
      */
     public function store()
     {
-        Event::create($this->validateEvent());
-        $this->storeImage();
+        $this->validateEvent();
+        $image = $this->storeImage();
+        Event::create(request()->only('name', 'description', 'location', 'date', 'price') + ['user_id' => User::auth()->id] + ['image_id' => $image]);
 
         $lastEventId = Event::latest()->first();
-
-        /*The user id is still not being considered. It will be changed later.*/
 
         return redirect(route('events.show', $lastEventId));
 
@@ -83,7 +82,6 @@ class EventsController extends Controller
      */
     public function edit(Event $event)
     {
-        $this->storeImage();
         return view('events.editEvent', compact('event'));
     }
 
