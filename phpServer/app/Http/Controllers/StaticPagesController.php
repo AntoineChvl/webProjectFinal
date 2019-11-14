@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\User;
 use Illuminate\Http\Request;
 
 class StaticPagesController extends Controller
@@ -31,5 +32,9 @@ class StaticPagesController extends Controller
 
     public function privacyPoliticy() {
         return view('infos/privacy_politicy');
+    }
+
+    public function showUser() {
+        return view('registration-connection/member_space')->withUser(User::auth());
     }
 }

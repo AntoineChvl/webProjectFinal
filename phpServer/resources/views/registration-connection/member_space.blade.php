@@ -25,36 +25,37 @@
                         <p>Nom</p>
                     </div>
                     <div class="elementInfo">
-                        Ban
+{{ $user->lastname }}
                     </div>
                     <div class="elementInfo">
                         <p>Prénom</p>
                     </div>
                     <div class="elementInfo">
-                        Tom
+{{ $user->firstname }}
                     </div>
                     <div class="elementInfo">
                         <p>Adresse mail</p>
                     </div>
                     <div class="elementInfo">
-                        k.pop@gmail.com
+{{ $user->email }}
                     </div>
-                    <div class="elementInfo">
+<!--                     <div class="elementInfo">
                         <p>Téléphone</p>
                     </div>
                     <div class="elementInfo">
                         0700000000
-                    </div>
+                    </div> -->
                     <div class="elementInfo">
                         <p>Rôle</p>
                     </div>
                     <div class="elementInfo">
-                        Carry sur CS
+{{ $user->campus }}
                     </div>
                 </div>
-            </div>
+            </div>.
+            {{ $user->futureEvents() }}
             <div class="elementEspaceMembre">
-                <p><button type="button" class="boutonDeconnexion">Se déconnecter</button></p><br><br>
+                <p><a type="button" class="boutonDeconnexion" href="{{route('logout')}}">Se déconnecter</a></p><br><br>
                 <div id="boxActivitesInscrits">
                     <div class="elementActivitesInscrits">
                         Activités inscrits

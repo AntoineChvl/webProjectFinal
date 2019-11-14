@@ -37,7 +37,8 @@ class ShopController extends Controller
      */
     public function index()
     {
-        return view('shop.shop')->with('products', Product::all());
+        //$bestSeller = Product::
+        return view('shop.shop')->with('products', Product::all())->withBestSeller();
     }
 
     /**

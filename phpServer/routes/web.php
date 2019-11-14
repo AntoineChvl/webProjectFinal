@@ -79,9 +79,7 @@ Route::get('/propos','StaticPagesController@propos')->name('propos');
 Route::get('/legal_mention','StaticPagesController@legalMention')->name('legal_mention');
 Route::get('/privacy_politicy','StaticPagesController@privacyPoliticy')->name('privacy_politicy');
 
-Route::get('/member_space', function() {
-    return view('registration-connection/member_space');
-})->name('member_space');
+Route::get('/myProfile', 'StaticPagesController@showUser')->name('member_space');
 
 Route::get('/member_space_modification', function() {
     return view('registration-connection/member_space_modification');
