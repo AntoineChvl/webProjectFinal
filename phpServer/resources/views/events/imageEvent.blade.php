@@ -80,6 +80,6 @@
 
 @push('script')
     <script src="https://kit.fontawesome.com/1d7bafa102.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/project-js/like.js') }}"></script>
-    <script src="{{ asset('js/project-js/interact-image.js') }}"></script>
+    <script src="{{ asset('js/project-js/events/like.js') }}"></script>
+    <script src="{{ asset('js/project-js/events/interact-image.js') }}"></script>
 @endpush

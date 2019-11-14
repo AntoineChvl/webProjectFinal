@@ -137,10 +137,9 @@
 @endsection
 
 @push('script')
-    <script src="{{ asset('js/project-js/preview-image.js') }}"></script>
-    <script src="{{ asset('js/project-js/lightbox/lightbox.min.js') }}"></script>
+    <script src="{{ asset('js/project-js/images/preview-image.js') }}"></script>
     <script src="https://kit.fontawesome.com/1d7bafa102.js" crossorigin="anonymous"></script>
-    <script src="{{ asset('js/project-js/like.js') }}"></script>
-    <script src="{{ asset('js/project-js/interact-image.js') }}"></script>
-    <script src="{{ asset('js/project-js/participateEvent.js') }}"></script>
+    <script src="{{ asset('js/project-js/events/like.js') }}"></script>
+    <script src="{{ asset('js/project-js/events/interact-image.js') }}"></script>
+    <script src="{{ asset('js/project-js/events/participate.js') }}"></script>
 @endpush

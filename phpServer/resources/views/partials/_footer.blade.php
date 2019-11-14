@@ -20,12 +20,10 @@
             <p>Copyright © CESI.FR</p>
         </div>
         <div class="elementFooter">
-            <ul>
-                <li><a href="{{ route('legal_mention') }}">Mentions légales</a></li>
-                <li><a href="{{ route('privacy_politicy') }}">Conditions générales de ventes</a></li>
-                <li><a href="{{ route('propos') }}">A propos</a></li>
-                <li><a href="{{ route('contact') }}">Contact</a></li>
-            </ul>
+            <p><a href="{{ route('privacy_politicy') }}">Politique de confidentialité</a><br>
+                <a href="{{ route('legal_mention') }}">Mentions légales</a><br>
+                <a href="{{ route('contact') }}">Contact</a><br>
+                <a href="{{ route('propos') }}">A propos</a></p>
         </div>
     </div>
 </footer>

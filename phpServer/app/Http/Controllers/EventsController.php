@@ -3,11 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Event;
-use App\Images;
+use App\Image;
 use App\Participate;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Response;
 
 class EventsController extends Controller
 {
@@ -33,7 +34,6 @@ class EventsController extends Controller
      */
     public function show(Event $event)
     {
-        $isParticipated = false;
         $isConnected = false;
         $userId = 0;
         if(User::auth())
@@ -97,7 +97,8 @@ class EventsController extends Controller
     public function update(Event $event)
     {
         $event->update($this->validateEvent());
-        $this->storeImage();
+        $storedImage = $this->storeImage();
+        $event->update(['image_id' => $storedImage]);
         return redirect('events');
     }
 
@@ -127,9 +128,7 @@ class EventsController extends Controller
     public function storeImage()
     {
         $imageController = new ImagesController();
-        $imageController->publishImage(request());
+        return $imageController->publishImage(request());
     }
-
-
 
 }

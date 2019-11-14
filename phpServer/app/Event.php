@@ -12,11 +12,11 @@ class Event extends Model
 
     public function image()
     {
-        return $this->belongsTo(Images::class);
+        return $this->belongsTo(Image::class);
     }
 
     public function imagesPostedByUsers()
     {
-        return $this->hasMany(ImagesPastEvent::class)->orderBy('updated_at','DESC');
+        return $this->hasMany(ImagePastEvent::class)->orderBy('updated_at','DESC');
     }
 }

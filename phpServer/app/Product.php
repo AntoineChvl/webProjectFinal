@@ -13,7 +13,7 @@ class Product extends Model
 
     public function image()
     {
-        return $this->belongsTo(Images::class);
+        return $this->belongsTo(Image::class);
     }
     public function categories()
     {

@@ -5,15 +5,17 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Response;
 
-class ImagesPastEvent extends Model
+class ImagePastEvent extends Model
 {
     protected $fillable = [
         'event_id', 'image_id', 'is_validated', 'restricted_at'
     ];
 
+    protected $table="images_past_events";
+
     public function image()
     {
-        return $this->belongsTo(Images::class);
+        return $this->belongsTo(Image::class);
     }
 
     public function likes()
@@ -45,6 +47,5 @@ class ImagesPastEvent extends Model
 
         return Response::json(array('data' => $imagesPath));
     }
-
 
 }

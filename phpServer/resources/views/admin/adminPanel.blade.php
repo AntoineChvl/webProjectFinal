@@ -25,19 +25,26 @@
     <h1>Partie administration</h1>
     <hr>
 
-    <div class="container row d-flex flex-row justify-content-around">
+    <div class="container-fluid" id="optionsContainer">
 
-        <a class="btn submit-button col-3" id="listUsers" href="#">
-            Accéder à la liste des inscrits par évènement
-        </a>
+        @if($user->statusLvl == 2)
+            <a class="row btn submit-button col-12" id="listUsers" href="{{ route('admin-event-users') }}">
+                Accéder à la liste des inscrits par évènement
+            </a>
 
-        <a class="btn submit-button col-3" id="checkPastEvents" href="{{ route('admin-images') }}">
-            Gérer les photos et commentaires des évènements passés
-        </a>
+            <a class="row btn submit-button col-12" id="checkPastEvents" href="{{ route('admin-images') }}">
+                Gérer les photos et commentaires des évènements passés
+            </a>
 
-        <a class="btn submit-button col-3" id="seeNotifications" href="#">
-            Voir les notifications des membres du personnel CESI
-        </a>
+            <a class="row btn submit-button col-12" id="seeNotifications" href="#">
+                Voir les notifications des membres du personnel CESI
+            </a>
+
+        @endif
+
+            <a class="row btn submit-button col-12" id="downloadImages" href="{{ route('images-download') }}">
+                Télécharger l'ensemble des photos postées par les étudiants et les membres du BDE
+            </a>
 
     </div>
 

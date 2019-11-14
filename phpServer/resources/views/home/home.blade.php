@@ -14,7 +14,7 @@
 @endpush
 
 @section('content')
-    <main class="container">
+    <main class="container-fluid">
         <div id="box">
             <div class="element">
                 <h3>DECOUVREZ LES DIFFERENTES ACTIVITES DE NOTRE BDE</h3>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -11,11 +12,8 @@ class AdminController extends Controller
 
     public function index()
     {
-
-        $pastEventsNumber = Event::where('date', '<', now())->count();
-        $events = Event::where('date', '<', now())->get();
-        return view('admin.adminPanel', compact('pastEventsNumber', 'events'));
-
+        $user = User::find(User::auth()->id);
+        return view('admin.adminPanel', compact('user'));
     }
 
 
@@ -23,7 +21,14 @@ class AdminController extends Controller
     {
         $events = Event::where('date', '<', now())->get();
 
-        return view('admin.adminImages', compact('events'));
+        return view('admin.imagesAdministration', compact('events'));
+    }
+
+
+    public function eventsUsers()
+    {
+        $events = Event::latest()->get();
+        return view('admin.usersDisplay', compact('events'));
     }
 
 

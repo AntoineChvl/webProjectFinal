@@ -18,6 +18,8 @@
     <link href="{{ asset('css/project-css/lightbox/lightbox.css') }}" rel="stylesheet">
     <link href="{{ asset('css/project-css/adminPanel.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/b-flash-1.6.1/datatables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
 @endpush
 
 
@@ -60,8 +62,8 @@
 @endsection
 
 @push('script')
-    <script src="{{ asset('js/project-js/preview-image.js') }}"></script>
+    <script src="{{ asset('js/project-js/images/preview-image.js') }}"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-    <script src="{{ asset('js/project-js/adminTable.js') }}"></script>
-    <script src="{{ asset('js/project-js/loadImagesData.js') }}"></script>
+    <script src="{{ asset('js/project-js/admin/adminTable.js') }}"></script>
+    <script src="{{ asset('js/project-js/admin/loadImagesData.js') }}"></script>
 @endpush

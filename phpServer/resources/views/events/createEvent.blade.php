@@ -37,5 +37,5 @@
 @endsection
 
 @push('script')
-    <script src="{{ asset('js/project-js/preview-image.js') }}"></script>
+    <script src="{{ asset('js/project-js/images/preview-image.js') }}"></script>
 @endpush

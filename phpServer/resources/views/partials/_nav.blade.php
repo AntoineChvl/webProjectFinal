@@ -27,7 +27,7 @@
 
             </li>
             <li class="nav-item">
-                <a class="nav-link padd" href="#">Espace membre</a>
+                <a class="nav-link padd" href="{{ route('admin-panel') }}">Espace membre</a>
             </li>
         </ul>
     </div>

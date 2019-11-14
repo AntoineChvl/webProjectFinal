@@ -17,14 +17,23 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/events/images/all', 'ImagesController@imagesByEvent');
 
+Route::get('/getComments', 'CommentsController@index');
+Route::post('/espace-admin/comments/validate/', 'CommentsController@updateCommentStatus');
+Route::get('/espace-admin/comments/validate/{uploadImageId}', 'CommentsController@commentsEvent');
 Route::get('/events/images/comments', 'CommentsController@allByEvent');
+
+
+
+
+Route::get('/events/images/all', 'ImagesController@imagesByEvent');
 
 Route::post('/espace-admin/images/validate/', 'ImagesController@updateImage');
 
-Route::post('/espace-admin/comments/validate/', 'CommentsController@updateCommentStatus');
+Route::get('/espace-admin/events/users/all', 'ParticipateController@users');
 
-Route::get('/espace-admin/comments/validate/{uploadImageId}', 'CommentsController@commentsEvent');
+
+
+
 
 Route::get('/shop/autocomplete', 'ShopController@apiProductIndex');

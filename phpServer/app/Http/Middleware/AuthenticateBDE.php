@@ -17,7 +17,7 @@ class AuthenticateBDE
      */
     public function handle($request, Closure $next)
     {
-        if(User::auth() && User::auth()->status == "BDE")
+        if(User::auth() && (User::auth()->statusLvl == 2 || User::auth()->statusLvl == 3))
         {
             return $next($request);
         } else

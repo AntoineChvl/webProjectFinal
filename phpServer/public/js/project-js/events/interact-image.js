@@ -12,14 +12,11 @@ $(document).ready(function () {
 
         $('.addComment').on('click', function(e){
 
-
-
             console.log(imagePastEventId);
            $.ajax({
                 method: 'POST', // Type of response and matches what we said in the route
                 url: '/addComment', // This is the url we gave in the route
                 data: {'content' : $('.commentValue').val(),
-                    'user_id': 1,
                     'image_past_events_id': imagePastEventId,
                 }, // a JSON object to send back
                 success: function(response){ // What to do if we succeed
@@ -45,7 +42,7 @@ $(document).ready(function () {
             $('.comments').empty();
 
             $.ajax({
-                url: "/getComments",
+                url: "/api/getComments",
                 type: "GET", //send it through get method
                 data: {
                     'image_past_events_id': imagePastEventId
