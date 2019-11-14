@@ -33,6 +33,10 @@
                 Ajouter un évènement
             </a>
 
+            <a class="row btn submit-button col-12" id="checkPastEvents" href="">
+                Gérer les évènements
+            </a>
+
             <a class="row btn submit-button col-12" id="listUsers" href="{{ route('admin-event-users') }}">
                 Accéder à la liste des inscrits par évènement
             </a>
@@ -57,8 +61,8 @@
 
         <a href="{{ route('shop.product.create') }}" class="row btn submit-button col-12">Ajouter un produit</a>
         <a href="{{ route('shop.category.create') }}" class="row btn submit-button col-12">Ajouter une catégorie</a>
-        <a href="{{ route('admin-products') }}" class="row btn submit-button col-12">Modifier/supprimer les produits</a>
-
+        <a href="{{ route('admin-products') }}" class="row btn submit-button col-12">Gérer les produits</a>
+        <a href="{{ route('admin-categories') }}" class="row btn submit-button col-12">Gérer les catégories</a>
     </div>
 
     <hr>
