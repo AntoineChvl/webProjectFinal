@@ -9,6 +9,7 @@ use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
+use stdClass;
 
 class EventsController extends Controller
 {
@@ -21,9 +22,40 @@ class EventsController extends Controller
     {
         $events = Event::with('image')->latest()->whereDate('date', '>=', now())->limit(3)->get();
         $past_events = Event::whereDate('date', '<', now())->limit(3)->get();
-        $eventsGroup = ['du mois', 'passés'];
 
-        return view('events.eventsIndex', compact('events', 'past_events', 'eventsGroup'));
+        return view('events.eventsIndex', compact('events', 'past_events'));
+
+    }
+
+    public function moreEvents(Request $request)
+    {
+        $skip = $request->input('skip');
+        $events = [];
+        $response = [];
+
+        if($request->input('typeOfEvents') == 2)
+        {
+            $events = Event::whereDate('date', '>=', now())->skip($skip)->take(3)->get();
+
+        } elseif($request->input('typeOfEvents') == 3) {
+
+            $events = Event::whereDate('date', '<', now())->skip($skip)->take(3)->get();
+
+        }
+
+        foreach ($events as $event) {
+            $ev = new stdClass;
+            $ev->id = $event->id;
+            $ev->name = $event->name;
+            $ev->image_path = $event->image->path;
+            $ev->show_path = route('events.show', $event);
+            $response[] = $ev;
+        }
+
+        return Response::json($response);
+
+
+
 
     }
 

@@ -56,6 +56,12 @@ h1 {
     margin-top: 2%;
 }
 
+.loadMore
+{
+    margin-top: 2%;
+    width: 20%;
+}
+
 /* SINGLE EVENT STYLE */
 
 .eventPresentation {

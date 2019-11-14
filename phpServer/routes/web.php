@@ -26,6 +26,7 @@ Route::post('/register', 'LoginController@register')->name('register');//recepti
 
 
 Route::get('/events/all', 'EventsController@allFormatted');
+Route::get('/events/more-data', 'EventsController@moreEvents');
 Route::get('/events', 'EventsController@index')->name('events.index');
 Route::post('/events', 'EventsController@store')->name('events.store')->middleware('authBDE');
 Route::get('/events/create', 'EventsController@create')->name('events.create')->middleware('authBDE')->middleware('auth');
