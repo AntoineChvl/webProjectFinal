@@ -16,7 +16,8 @@
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
     <link href="{{ asset('css/project-css/lightbox/lightbox.css') }}" rel="stylesheet">
     <link href="{{ asset('css/project-css/adminPanel.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css"/>
 @endpush
 
 

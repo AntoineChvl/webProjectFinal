@@ -17,7 +17,19 @@ $(document).ready(function () {
 
     $('#categoriesList').DataTable( {
         destroy: true,
-        responsive: true,
+        responsive: {
+            details: {
+                display: $.fn.dataTable.Responsive.display.modal( {
+                    header: function ( row ) {
+                        var data = row.data();
+                        return 'Details for '+data[0]+' '+data[1];
+                    }
+                } ),
+                renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
+                    tableClass: 'table'
+                } )
+            }
+        },
         "pageLength": 3,
 
         "ajax": {
@@ -28,7 +40,7 @@ $(document).ready(function () {
             { "data": "category_id",
                 "render": function(data,type,row)
                 {
-                    return '<a class="btn submit-button remove" id='+data+' href=/shop/category/'+data+'>Supprimer la catégorie</a>'+' '+'<a class="btn submit-button" id='+data+' href=/shop/category/'+data+'/edit >Modifier la catégorie</a>';
+                    return '<a class="btn submit-button remove" id='+data+' href=/shop/category/'+data+'>Supprimer la catégorie</a>';
                 }
             },
         ],

@@ -16,8 +16,8 @@
 @push('stylesheet')
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
     <link href="{{ asset('css/project-css/adminPanel.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css"/>
 @endpush
 
 
@@ -55,6 +55,9 @@
     <script src="https://kit.fontawesome.com/1d7bafa102.js" crossorigin="anonymous"></script>
 
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
 
     <script src="{{ asset('js/project-js/admin/adminTable.js') }}"></script>
     <script src="{{ asset('js/project-js/admin/loadProducts.js') }}"></script>
