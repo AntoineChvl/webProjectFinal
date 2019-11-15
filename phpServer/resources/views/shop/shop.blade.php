@@ -23,32 +23,36 @@
     @if(!isset($category))
         <div class="container">
             <div class="row">
-                <div class="col">
-                    <div class="top-block-image">
-                        <p>Vente - Top 2</p>
-                        <p>{{ $bestSeller[1]->name }}</p>
-                        <a href="{{route('shop.product.show',$bestSeller[1])}}"><img
-                                src="{{ asset('storage/imagesUploaded/'.$bestSeller[1]->image->path) }}" alt="top2"></a>
+                @isset($bestSeller[1])
+                    <div class="col">
+                        <div class="top-block-image">
+                            <p>Vente - Top 2</p>
+                            <p>{{ $bestSeller[1]->name }}</p>
+                            <a href="{{route('shop.product.show',$bestSeller[1])}}"><img
+                                    src="{{ asset('storage/imagesUploaded/'.$bestSeller[1]->image->path) }}" alt="top2"></a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col">
-                    <div class="top-block-image">
-                        <p>Vente - Top 1</p>
-                        <p>{{ $bestSeller[0]->name }}</p>
-                        <a href="{{route('shop.product.show',$bestSeller[0])}}"><img
-                                src="{{ asset('storage/imagesUploaded/'.$bestSeller[0]->image->path) }}" alt="top1"></a>
+                @endisset
+                @isset($bestSeller[0])
+                    <div class="col">
+                        <div class="top-block-image">
+                            <p>Vente - Top 1</p>
+                            <p>{{ $bestSeller[0]->name }}</p>
+                            <a href="{{route('shop.product.show',$bestSeller[0])}}"><img
+                                    src="{{ asset('storage/imagesUploaded/'.$bestSeller[0]->image->path) }}" alt="top1"></a>
+                        </div>
                     </div>
-                </div>
-
-                <div class="col">
-                    <div class="top-block-image">
-                        <p>Vente - Top 3</p>
-                        <p>{{ $bestSeller[2]->name }}</p>
-                        <a href="{{route('shop.product.show',$bestSeller[2])}}"><img
-                                src="{{ asset('storage/imagesUploaded/'.$bestSeller[2]->image->path) }}" alt="top3"></a>
+                @endisset
+                @isset($bestSeller[2])
+                    <div class="col">
+                        <div class="top-block-image">
+                            <p>Vente - Top 3</p>
+                            <p>{{ $bestSeller[2]->name }}</p>
+                            <a href="{{route('shop.product.show',$bestSeller[2])}}"><img
+                                    src="{{ asset('storage/imagesUploaded/'.$bestSeller[2]->image->path) }}" alt="top3"></a>
+                        </div>
                     </div>
-                </div>
+                @endisset
             </div>
         </div>
 
@@ -92,8 +96,10 @@
     @endif
 
     <form>
-        <input type="number" name="price_min" min="0" value="{{Request::has('price_min') ? Request::input('price_min') : 0}}">
-        <input type="number" name="price_max" min="0" value="{{Request::has('price_max') ? Request::input('price_max') : 1000}}">
+        <input type="number" name="price_min" min="0"
+               value="{{Request::has('price_min') ? Request::input('price_min') : 0}}">
+        <input type="number" name="price_max" min="0"
+               value="{{Request::has('price_max') ? Request::input('price_max') : 1000}}">
         <button type="submit">Filtrer par prix</button>
     </form>
 
