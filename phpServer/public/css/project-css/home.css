@@ -1,9 +1,11 @@
-
-#box {
-    display: flex;
-    flex-direction: column;
-    justify-content:center;
+.container
+{
+    width: 100% !important;
+    max-width: 100000px !important;
+    margin: 0px !important;
+    padding: 0px !important;
 }
+
 
 .element {
     height: auto;
