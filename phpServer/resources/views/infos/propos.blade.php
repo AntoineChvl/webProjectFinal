@@ -18,6 +18,9 @@
                 <p>Pionnier en France dans les méthodes de pédagogie active et tourné vers l’innovation et les technologies, CESI opère dans tous les secteurs d’activités et forme aux métiers et compétences de demain dans l’industrie et les services, le bâtiment et la ville du futur. Il mène, par ailleurs, des activités de recherche dans son Laboratoire d’Innovation Numérique (LINEACT).</p>
                 <p>Membre d’HESAM Université, cofondateur de l’Institut de le Réindustrialisation et de l’Institut InnovENT-E, CESI participe au débat public en publiant chaque année l’Observatoire Social de l’Entreprise.</p>
                 <p>« Être CESI » c’est devenir acteur de son parcours personnalisé et diplômant, avoir l’assurance d’évoluer tout au long de sa carrière, au rythme des transformations des entreprises et de la société. C’est, enfin, bénéficier d’une culture de l’opérationnalité reconnue par les entreprises pour une employabilité forte et durable.</p>
+                <p>Le CESI forme aux principales fonctions de l'entreprise au travers de parcours diplômants et personnalisés. Il propose 25 cursus diplômants, enregistrés au Répertoire national des certifications  professionnelles (RNCP) et individualisés selon les compétences de chacun.</p>
+                <p>Il développe un système pédagogique connecté aux besoins opérationnels des entreprises qui se traduit par des formations expérientielles, digitales, en mode projet avec des travaux à expérimenter en situation de travail au sein de l'entreprise et par une approche axée sur les compétences.</p>
+                <p>Les enseignements sont assurés par des intervenants CESI et des professionnels reconnus comme tels dans leur domaine d'expertise RH</p>
             </div>
         </div>
 @endsection
