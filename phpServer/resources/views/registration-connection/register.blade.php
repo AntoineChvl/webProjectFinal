@@ -58,14 +58,16 @@
                         <div class="row">
                             <div class="form-label-group col-6">
                                 <label for="firstName">Prénom :</label>
-                                <input type="text" id="firstName" name="firstName" class="form-control"
+                                <input type="text" id="firstName" name="firstName" class="form-control "
                                        placeholder="Robert" value="{{old('firstName')}}" required>
+                                <p id="firstNameMismatch" class="d-none">Le prénom doit faire entre 3 et 16 caractères, en lettres.</p>
                             </div>
 
                             <div class="form-label-group col-6">
                                 <label for="lastName">Nom :</label>
-                                <input type="text" id="lastName" name="lastName" class="form-control"
+                                <input type="text" id="lastName" name="lastName" class="form-control "
                                        placeholder="Dupont" value="{{old('lastName')}}" required>
+                                <p id="lastNameMismatch" class="d-none">Le nom doit faire entre 3 et 25 caractères, en lettres.</p>
                             </div>
                         </div>
 
@@ -83,6 +85,7 @@
                             <label for="emailInscription">Adresse mail :</label>
                             <input type="email" id="emailInscription" name="email" class="form-control"
                                    placeholder="robert.dupont@orange.fr" value="{{old('email')}}" required>
+                            <p id="emailMismatch" class="d-none">La saisie ne correspond pas au format e-mail.</p>
                         </div>
                         @if($errors->has('email'))
                             <div class="error alert alert-danger">
@@ -117,6 +120,7 @@
                             <label for="passwordInscription">Mot de passe : </label>
                             <input type="password" id="passwordInscription" name="password"
                                    class="form-control champ" placeholder="qodpfjsdjgAJjfd!45" required>
+                            <p id="passwordRegexMismatch" class="d-none">Le mot de passe doit contenir 1 chiffre et une lettre.</p>
                         </div>
                         @if($errors->has('password'))
                             <div class="error alert alert-danger">

@@ -42,5 +42,9 @@ form a
 
 .error{
     font-size: 0.95rem;
-    margin-top: 10px; 
+    margin-top: 10px;
+}
+#firstNameMismatch, #lastNameMismatch, #emailMismatch, #passwordRegexMismatch
+{
+    color: red;
 }
