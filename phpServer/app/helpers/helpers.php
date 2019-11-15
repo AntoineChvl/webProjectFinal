@@ -8,7 +8,7 @@ if(!function_exists('getToken')){
     function getToken(){
         $client = new HTTPClient();
         $httpRequest = new HTTPRequest('get', 'http://' . env('ACCOUNT_SERVER_IP') . '/getToken',
-            ['body' => 'application/json'],'{}'
+            ['body' => 'application/json'],'{"username":"'.env('ACCOUNT_SERVER_USERNAME').'","password":"'.env('ACCOUNT_SERVER_KEY').'"}'
         );
         return $client->send($httpRequest)->getBody()->getContents();
     }

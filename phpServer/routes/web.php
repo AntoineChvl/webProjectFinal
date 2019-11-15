@@ -18,10 +18,10 @@ Route::get('/about', 'StaticPagesController@about')->name('about');//page d'accu
 
 
 // connection / inscription
-Route::get('/login', 'LoginController@show')->name('login');//page de connection / inscription
+Route::get('/login', 'LoginController@show')->name('login')->middleware('guest');//page de connection / inscription
+Route::post('/login', 'LoginController@login')->name('login')->middleware('guest');//reception du formulaire de connection -> redirection
+Route::post('/register', 'LoginController@register')->name('register')->middleware('guest');//reception du formulaire d'inscription -> redirection
 Route::get('/logout', 'LoginController@logout')->name('logout');//page de deconnection
-Route::post('/login', 'LoginController@login')->name('login');//reception du formulaire de connection -> redirection
-Route::post('/register', 'LoginController@register')->name('register');//reception du formulaire d'inscription -> redirection
 
 
 

@@ -14,7 +14,7 @@ class EditProductRequest extends FormRequest
      */
     public function authorize()
     {
-        return User::auth()!=null ? User::auth()->statusLvl==2 : false;
+        return User::auth() != null && User::auth()->statusLvl == 2;
     }
 
     /**

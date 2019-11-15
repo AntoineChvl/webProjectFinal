@@ -1,6 +1,6 @@
 function Controller(connection) {
     this.executeQuery = (new require('./query')(connection)).executeQuery;
-    this.validator = new require('./validator')(this.query);
+    this.validator = new require('./validator')(this.executeQuery);
     this.campusIndex = async function (request, res) {
         let result = await this.executeQuery('SELECT * FROM `campus`');
         res.json({status: 'success', 'result': result});

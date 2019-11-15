@@ -23,7 +23,10 @@ const connection = mysql.createConnection({
     password: DATABASE_PASSWORD,
 });
 
-
+const executeQuery = (new require('./query')(connection)).executeQuery;
+const hasher = require('crypto');
+//Creating the hash in the required format
+console.log( hasher.createHash('sha512').update('78a2e9b26e31887e', 'utf-8').digest('hex'));
 connection.connect(function (error) {
     if (error) throw error;
     console.log("Connected!");
@@ -32,7 +35,7 @@ connection.connect(function (error) {
 const Controller = new require('./Controller.js')(connection);
 
 
-
+//console.log(hasher.createHash('sha512').update('78a2e9b26e31887e', 'utf-8').digest('hex'));
 // const bodyParser = require('body-parser')
 
 app.use(
@@ -42,10 +45,19 @@ app.use(
     }
 );
 //app.use(require('body-parser').json());
-app.get('/getToken', (req, res) => {
-    let privateKey = fs.readFileSync('./private.pem', 'utf8');
-    let token = jwt.sign({},privateKey, { algorithm: 'HS256'});
-    res.send(token);
+app.get('/getToken', async (req, res) => {
+    let body = [
+        req.body.username,
+        hasher.createHash('sha512').update(req.body.password, 'utf-8').digest('hex'),
+        //78a2e9b26e31887e
+    ]
+    if(executeQuery('SELECT * FROM accessList WHERE ?',body)){
+        let privateKey = fs.readFileSync('./private.pem', 'utf8');
+        let token = jwt.sign({},privateKey, { algorithm: 'HS256'});
+        res.send(token);
+    }else{
+        res.send({'status':'failed'});
+    }
 });
 
 function isAuthenticated(req, res, next) {
