@@ -6,6 +6,10 @@
     padding: 0px !important;
 }
 
+#box {
+    display: flex;
+    align-items: center;
+}
 
 .element {
     height: auto;
@@ -16,6 +20,7 @@
     padding-right: 30px;
     background-color: white;
     border: 2px solid black;
+    margin-bottom: 55px;
 }
 
 .element:nth-child(1){
@@ -62,10 +67,16 @@ h3 {
     text-align: center;
     color: white;
     background-color: black;
-    background-clip: content-box;
+    bakground-clip: content-box;
 }
 
-@media screen and (max-width: 1000px) {
+@media all and (max-width: 1150px) {
+    #box {
+        flex-direction: column;
+    }
+}
+
+@media all and (max-width: 900px) {
     .imageShop {
         display: none;
     }
