@@ -26,7 +26,6 @@ const connection = mysql.createConnection({
 const executeQuery = (new require('./query')(connection)).executeQuery;
 const hasher = require('crypto');
 //Creating the hash in the required format
-console.log( hasher.createHash('sha512').update('78a2e9b26e31887e', 'utf-8').digest('hex'));
 connection.connect(function (error) {
     if (error) throw error;
     console.log("Connected!");

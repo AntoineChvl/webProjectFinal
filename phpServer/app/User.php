@@ -15,6 +15,8 @@ class User
     public $campus;
     public $status;
     public $statusLvl;
+    public $rgpd_agreed;
+    public $rgpd_date;
 
     public function __construct($user = NULL)
     {
@@ -26,14 +28,14 @@ class User
             $this->campus = $user->campus;
             $this->status = $user->status;
             $this->statusLvl = $user->statusLvl;
+            $this->rgpd_agreed = $user->rgpd_agreed;
+            $this->rgpd_date = $user->rgpd_date;
         }
     }
 
     public static function find($id)
     {
-
         $response = httpRequest('get', '/users/' . $id);
-
         if ($response->status == 'success') {
             $user = new User($response->result);
             if ($user->id != NULL) {
@@ -76,5 +78,8 @@ class User
         }
         return $futureEvents;
     }
-
+    public function setRgpd($boolean)
+    {
+        httpRequest('update', '/users/' . $this->id,'{"rgpd":"'.$boolean.'""}');
+    }
 }

@@ -7,10 +7,10 @@ function Controller(connection) {
     }
     this.index = async function (request, res) {
         if (request.body.email !== undefined) {
-            let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status,status.id as statusLvl FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id WHERE email=?', request.body.email);
+            let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status,status.id as statusLvl,rgpd_agreed,rgpd_date FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id WHERE email=?', request.body.email);
             res.json({status: 'success', 'result': result});
         } else {
-            let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status,status.id as statusLvl FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id');
+            let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status,status.id as statusLvl,rgpd_agreed,rgpd_date FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id');
             res.json({status: 'success', 'result': result});
         }
     }
@@ -60,6 +60,10 @@ function Controller(connection) {
         }
         if (request.body.email !== undefined) {
             updatedUser.email = await this.validator.validateEmail(request.body, errors,request.params.id);
+        }
+        if (request.body.rgpd !== undefined) {
+            updatedUser.rgpd_agreed = !!(request.body);
+            updatedUser.rgpd_date = Date.now();
         }
 
         if (errors.length === 0) {
