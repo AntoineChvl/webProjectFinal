@@ -156,7 +156,7 @@ class EventsController extends Controller
             'description' => 'required|min:10',
             'location' => 'required|min:3',
             'date' => 'required|date|after:today',
-            'price' => 'nullable|integer|max:15',
+            'price' => 'nullable|integer|max:500',
             'image' => 'required',
         ]);
     }

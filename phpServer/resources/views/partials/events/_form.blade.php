@@ -43,7 +43,7 @@
 
 <div class="form-group">
     <label for="price">Prix l'évènement (facultatif) :</label>
-    <input type="number" name="price" id="price" value="@isset($event) {{$event->price }} @endisset {{ old('price') }}" class="form-control" min="0" max="15">
+    <input type="number" name="price" id="price" value="@isset($event) {{$event->price }} @endisset {{ old('price') }}" class="form-control" min="0" max="500">
     @error('price')
     <p>{{ $errors->first('price') }}</p>
     @enderror
