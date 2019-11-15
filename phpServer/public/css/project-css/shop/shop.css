@@ -118,11 +118,6 @@ hr {
     width: 70%;
 }
 
-label:hover {
-    transform: scale(1.2);
-    transition: all ease 1s;
-}
-
 .bde {
     display: block;
     margin: 60px auto 40px auto;
@@ -166,3 +161,22 @@ label:hover {
     margin-bottom: 10px;
 }
 
+
+form  {
+    margin: 60px 0 0 0 !important;
+}
+
+.ui-slider .ui-btn-inner {
+    padding: 4px 0 0 0 !important;
+}
+
+.ui-slider-popup {
+    position: absolute !important;
+    width: 64px;
+    height: 64px;
+    text-align: center;
+    font-size: 36px;
+    padding-top: 14px;
+    z-index: 100;
+    opacity: 0.8;
+}

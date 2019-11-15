@@ -37,18 +37,27 @@ class ShopController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $products = Product::all();
-        foreach ($products as $product) {
+        $bestSeller = Product::all();
+        foreach ($bestSeller as $product) {
             $sellCount = 0;
-            foreach ($product->contained as $order){
-                $sellCount+=$order->quantity;
+            foreach ($product->contained as $order) {
+                $sellCount += $order->quantity;
             }
             $product->sellCount = $sellCount;
         }
-        $products = $products->sort(function($a, $b) { return $b->sellCount - $a->sellCount; });
-        return view('shop.shop')->withProducts(Product::all())->withBestSeller($products->values());
+        $bestSeller = $bestSeller->sort(function ($a, $b) {
+            return $b->sellCount - $a->sellCount;
+        });
+
+        if($request->has('price_min','price_max')){
+            $products = Product::where('price','>=',$request->price_min)->where('price','<=',$request->price_max)->get();
+        }else{
+            $products = Product::all();
+        }
+
+        return view('shop.shop')->withProducts($products)->withBestSeller($bestSeller->values());
     }
 
     /**
@@ -233,7 +242,7 @@ class ShopController extends Controller
             $totalPrice += $products[$key]->price * $cartProduct->quantity;
         }
 
-        if (count($cart)>0) {
+        if (count($cart) > 0) {
             $order = Order::create(['price' => $totalPrice, 'user_id' => User::auth()->id]);
             foreach ($products as $key => $product) {
                 Contain::create(['order_id' => $order->id, 'product_id' => $product->id, 'quantity' => $cart[$key]->quantity]);
@@ -250,9 +259,8 @@ class ShopController extends Controller
         $products = Product::all();
         $productsDetails = [];
 
-        for($i = 0; $i < $products->count(); $i++)
-        {
-            $productsDetails[$i] = array('product_name' => $products[$i]->name,'product_image' => $products[$i]->image->path,'product_price' => $products[$i]->price, 'product_id' => $products[$i]->id);
+        for ($i = 0; $i < $products->count(); $i++) {
+            $productsDetails[$i] = array('product_name' => $products[$i]->name, 'product_image' => $products[$i]->image->path, 'product_price' => $products[$i]->price, 'product_id' => $products[$i]->id);
 
         }
         return Response::json(array('data' => $productsDetails));

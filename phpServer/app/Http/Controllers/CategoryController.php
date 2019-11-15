@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\AddCategory;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Session;
@@ -21,10 +22,16 @@ class CategoryController extends Controller
         return view('shop.showCategories')->withCategories(Category::all());
     }
 
-    public function show(Category $id)
+    public function show(Request $request,$id)
     {
-        $category = Category::find($id)->first();
-        return view('shop.shop')->withProducts($category->products)->withCategory($category);
+        $category = Category::find($id);
+        if($request->has('price_min','price_max')){
+            $products = $category->products()->where('price','>=',$request->price_min)->where('price','<=',$request->price_max)->get();
+        }else{
+            $products = $category->products;
+        }
+
+        return view('shop.shop')->withProducts($products)->withCategory($category);
     }
 
     /**

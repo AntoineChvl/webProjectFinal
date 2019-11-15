@@ -84,7 +84,7 @@ function Controller(connection) {
     }
 
     this.showFromId = async function (res, id) {
-        let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status,status.id as statusLvl FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id WHERE users.id=?', id);
+        let result = await this.executeQuery('SELECT users.id,firstname,lastname,email,password,location as campus,name as status,status.id as statusLvl,rgpd_agreed,rgpd_date FROM `users` JOIN `campus` ON users.campus_id = campus.id JOIN `status` ON users.status_id = status.id WHERE users.id=?', id);
         if (result[0]) {
             res.json({status: 'success', 'result': result[0]});
         } else {
