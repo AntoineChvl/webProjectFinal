@@ -51,13 +51,16 @@
                 </div>
             </div>
         </div>
+    @endif
 
         <div class="transition">
-            <section>
-                <p class="p-scroll">Découvrez tous nos produits !</p>
+            @if(!isset($category))
+                <section>
+                    <p class="p-scroll">Découvrez tous nos produits !</p>
 
-                <a href="#" class="scroll-down"></a>
-            </section>
+                    <a href="#" class="scroll-down"></a>
+                </section>
+            @endif
 
             <div class="section-scroll"></div>
 
@@ -95,9 +98,6 @@
                 </div>
             </article>
         </div>
-
-    @endif
-
     <input type="text" placeholder="Recherchez..." id="search-bar">
 
     <div class="product-list row">
