@@ -50,7 +50,7 @@ app.get('/getToken', async (req, res) => {
         req.body.username,
         hasher.createHash('sha512').update(req.body.password, 'utf-8').digest('hex'),
         //78a2e9b26e31887e
-    ]
+    ];
     if(executeQuery('SELECT * FROM accessList WHERE ?',body)){
         let privateKey = fs.readFileSync('./private.pem', 'utf8');
         let token = jwt.sign({},privateKey, { algorithm: 'HS256'});
