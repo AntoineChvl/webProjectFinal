@@ -20,8 +20,8 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::with('image')->latest()->whereDate('date', '>=', now())->limit(3)->get();
-        $past_events = Event::whereDate('date', '<', now())->limit(3)->get();
+        $events = Event::with('image')->orderBy('date', "DESC")->whereDate('date', '>=', now())->limit(3)->get();
+        $past_events = Event::orderBy('date', 'ASC')->whereDate('date', '<', now())->limit(3)->get();
 
         return view('events.eventsIndex', compact('events', 'past_events'));
 
@@ -35,11 +35,11 @@ class EventsController extends Controller
 
         if($request->input('typeOfEvents') == 2)
         {
-            $events = Event::whereDate('date', '>=', now())->skip($skip)->take(3)->get();
+            $events = Event::orderBy('date', "DESC")->whereDate('date', '>=', now())->skip($skip)->take(3)->get();
 
         } elseif($request->input('typeOfEvents') == 3) {
 
-            $events = Event::whereDate('date', '<', now())->skip($skip)->take(3)->get();
+            $events = Event::orderBy('date', 'ASC')->whereDate('date', '<', now())->skip($skip)->take(3)->get();
 
         }
 

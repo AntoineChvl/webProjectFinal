@@ -42,8 +42,9 @@ $(document).ready(function () {
                     _html += '<a href='+value.show_path+' class="btn btn-dark">Visiter l\'évènement</a>';
                     _html += '</article>';
                 });
-                if(response.length < 3)
+                if(response.length < 3 && response.length > 0)
                 {
+                    console.log(response.length);
                     $('#'+buttonLoadValue).remove();
                     _html += '<article class="singleEvent col-md-4">';
                     _html += '</article>';
@@ -52,6 +53,11 @@ $(document).ready(function () {
                         _html += '<article class="singleEvent col-md-4">';
                         _html += '</article>';
                     }
+                }
+
+                if(response.length == 0)
+                {
+                    $('#'+buttonLoadValue).remove();
                 }
 
                 $('#'+buttonId).prepend(_html);
