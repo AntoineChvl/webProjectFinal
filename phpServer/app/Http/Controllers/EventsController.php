@@ -174,7 +174,7 @@ class EventsController extends Controller
 
         for($i = 0; $i < $events->count(); $i++)
         {
-            $eventsDetails[$i] = array('event_name' => $events[$i]->name,'event_image' => $events[$i]->image->path,'event_description' => $events[$i]->description, 'event_location' =>  $events[$i]->location, 'event_price' => $events[$i]->price, 'event_id' => $events[$i]->id);
+            $eventsDetails[$i] = array('event_name' => $events[$i]->name,'event_image' => $events[$i]->image->path,'event_description' => substr($events[$i]->description, 0, 100).'...', 'event_location' =>  $events[$i]->location, 'event_price' => $events[$i]->price, 'event_id' => $events[$i]->id);
 
         }
 
