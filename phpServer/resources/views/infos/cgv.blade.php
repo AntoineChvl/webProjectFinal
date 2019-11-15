@@ -24,7 +24,7 @@
             <p>L'utilisateur dispose d’un droit de rétractation de 14 jours à compter du lendemain du jour de la commande. Pour ce faire, l'utilisateur doit envoyer un mail à l’adresse adress.bde@viacesi.fr. A réception de la demande, la commande en ligne sera annulée sur le site.</p>
             <h4>Restrictions</h4>
             <p>Le CESI se réserve le droit de refuser toute commande portant sur une insertion contraire aux bonnes mœurs ou à la loi française.</p>
-            <p>. A ce titre, il garantit au CESI contre tous recours, fondés directement ou indirectement sur ces données, susceptibles d'être intentés par quiconque à l'encontre de la société. Il s'engage en particulier à prendre en charge le paiement des sommes, quelles qu'elles soient, résultant du recours d'un tiers à l'encontre des utilisateurs, y compris les honoraires d'avocat et frais de justice. </p>
+            <p>A ce titre, il garantit au CESI contre tous recours, fondés directement ou indirectement sur ces données, susceptibles d'être intentés par quiconque à l'encontre de la société. Il s'engage en particulier à prendre en charge le paiement des sommes, quelles qu'elles soient, résultant du recours d'un tiers à l'encontre des utilisateurs, y compris les honoraires d'avocat et frais de justice. </p>
         </div>
     </div>
 @endsection
