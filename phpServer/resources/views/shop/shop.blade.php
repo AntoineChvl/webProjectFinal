@@ -55,13 +55,16 @@
                 @endisset
             </div>
         </div>
+    @endif
 
         <div class="transition">
-            <section>
-                <p class="p-scroll">Découvrez tous nos produits !</p>
+            @if(!isset($category))
+                <section>
+                    <p class="p-scroll">Découvrez tous nos produits !</p>
 
-                <a href="#" class="scroll-down"></a>
-            </section>
+                    <a href="#" class="scroll-down"></a>
+                </section>
+            @endif
 
             <div class="section-scroll"></div>
 
@@ -70,7 +73,7 @@
                     <hr class="top-bar">
                     <p>
                     <div class="centerCol">
-                        <button class="btn submit-button" type="button" data-toggle="collapse"
+                        <button class="btn submit-button" type="button" id="filter" data-toggle="collapse"
                                 data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
                             Filtrer par catégories
                         </button>
@@ -88,22 +91,17 @@
                             </div>
                         </div>
                     </div>
+                    <form class="centerCol">
+                        <div class="centerCol">
+                            <button class="btn submit-button" type="submit">Filtrer par prix</button>
+                        </div>
+                        <input class="form-control" type="number" name="price_min" min="0" value="{{Request::has('price_min') ? Request::input('price_min') : 0}}">
+                        <input class="form-control" type="number" name="price_max" min="0" value="{{Request::has('price_max') ? Request::input('price_max') : 1000}}">
+                    </form>
                     <hr>
                 </div>
             </article>
         </div>
-
-    @endif
-
-    <form>
-        <input type="number" name="price_min" min="0"
-               value="{{Request::has('price_min') ? Request::input('price_min') : 0}}">
-        <input type="number" name="price_max" min="0"
-               value="{{Request::has('price_max') ? Request::input('price_max') : 1000}}">
-        <button type="submit">Filtrer par prix</button>
-    </form>
-
-
     <input type="text" placeholder="Recherchez..." id="search-bar">
 
     <div class="product-list row">
