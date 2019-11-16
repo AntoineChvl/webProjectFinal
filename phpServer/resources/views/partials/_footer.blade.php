@@ -1,7 +1,8 @@
 <footer>
     <div id="boxFooter">
         <div class="elementFooter">
-            <ul>Retrouvez l'actualité de CESI sur :
+            <p>Retrouvez l'actualité de CESI sur :</p>
+            <ul>
                 <li><a href="https://www.facebook.com/CESIingenieurs/" class="facebook"><i
                             class="fab fa-facebook-square"></i> Facebook</a></li>
                 <li><a href="https://twitter.com/cesiingenieurs%20" class="twitter" target="_blank"><i
@@ -23,7 +24,7 @@
                 <a href="{{ route('legal_mention') }}">Mentions légales</a><br>
                 <a href="{{ route('cgv') }}">Conditions générales de ventes</a><br>
                 <a href="{{ route('contact') }}">Contact</a><br>
-                <a href="{{ route('propos') }}">A propos</a></p>
+                <a href="{{ route('propos') }}">A propos</a>
         </div>
     </div>
 </footer>
