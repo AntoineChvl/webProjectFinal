@@ -53,10 +53,16 @@ Either way, we managed to organize ourselves thanks to the realization of the fi
 Finally, I spoke with a friend, this project could have been done on the time of the block "Web". Which would have allowed to integrate, I guess,more easily the various notions. But also, to improve even more the current website to make it the most professional possible.
 
 In the words of Tom Banchereau
->
+> This project was very interesting in its globality.
+I think that the time we had to do this project was a little bit too short,
+I would have liked to improve even more our website
+-use React.js on the shop to manage all the data and make a lot of filter
+-create a live chat on each image
+
+First I was reticent with the fact that we were forced to follow a graphical chart, but my teammates did a great job.
 
 In the words of Antoine CHAUVEL
->
+> With a strong technical background, this project has been one of the most enriching yet. I truly appreciated to work on a concrete subject as this website was, in order to improve my programing languages knowledge during the last couple of weeks.
 
 
 ## License
