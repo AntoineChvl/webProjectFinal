@@ -125,10 +125,13 @@ class EventsController extends Controller
      */
     public function update(Event $event)
     {
-        $event->update($this->validateEvent());
+        $event->update($this->validateEditingEvent());
         $storedImage = $this->storeImage();
-        $event->update(['image_id' => $storedImage]);
-        return redirect('events');
+        if($storedImage){
+            $event->update(['image_id' => $storedImage]);
+        }
+
+        return redirect(route('admin-panel'));
     }
 
     /**
@@ -154,6 +157,18 @@ class EventsController extends Controller
             'date' => 'required|date|after:today',
             'price' => 'nullable|integer|max:500',
             'image' => 'required',
+        ]);
+    }
+
+
+    public function validateEditingEvent()
+    {
+        return request()->validate([
+            'name' => 'required|min:3|string',
+            'description' => 'required|min:10',
+            'location' => 'required|min:3',
+            'date' => 'required|date|after:today',
+            'price' => 'nullable|integer|max:500'
         ]);
     }
 
