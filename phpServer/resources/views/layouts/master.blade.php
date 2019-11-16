@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('css/project-css/master-layout.css') }}"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="//wpcc.io/lib/1.0.2/cookieconsent.min.css"/>
-
+    <link rel="icon" type="image/png" href="{{ asset('assets/imgs/favicon.jpg') }}" />
     @stack('script.head')
 
     @stack('stylesheet')

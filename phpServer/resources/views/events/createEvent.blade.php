@@ -27,7 +27,7 @@
 
             @include('partials.events._form')
 
-            <button type="submit" class="btn submit-button">Créer l'évènement !</button>
+            <button type="submit" class="btn submit-button mb-4">Créer l'évènement !</button>
 
 
         </form>

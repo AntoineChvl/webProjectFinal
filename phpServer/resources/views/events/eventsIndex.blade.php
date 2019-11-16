@@ -10,12 +10,29 @@
 
 @push('stylesheet')
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/project-css/transition.css') }}">
 @endpush
 
 
 @section('content')
 
     <h1 class="d-flex justify-content-center">Tous les évènements</h1>
+
+    <section>
+        <hr>
+        <img src="{{ asset('assets/imgs/eventsIndex.jpg') }}" alt="">
+        <hr>
+    </section>
+
+    <div class="transition">
+        <section>
+            <p class="p-scroll">Découvrez tous nos évènements !</p>
+
+            <a href="#" class="scroll-down"></a>
+        </section>
+
+        <div class="section-scroll"></div>
+    </div>
 
 
         <section class="eventsGroup">
@@ -70,4 +87,5 @@
 
 @push('script')
     <script src="{{ asset('js/project-js/events/loadMore.js') }}"></script>
+    <script src="{{ asset('js/project-js/shop.js') }}"></script>
 @endpush

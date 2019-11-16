@@ -20,7 +20,7 @@ class EventsController extends Controller
      */
     public function index()
     {
-        $events = Event::with('image')->orderBy('date', "DESC")->whereDate('date', '>=', now())->limit(3)->get();
+        $events = Event::with('image')->orderBy('date', "ASC")->whereDate('date', '>=', now())->limit(3)->get();
         $past_events = Event::orderBy('date', 'ASC')->whereDate('date', '<', now())->limit(3)->get();
 
         return view('events.eventsIndex', compact('events', 'past_events'));
@@ -35,7 +35,7 @@ class EventsController extends Controller
 
         if($request->input('typeOfEvents') == 2)
         {
-            $events = Event::orderBy('date', "DESC")->whereDate('date', '>=', now())->skip($skip)->take(3)->get();
+            $events = Event::orderBy('date', "ASC")->whereDate('date', '>=', now())->skip($skip)->take(3)->get();
 
         } elseif($request->input('typeOfEvents') == 3) {
 
@@ -53,10 +53,6 @@ class EventsController extends Controller
         }
 
         return Response::json($response);
-
-
-
-
     }
 
     /**
@@ -129,10 +125,13 @@ class EventsController extends Controller
      */
     public function update(Event $event)
     {
-        $event->update($this->validateEvent());
+        $event->update($this->validateEditingEvent());
         $storedImage = $this->storeImage();
-        $event->update(['image_id' => $storedImage]);
-        return redirect('events');
+        if($storedImage){
+            $event->update(['image_id' => $storedImage]);
+        }
+
+        return redirect(route('admin-panel'));
     }
 
     /**
@@ -156,8 +155,20 @@ class EventsController extends Controller
             'description' => 'required|min:10',
             'location' => 'required|min:3',
             'date' => 'required|date|after:today',
-            'price' => 'nullable|integer|max:15',
+            'price' => 'nullable|integer|max:500',
             'image' => 'required',
+        ]);
+    }
+
+
+    public function validateEditingEvent()
+    {
+        return request()->validate([
+            'name' => 'required|min:3|string',
+            'description' => 'required|min:10',
+            'location' => 'required|min:3',
+            'date' => 'required|date|after:today',
+            'price' => 'nullable|integer|max:500'
         ]);
     }
 
@@ -174,7 +185,7 @@ class EventsController extends Controller
 
         for($i = 0; $i < $events->count(); $i++)
         {
-            $eventsDetails[$i] = array('event_name' => $events[$i]->name,'event_image' => $events[$i]->image->path,'event_description' => $events[$i]->description, 'event_location' =>  $events[$i]->location, 'event_price' => $events[$i]->price, 'event_id' => $events[$i]->id);
+            $eventsDetails[$i] = array('event_name' => $events[$i]->name,'event_image' => $events[$i]->image->path,'event_description' => substr($events[$i]->description, 0, 100).'...', 'event_location' =>  $events[$i]->location, 'event_price' => $events[$i]->price, 'event_id' => $events[$i]->id);
 
         }
 

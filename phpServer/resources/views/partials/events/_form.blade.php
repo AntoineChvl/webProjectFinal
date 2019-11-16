@@ -1,6 +1,6 @@
 <div class="form-group">
     <label for="name">Nom de l'évènement :</label>
-    <input type="text" name="name" id="name" value="@isset($event) {{$event->name }} @endisset {{ old('name') }}" class="form-control" required>
+    <input type="text" name="name" id="name" value="{{ old('name') ?? isset($event) ? $event->name : ''}}" class="form-control" required>
     @error('name')
     <p>{{ $errors->first('name') }}</p>
     @enderror
@@ -9,7 +9,7 @@
 <div class="form-group">
     <label for="description">Description de l'évènement :</label>
     <textarea name="description" id="description"  class="form-control"
-              required>@isset($event) {{$event->description }} @endisset {{ old('description') }}</textarea>
+              required>{{ old('description') ?? isset($event) ? $event->description : ''}}</textarea>
     @error('description')
     <p>{{ $errors->first('description') }}</p>
     @enderror
@@ -17,7 +17,7 @@
 
 <div class="form-group">
     <label for="location">Lieu de l'évènement :</label>
-    <input type="text" name="location" id="location" value="@isset($event) {{$event->location }} @endisset {{ old('location') }}" class="form-control" required>
+    <input type="text" name="location" id="location" value="{{ old('location') ?? isset($event) ? $event->location : ''}}" class="form-control" required>
     @error('location')
     <p>{{ $errors->first('location') }}</p>
     @enderror
@@ -43,7 +43,7 @@
 
 <div class="form-group">
     <label for="price">Prix l'évènement (facultatif) :</label>
-    <input type="number" name="price" id="price" value="@isset($event) {{$event->price }} @endisset {{ old('price') }}" class="form-control" min="0" max="15">
+    <input type="number" name="price" id="price" value="{{ old('price') ?? isset($event) ? $event->price : ''}}" class="form-control" min="0" max="500">
     @error('price')
     <p>{{ $errors->first('price') }}</p>
     @enderror

@@ -17,10 +17,10 @@
         <div id="box" class="row mt-5">
             <div class="element col-6">
                 <h3>DECOUVREZ LES DIFFERENTES ACTIVITES DE NOTRE BDE</h3>
-                <p>Nos BDE proposent plusieurs activités et événements correspondant aux différentes envies de chacun</p>
+                <p>Le BDE propose plusieurs activités et événements correspondant aux différentes envies de chacun</p>
                 <p><a href="{{ route('events.index') }}"><img src="{{asset('assets/imgs/activites.jpg')}}" class="imageActivites" alt="Activités"></a></p><br>
-                <p>Les BDE offrent la possibilité de faire de nouvelles rencontres avec des personnes qui partagent vos passions.</p>
-                <p><a href="{{ route('events.index') }}">Cliquez pour découvrir nos activités proposés.</a></p>
+                <p>Le BDE offre la possibilité de faire de nouvelles rencontres avec des personnes qui partagent vos passions.</p>
+                <p><a href="{{ route('events.index') }}">Cliquez pour découvrir nos activités proposées.</a></p>
             </div>
             <div class="element col-6">
                 <h3>NOTRE BOUTIQUE</h3>

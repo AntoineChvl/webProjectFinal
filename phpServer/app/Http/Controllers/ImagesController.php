@@ -78,7 +78,7 @@ class ImagesController extends Controller
         {
             $imageChecked = ImagePastEvent::where('image_id', '=', $request->input('data'))->first();
             $imageChecked->validate();
-            $imageData = array('type' => 'IMAGE', 'content' => $imageChecked->image->path, 'user' => User::find($imageChecked->image->user_id)->lastname.' '.User::find($imageChecked->image->user_id)->firstname);
+            $imageData = array('type' => 'IMAGE', 'content' => $imageChecked->image->path, 'user' => User::find($imageChecked->image->user_id)->lastname);
 
             if(User::auth()->statusLvl == 3)
             {
