@@ -117,7 +117,7 @@ class ShopController extends Controller
     {
         $product = Product::find($id);
         if ($product) {
-            return view("shop/createProduct")->withAction('edit')->withProduct($product)->withCategories(Category::all());
+            return view("shop/editProduct")->withAction('edit')->withProduct($product)->withCategories(Category::all());
         } else {
             return '<p>Le produit que vous recherchez n\'existe pas !</p>';
         }
@@ -139,6 +139,13 @@ class ShopController extends Controller
             if ($request->image) {
                 $image = Image::storeImage($request->image);
                 $product->update(['image_id' => $image]);
+            }
+            $product->categories()->detach();
+            foreach ($request->except(['name', 'description', 'price', '_token', 'image']) as $key => $value) {
+                $category = Category::find($key);
+                if ($category && $value == 'on') {
+                    $product->categories()->attach($category);
+                }
             }
             return redirect(route('shop.product.show', $product->id));
         } else {

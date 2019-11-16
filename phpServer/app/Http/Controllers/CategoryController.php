@@ -54,6 +54,7 @@ class CategoryController extends Controller
     {
         Category::create($request->only('name'));
         Session::flash('message flash', ['type' => 'success', 'content' => "La catégorie a bien été ajoutée"]);
+        return redirect(route('admin-panel'));
     }
 
     /**

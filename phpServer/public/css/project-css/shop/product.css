@@ -68,8 +68,8 @@ h1 {
 }
 
 .description {
-    height: 200px;
-    max-width: 420px;
+    text-align:justify;
+    padding-right:5px;
     overflow: auto;
 }
 
