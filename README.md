@@ -41,11 +41,20 @@ This will create a web server and allows to access the website.
 
 
 In the words of Vincent JACQUES
->
+> Working on this project really help me to improve my knowledges about web development. Using these knowledges on the web site's creation was very interesting because we worked on something concrete.
+I also learned how to work on a web project thanks to software such as phpstorm which we didn't see on the web block.
+The reals issues I have met was on gitHub with some problems with differents versions.
+Moreover, I whish I worked more on the back end of the web site cause it's the most interesting part of the web development.
+
 In the words of Enzo LEBRUN
-> 
+>  I enjoyed working on this project with the team. This week and a half has deepened our knowledge of website creation and organization using the laravel framework. But also, the use of last year's know-how adapted to our needs: I think of the realization of the database for our website.
+We have encountered different problems that could be solved more easily than in previous projects.
+Either way, we managed to organize ourselves thanks to the realization of the first folder "Conception" and also using "GitHub" for the sequel. Which allowed to lose as little time as possible and succeed in perform all the required tasks in addition to some bonuses.
+Finally, I spoke with a friend, this project could have been done on the time of the block "Web". Which would have allowed to integrate, I guess,more easily the various notions. But also, to improve even more the current website to make it the most professional possible.
+
 In the words of Tom Banchereau
 >
+
 In the words of Antoine CHAUVEL
 >
 
