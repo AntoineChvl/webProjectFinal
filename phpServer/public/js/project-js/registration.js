@@ -41,7 +41,7 @@ $(document).ready(function () {
 
     $('#passwordInscription').keyup(function(e){
 
-        if(!passwordLetterRegex.test($('#passwordInscription').val()) && !passwordDigitRegex.test($('#passwordInscription').val()))
+        if(!passwordLetterRegex.test($('#passwordInscription').val()) || !passwordDigitRegex.test($('#passwordInscription').val()))
         {
             $("#passwordRegexMismatch").removeClass('d-none');
 

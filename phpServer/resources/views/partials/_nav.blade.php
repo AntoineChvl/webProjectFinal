@@ -14,17 +14,8 @@
             <li class="nav-item">
                 <a class="nav-link padd" href="{{ route('shop') }}">Boutique</a>
             </li>
-            <li class="nav-item dropdown">
-
-                <button class="btn dropdown-toggle eventsDropdown rounded-0" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Évènements
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton" id="navbarEventDropdown">
-                    <a class="dropdown-item" href="{{ route('events.index') }}">Tous les évènements</a>
-                    <a class="dropdown-item" href="#">Évènements à venir</a>
-                    <a class="dropdown-item" href="#">Évènements passés</a>
-                </div>
-
+            <li class="nav-item">
+                    <a class="nav-link padd" href="{{ route('events.index') }}">Évènements</a>
             </li>
             @if(App\User::auth() && (App\User::auth()->statusLvl == 2 || App\User::auth()->statusLvl == 3))
                 <li class="nav-item">

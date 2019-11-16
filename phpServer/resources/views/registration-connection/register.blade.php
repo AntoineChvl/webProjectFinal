@@ -120,7 +120,7 @@
                             <label for="passwordInscription">Mot de passe : </label>
                             <input type="password" id="passwordInscription" name="password"
                                    class="form-control champ" placeholder="qodpfjsdjgAJjfd!45" required>
-                            <p id="passwordRegexMismatch" class="d-none">Le mot de passe doit contenir 1 chiffre et une lettre.</p>
+                            <p id="passwordRegexMismatch" class="d-none">Le mot de passe doit contenir 1 chiffre et une lettre majuscule.</p>
                         </div>
                         @if($errors->has('password'))
                             <div class="error alert alert-danger">
