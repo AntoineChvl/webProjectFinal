@@ -46,7 +46,7 @@ In the words of Enzo LEBRUN
 > 
 In the words of Tom Banchereau
 >
-In the words of Antoine CHAUVEL :
+In the words of Antoine CHAUVEL
 >
 
 
