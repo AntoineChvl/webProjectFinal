@@ -57,8 +57,7 @@ In the words of Tom Banchereau
 I think that the time we had to do this project was a little bit too short,
 I would have liked to improve even more our website
 -use React.js on the shop to manage all the data and make a lot of filter
--create a live chat on each image
-
+-create a live chat on each image 
 First I was reticent with the fact that we were forced to follow a graphical chart, but my teammates did a great job.
 
 In the words of Antoine CHAUVEL
