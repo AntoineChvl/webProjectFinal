@@ -31,7 +31,7 @@
     <article class="container">
         <div class="row">
             <div class="col">
-                <img src="{{ asset('storage/imagesUploaded/'.$product->image->path) }}" alt="product">
+                <img src="{{ asset('storage/imagesUploaded/'.$product->image->path) }}" alt="produit">
             </div>
 
             <div class="col">

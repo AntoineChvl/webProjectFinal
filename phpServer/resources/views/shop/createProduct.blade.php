@@ -13,8 +13,8 @@
 @endpush
 
 @section('content')
-{{$errors   }}
-    <section>
+
+    <div>
         <a href="{{URL::previous()}}" class="btn btn-light back" id="back">Retour</a>
 
         <form method="POST" action="{{route('shop.product.store')}}" enctype="multipart/form-data">
@@ -24,12 +24,12 @@
                 <p class="selectCat">Sélectionnez une ou plusieurs catégorie(s)</p>
                 <div class="category-list row">
                     @foreach($categories as $category)
-                        <article class="col-2">
+                        <div class="col-md-2 col-sm-6">
                             <label for="{{ $category->id }}">{{ $category->name }}</label>
-                        </article>
-                            <article class="col-2">
+                        </div>
+                        <div class="col-md-2 col-sm-6">
                             <input id="{{ $category->id }}" type="checkbox" name="{{ $category->id }}">
-                        </article>
+                        </div>
                     @endforeach
                 </div>
 
@@ -69,16 +69,15 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-5">
-                            <img id="imagePreview" src="">
+                            <img id="imagePreview" src="https://www.commerce-pontarlier.com/assets/images/masque_commercant.png" alt="apercu">
                         </div>
                     </div>
                     <div class="row">
                         <button class="btn submit-button" id="sub" type="submit">Valider</button>
                     </div>
-                    </div>
                 </div>
         </form>
-    </section>
+    </div>
 
 @endsection
 

@@ -26,13 +26,13 @@
                 <p class="selectCat">Sélectionnez une ou plusieurs catégorie(s)</p>
                 <div class="category-list row">
                     @foreach($categories as $category)
-                        <article class="col-2">
+                        <div class="col-md-2 col-sm-6">
                             <label for="{{ $category->id }}">{{ $category->name }}</label>
-                        </article>
-                            <article class="col-2">
+                        </div>
+                        <div class="col-md-2 col-sm-6">
                             <input id="{{ $category->id }}" type="checkbox" name="{{ $category->id }}"
                                 {{$product->categories->contains($category)? 'Checked' : ''}}>
-                        </article>
+                        </div>
                     @endforeach
                 </div>
 
@@ -72,12 +72,11 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-5">
-                            <img id="imagePreview" src="{{ asset('storage/imagesUploaded/'.$product->image->path)}}">
+                            <img id="imagePreview" src="{{ asset('storage/imagesUploaded/'.$product->image->path)}}" alt="apercu">
                         </div>
                     </div>
                     <div class="row">
                         <button class="btn submit-button" id="sub" type="submit">Valider</button>
-                    </div>
                     </div>
                 </div>
         </form>

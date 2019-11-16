@@ -60,26 +60,22 @@
 
         <div class="transition">
             @if(!isset($category))
-                <section>
-                    <p class="p-scroll">Découvrez tous nos produits !</p>
+                <p class="p-scroll">Découvrez tous nos produits !</p>
 
-                    <a href="#" class="scroll-down"></a>
-                </section>
+                <a href="#" class="scroll-down"></a>
             @endif
 
             <div class="section-scroll"></div>
 
-            <article>
+            <div>
                 <div>
                     <hr class="top-bar">
-                    <p>
-                    <div class="centerCol">
-                        <button class="btn submit-button" type="button" id="filter" data-toggle="collapse"
-                                data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-                            Filtrer par catégories
-                        </button>
-                    </div>
-                    </p>
+                        <div class="centerCol">
+                            <button class="btn submit-button" type="button" id="filter" data-toggle="collapse"
+                                    data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+                                Filtrer par catégories
+                            </button>
+                        </div>
                     <div class="collapse" id="collapseExample">
                         <div class="card card-body">
                             <div class="row">
@@ -101,17 +97,17 @@
                     </form>
                     <hr>
                 </div>
-            </article>
+            </div>
         </div>
+
     <input type="text" placeholder="Recherchez..." id="search-bar">
 
     <div class="product-list row">
         @foreach($products as $product)
-            <article class="product col-md-3 col-sm-6">
-                <a href={{ route('shop.product.show', $product->id) }}><img
-                        src={{ asset('storage/imagesUploaded/'.$product->image->path) }} alt="product"></a>
+            <div class="product col-md-3 col-sm-6">
+                <a href={{ route('shop.product.show', $product->id) }}><img src={{ asset('storage/imagesUploaded/'.$product->image->path) }} alt="produit"></a>
                 <p class="product-name">{{ $product->name }}</p>
-            </article>
+            </div>
         @endforeach
     </div>
 
