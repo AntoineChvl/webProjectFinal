@@ -3,7 +3,10 @@
 body
 {
     font-family: "Roboto", sans-serif;
+}
 
+main
+{
 }
 
 #main-wrapper
@@ -51,6 +54,11 @@ li
 }
 
 /*NAVBAR */
+
+.mainNavbar
+{
+    min-height: 100px;
+}
 
 .mainNavbar nav
 {

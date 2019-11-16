@@ -10,6 +10,7 @@
 
 @push('stylesheet')
     <link rel="stylesheet" href="{{ asset('css/project-css/shop/shop.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/project-css/transition.css') }}">
     <link rel="stylesheet" href="{{ asset('css/EasyAutocomplete/easy-autocomplete.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/EasyAutocomplete/easy-autocomplete.themes.min.css') }}">
 @endpush

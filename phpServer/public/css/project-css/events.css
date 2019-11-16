@@ -36,6 +36,11 @@ This file will cover all the CSS for the event part of the website.
     text-align: center;
 }
 
+.singleEvent img:hover
+{
+    opacity: 0.85;
+}
+
 .singleEvent a {
     margin-top: 2%;
 }

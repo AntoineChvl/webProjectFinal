@@ -49,7 +49,7 @@
         @if($event->date < now())
 
             <div class="container">
-                @if($isConnected)
+                @if($isConnected && \App\Participate::where('event_id', '=', $event->id)->where('user_id', '=', $userId)->count() > 0)
                 <div class="row col-12">
                     <button type="button" class="btn submit-button" data-toggle="modal" data-target="#exampleModal">
                         Ajouter une photo

@@ -17,7 +17,7 @@ $(document).ready(function () {
 
         $('#eventImages').removeClass('d-none');
 
-        removeElement(validateRoute, 'load', tableName, 'image_id');
+        removeElement(validateRoute, 'POST', tableName, 'image_id');
 
         $('#eventImages').DataTable( {
             destroy: true,
