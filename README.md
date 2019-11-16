@@ -22,7 +22,7 @@ To play our game you will have to download the multiple files of this subject.
 To do this you can either download each file or enter this in your terminal :
 
 ```
-git clone <url>
+git clone https://github.com/AntoineChvl/webProjectFinal.git
 ```
 
 Then you’ll have to load the SQL script that you downloaded right before in phpMyAdmin. Then, you should run this command in your editor terminal:
