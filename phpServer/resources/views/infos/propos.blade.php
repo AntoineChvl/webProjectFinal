@@ -12,7 +12,7 @@
         <div id="boxPolitique">
             <div class="elementPolitique">
                 <h3>A propos de notre école</h3>
-                <h4><p>Campus d’enseignement supérieur et de formation professionnelle, CESI poursuit sa mission sociétale en permettant à des étudiants, alternants et salariés de devenir acteurs des transformations des entreprises et de la société, grâce à ses Écoles d’Ingénieurs, son École Supérieure de l’Alternance, son École de Formation des Managers et son activité de Certification.</p></h4>
+                <h4>Campus d’enseignement supérieur et de formation professionnelle, CESI poursuit sa mission sociétale en permettant à des étudiants, alternants et salariés de devenir acteurs des transformations des entreprises et de la société, grâce à ses Écoles d’Ingénieurs, son École Supérieure de l’Alternance, son École de Formation des Managers et son activité de Certification.</h4>
                 <p>En 2017, ce sont plus de 22 000 apprenants qui ont rejoint les 25 campus présents sur l’ensemble du territoire français. Implanté également en Espagne, en Algérie et au Cameroun, CESI développe plus largement des grands projets d’éducation pour le compte d’institutions internationales.</p>
                 <p>CESI c’est la culture de l’excellence, de la promotion sociale et de la diversité.</p>
                 <p>Pionnier en France dans les méthodes de pédagogie active et tourné vers l’innovation et les technologies, CESI opère dans tous les secteurs d’activités et forme aux métiers et compétences de demain dans l’industrie et les services, le bâtiment et la ville du futur. Il mène, par ailleurs, des activités de recherche dans son Laboratoire d’Innovation Numérique (LINEACT).</p>

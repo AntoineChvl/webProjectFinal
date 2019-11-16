@@ -16,20 +16,19 @@
 
 @section('content')
 
-    <h1 class="d-flex justify-content-center">Tous les évènements</h1>
+
 
     <section>
+        <h1 class="d-flex justify-content-center">Tous les évènements</h1>
         <hr>
         <img src="{{ asset('assets/imgs/eventsIndex.jpg') }}" alt="">
         <hr>
     </section>
 
     <div class="transition">
-        <section>
             <p class="p-scroll">Découvrez tous nos évènements !</p>
 
             <a href="#" class="scroll-down"></a>
-        </section>
 
         <div class="section-scroll"></div>
     </div>

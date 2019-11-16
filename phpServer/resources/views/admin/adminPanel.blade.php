@@ -30,11 +30,11 @@
 
         <h2>Évènements</h2>
         @if($user->statusLvl == 2)
-            <a class="row btn submit-button col-12" id="checkPastEvents" href="{{ route('events.create') }}">
+            <a class="row btn submit-button col-12" href="{{ route('events.create') }}">
                 Ajouter un évènement
             </a>
 
-            <a class="row btn submit-button col-12" id="checkPastEvents" href="{{ route('admin-events') }}">
+            <a class="row btn submit-button col-12"  href="{{ route('admin-events') }}">
                 Gérer les évènements
             </a>
 
@@ -43,7 +43,7 @@
             </a>
         @endif
 
-        <a class="row btn submit-button col-12" id="checkPastEvents" href="{{ route('admin-images') }}">
+        <a class="row btn submit-button col-12" href="{{ route('admin-images') }}">
             Gérer les photos et commentaires des évènements passés
         </a>
 

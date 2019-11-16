@@ -30,7 +30,7 @@
     <hr>
 
     <div class="mb-5">
-        <table id="eventsList" class="d-none dt-reponsive" width="100%" cellspacing="0">
+        <table id="eventsList" class="d-none dt-reponsive">
             <thead>
             <tr>
                 <th>Nom de l'évènement</th>
@@ -60,10 +60,10 @@
 @push('script')
     <script src="https://kit.fontawesome.com/1d7bafa102.js" crossorigin="anonymous"></script>
 
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
 
     <script src="{{ asset('js/project-js/admin/adminTable.js') }}"></script>
     <script src="{{ asset('js/project-js/admin/loadEvents.js') }}"></script>

@@ -12,7 +12,7 @@
             </ul>
         </div>
         <div class="elementFooter">
-            <p>Partenaires <br>
+            <p>Partenaires </p>
                 <a href="https://cge.asso.fr/"><img src="{{asset('assets/imgs/CGE.Blanc.jpg')}}" class="logoFooter" alt="CGE"></a>
                 <a href="https://www.cti-commission.fr/"><img src="{{asset('assets/imgs/cti.jpg')}}" class="logoFooter" alt="Cti"></a>
                 <a href="https://www.hesam.eu/"><img src="{{asset('assets/imgs/HESAM.jpg')}}" class="logoFooter" alt="Hesam"></a>

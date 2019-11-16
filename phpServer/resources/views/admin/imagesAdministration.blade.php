@@ -40,7 +40,7 @@
 
     <hr>
 
-    <table id="eventImages" class="d-none" width="100%" cellspacing="0">
+    <table id="eventImages" class="d-none" >
         <thead>
         <tr>
             <th>Image</th>
@@ -62,10 +62,10 @@
 
 @push('script')
     <script src="{{ asset('js/project-js/images/preview-image.js') }}"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
     <script src="{{ asset('js/project-js/admin/adminTable.js') }}"></script>
     <script src="{{ asset('js/project-js/admin/loadImagesData.js') }}"></script>
 @endpush

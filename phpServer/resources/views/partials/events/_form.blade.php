@@ -24,9 +24,9 @@
 </div>
 
 <div class="form-group d-flex flex-column">
-    <label for="image">Image pour l'évènement</label>
+    <label for="imageReadyToUpload">Image pour l'évènement</label>
     <input type="file" name="image" id="imageReadyToUpload">
-    <img id="imagePreview" src="@isset($event) {{ asset('storage/imagesUploaded/'.$event->image->path) }} @endisset">
+    <img id="imagePreview" src="@isset($event) {{ asset('storage/imagesUploaded/'.$event->image->path) }} @endisset" alt="Prévisualisation de l'image">
     @error('image')
     <p>{{ $errors->first('image') }}</p>
     @enderror

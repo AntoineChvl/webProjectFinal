@@ -22,27 +22,33 @@
 
     <a href="{{route('events.index')}}" class="btn btn-light back">Retour aux évènements</a>
 
-    <h1 id="singleEventTitle">{{$event->name}}</h1>
 
-    <article class="eventPresentation row mx-auto">
 
-        <div class="col-md eventImageAndParticipate">
-            <img src="{{ asset('storage/imagesUploaded/'.$event->image->path) }}" class="eventMainImage"
-                 alt="Image décrivant l'évènement organisé par le BDE !">
-        </div>
+    <article>
 
-        <div class="col-md">
-            <div class="row">
-                <p class="col-md ">Date de l'évènement : {{$event->date}}</p>
-                <p class="col-md ">Lieu : {{$event->location}}</p>
+        <h1 id="singleEventTitle">{{$event->name}}</h1>
+
+        <div class="row mx-auto eventPresentation">
+            <div class="col-md eventImageAndParticipate">
+                <img src="{{ asset('storage/imagesUploaded/'.$event->image->path) }}" class="eventMainImage"
+                     alt="Image décrivant l'évènement organisé par le BDE !">
             </div>
 
-            <div class="row">
-                <div clas="eventInformations">
-                    <p id="eventDescription" class="col-md">{{$event->description}}</p>
+            <div class="col-md">
+                <div class="row">
+                    <p class="col-md ">Date de l'évènement : {{$event->date}}</p>
+                    <p class="col-md ">Lieu : {{$event->location}}</p>
+                </div>
+
+                <div class="row">
+                    <div class="eventInformations">
+                        <p id="eventDescription" class="col-md">{{$event->description}}</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+
     </article>
 
     <div class="row">
@@ -79,7 +85,7 @@
                                 <div class="form-group col-md-12">
                                     <input type="file" name="image" id="imageReadyToUpload">
                                     <img id="imagePreview"
-                                         src="@isset($event) {{ asset('storage/imagesUploaded/'.$event->image->path) }} @endisset">
+                                         src="@isset($event) {{ asset('storage/imagesUploaded/'.$event->image->path) }} @endisset" alt="Image de l'évènement">
                                     @error('image')
                                     <p>{{ $errors->first('image') }}</p>
                                     @enderror
