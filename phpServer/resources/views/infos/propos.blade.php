@@ -10,6 +10,7 @@
 
 @section('content')
         <div id="boxPolitique">
+            <!-- Display informations about the CESI -->
             <div class="elementPolitique">
                 <h3>A propos de notre école</h3>
                 <h4>Campus d’enseignement supérieur et de formation professionnelle, CESI poursuit sa mission sociétale en permettant à des étudiants, alternants et salariés de devenir acteurs des transformations des entreprises et de la société, grâce à ses Écoles d’Ingénieurs, son École Supérieure de l’Alternance, son École de Formation des Managers et son activité de Certification.</h4>

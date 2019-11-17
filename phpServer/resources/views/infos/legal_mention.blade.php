@@ -10,6 +10,7 @@
 
 @section('content')
     <div id="boxPolitique">
+        <!-- Display informations about legal mentions -->
         <div class="elementPolitique">
             <h3>Mentions légales</h3>
             <h4>Présentation du site internet</h4>

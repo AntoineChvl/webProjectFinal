@@ -10,6 +10,7 @@
 
 @section('content')
     <div id="boxPolitique">
+        <!-- Display rules about terms of sale -->
         <div class="elementPolitique">
             <h3>Conditions générales de ventes de produits en ligne à des consommateurs particuliers</h3>
             <hr>

@@ -1,5 +1,6 @@
 <footer>
     <div id="boxFooter">
+        <!-- Links for the CESI's social network -->
         <div class="elementFooter">
             <p>Retrouvez l'actualité de CESI sur :</p>
             <ul>
@@ -11,6 +12,7 @@
                             class="fab fa-linkedin"></i> Linkedin</a></li>
             </ul>
         </div>
+        <!-- Link to the CESI's partners and display their logo -->
         <div class="elementFooter">
             <p>Partenaires </p>
                 <a href="https://cge.asso.fr/"><img src="{{asset('assets/imgs/CGE.Blanc.jpg')}}" class="logoFooter" alt="CGE"></a>
@@ -20,6 +22,7 @@
                 <a href="https://certification.afnor.org/marque/afaq"><img src="{{asset('assets/imgs/Afaq.jpg')}}" class="logoFooter" alt="Afao"></a>
             <p>Copyright © CESI.FR</p>
         </div>
+        <!-- Link to various informations about the CESI -->
         <div class="elementFooter">
                 <a href="{{ route('legal_mention') }}">Mentions légales</a><br>
                 <a href="{{ route('cgv') }}">Conditions générales de ventes</a><br>

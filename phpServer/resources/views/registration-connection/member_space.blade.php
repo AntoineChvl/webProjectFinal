@@ -11,6 +11,7 @@
 @section('content')
         <div id="boxEspaceMembre">
             <div class="elementEspaceMembre">
+                <!-- Display informations about the users -->
                 <div id="boxInfo">
                     <div class="elementInfo">
                         <p>Nom</p>
@@ -39,15 +40,16 @@
                 </div>
             </div>
             <div class="elementEspaceMembre">
+                <!-- Display the button to disconnect the user -->
                 <p><a href="{{route('logout')}}"><button  type="button" class="boutonDeconnexion">Se déconnecter</button></a></p><br><br>
                 <div id="boxActivitesInscrits">
                     <div class="elementActivitesInscrits">
                         Activités inscrits
                     </div>
+                    <!-- Display every events where the user is registered -->
                     @foreach($user->futureEvents() as $event)
                     <div class="elementActivitesInscrits">
-                        <a href="{{route('events.show',$event)}}">
-                        <button type="button" class="boutonActivites">{{$event->name}}</button></a>
+                        <button type="button" class="boutonActivites"><a href="{{route('events.show',$event)}}">{{$event->name}}</a></button>
                     </div>
                         @endforeach
                 </div>

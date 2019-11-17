@@ -13,6 +13,7 @@
             <div class="elementContact">
                 <h2 class="titreContact">Nous contacter</h2>
             </div>
+            <!-- Display all the informations in order to contact the BDE -->
             <div class="elementContact">
                 <h2><i class="fas fa-phone"></i>  Par téléphone</h2>
                 <p>02 40 74 58 89 </p>
