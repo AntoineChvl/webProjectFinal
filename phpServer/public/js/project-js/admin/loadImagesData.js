@@ -21,12 +21,13 @@ $(document).ready(function () {
 
         $('#eventImages').DataTable( {
             destroy: true,
+            "autoWidth": false,
             responsive: {
                 details: {
                     display: $.fn.dataTable.Responsive.display.modal( {
                         header: function ( row ) {
                             var data = row.data();
-                            return 'Details for '+data[0]+' '+data[1];
+                            return 'Details';
                         }
                     } ),
                     renderer: $.fn.dataTable.Responsive.renderer.tableAll( {

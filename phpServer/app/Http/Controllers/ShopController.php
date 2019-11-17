@@ -163,6 +163,7 @@ class ShopController extends Controller
     {
         $product = Product::find($id);
         if ($product) {
+            $product->categories()->detach();
             $product->delete();
         }
     }

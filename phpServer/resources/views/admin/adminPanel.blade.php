@@ -47,10 +47,11 @@
             Gérer les photos et commentaires des évènements passés
         </a>
 
+        @if($user->statusLvl == 3)
         <a class="row btn submit-button col-12" id="downloadImages" href="{{ route('images-download') }}">
             Télécharger l'ensemble des photos postées par les étudiants et les membres du BDE
         </a>
-
+        @endif
     </div>
 
     <hr>

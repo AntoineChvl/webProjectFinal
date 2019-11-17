@@ -16,8 +16,7 @@
 @push('stylesheet')
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
     <link href="{{ asset('css/project-css/adminPanel.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/b-html5-1.6.1/r-2.2.3/datatables.min.css"/>
 @endpush
 
 
@@ -34,7 +33,7 @@
         <thead>
         <tr>
             <th>Nom de la catégorie</th>
-            <th>Gérer la catégorie</th>
+            <th class="not-tablet">Gérer la catégorie</th>
         </tr>
         </thead>
         <tfoot>
@@ -50,10 +49,7 @@
 @push('script')
     <script src="https://kit.fontawesome.com/1d7bafa102.js" crossorigin="anonymous"></script>
 
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/b-html5-1.6.1/r-2.2.3/datatables.min.js"></script>
 
     <script src="{{ asset('js/project-js/admin/adminTable.js') }}"></script>
     <script src="{{ asset('js/project-js/admin/loadCategories.js') }}"></script>

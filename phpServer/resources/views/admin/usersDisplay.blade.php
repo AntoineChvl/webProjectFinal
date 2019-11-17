@@ -15,10 +15,8 @@
 
 @push('stylesheet')
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/project-css/lightbox/lightbox.css') }}" rel="stylesheet">
     <link href="{{ asset('css/project-css/adminPanel.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/b-html5-1.6.1/r-2.2.3/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/b-flash-1.6.1/datatables.min.css"/>
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.dataTables.min.css"/>
 @endpush
@@ -42,36 +40,36 @@
 
     <hr>
 
-    <table id="usersParticipation" class="d-none" >
-        <thead>
-        <tr>
-            <th>Id de l'évènement</th>
-            <th>Nom de l'utilisateur</th>
-            <th>Id de l'utilisateur</th>
-            <th>Prénom de l'utilisateur</th>
-            <th>Nom de l'utilisateur</th>
-        </tr>
-        </thead>
-        <tfoot>
-        <tr>
-            <th>Id de l'évènement</th>
-            <th>Nom de l'utilisateur</th>
-            <th>Id de l'utilisateur</th>
-            <th>Prénom de l'utilisateur</th>
-            <th>Nom de l'utilisateur</th>
-        </tr>
-        </tfoot>
-    </table>
+        <table id="usersParticipation" class="d-none " >
+            <thead>
+            <tr>
+                <th >Id de l'évènement</th>
+                <th >Nom de l'utilisateur</th>
+                <th >Id de l'utilisateur</th>
+                <th> Prénom de l'utilisateur</th>
+                <th >Nom de l'utilisateur</th>
+            </tr>
+            </thead>
+            <tfoot>
+            <tr>
+                <th>Id de l'évènement</th>
+                <th>Nom de l'utilisateur</th>
+                <th>Id de l'utilisateur</th>
+                <th>Prénom de l'utilisateur</th>
+                <th>Nom de l'utilisateur</th>
+            </tr>
+            </tfoot>
+        </table>
+
+
 
 @endsection
 
 @push('script')
+
     <script src="{{ asset('js/project-js/images/preview-image.js') }}"></script>
 
-    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.js"></script>
-    <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.2.3/js/responsive.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/v/bs4/dt-1.10.20/b-1.6.1/b-html5-1.6.1/r-2.2.3/datatables.min.js"></script>
 
     <script src="https://cdn.datatables.net/buttons/1.6.0/js/dataTables.buttons.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>

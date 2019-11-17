@@ -38,7 +38,7 @@ class ParticipateController extends Controller
 
         for($i = 0; $i < $users_id->count(); $i++)
         {
-            $users[$i] = array('event_id' => Event::find($eventId)->first()->id,'event_name' => Event::find($eventId)->first()->name,'user_id' => $users_id[$i]->user_id, 'user_first_name' => User::find($users_id[$i]->user_id)->firstname, 'user_last_name' => User::find($users_id[$i]->user_id)->lastname);
+            $users[$i] = array('event_id' => Event::find($eventId)->id,'event_name' => Event::find($eventId)->name,'user_id' => $users_id[$i]->user_id, 'user_first_name' => User::find($users_id[$i]->user_id)->firstname, 'user_last_name' => User::find($users_id[$i]->user_id)->lastname);
         }
 
         return Response::json(array('data' => $users));

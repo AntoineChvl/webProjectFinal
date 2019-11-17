@@ -4,9 +4,8 @@ namespace App\Http\Middleware;
 
 use App\User;
 use Closure;
-use Illuminate\Support\Facades\Route;
 
-class AuthenticateBDE
+class AuthenticateCESI
 {
     /**
      * Handle an incoming request.
@@ -17,7 +16,7 @@ class AuthenticateBDE
      */
     public function handle($request, Closure $next)
     {
-        if(User::auth() && (User::auth()->statusLvl == 2))
+        if(User::auth() && (User::auth()->statusLvl == 3))
         {
             return $next($request);
         } else

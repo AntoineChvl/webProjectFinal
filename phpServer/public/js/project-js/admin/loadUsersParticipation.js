@@ -3,21 +3,21 @@ $(document).ready(function () {
     $('#eventChoice').on('change', (function(e){
 
         var selectedOption = $(this).children('option:selected').val().split('t');
+
         var eventSelected = selectedOption[selectedOption.length-1];
         var route = $('meta[name="route-name"]').attr('content');
-
 
         $('#usersParticipation').removeClass('d-none');
 
         $('#usersParticipation').DataTable( {
             destroy: true,
-            dom: 'Bfrtip',
+            "autoWidth": false,
             responsive: {
                 details: {
                     display: $.fn.dataTable.Responsive.display.modal( {
                         header: function ( row ) {
                             var data = row.data();
-                            return 'Details for '+data[0]+' '+data[1];
+                            return 'Details';
                         }
                     } ),
                     renderer: $.fn.dataTable.Responsive.renderer.tableAll( {
