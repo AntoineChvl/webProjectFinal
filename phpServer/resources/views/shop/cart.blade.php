@@ -24,12 +24,12 @@
     </div>
 
     @foreach($products as $product)
-         <article class="container">
+         <div class="container">
              <div class="row title">
                  <div class="col">
                      <form action="{{ route('shop.delToCart', $product->product->id) }}" method="post">
                          @csrf
-                         <button class="yellow" type="submit"><img src="{{ asset('assets/imgs/close.png') }}" id="del"></button>
+                         <button class="yellow" type="submit"><img src="{{ asset('assets/imgs/close.png') }}" class="del" alt="supprimer"></button>
                      </form>
                 </div>
                  <div class="col-4"><span class="full-text">Article</span><span class="short-text">Art</span></div>
@@ -43,7 +43,7 @@
 
              <div class="row">
                  <div class="col">
-                     <img src={{ asset('storage/imagesUploaded/'.$product->product->image->path) }} alt="product">
+                     <img src={{ asset('storage/imagesUploaded/'.$product->product->image->path) }} alt="produit">
                  </div>
                  <div class="col-4">
                      <p class="product-name">{{ $product->product->name }}</p>
@@ -67,7 +67,7 @@
              </div>
 
              <hr class="hr-bottom">
-         </article>
+         </div>
     @endforeach
 
     <a href="{{ route('shop') }}" class="btn btn-light" id="shop">Retour à la boutique</a>
