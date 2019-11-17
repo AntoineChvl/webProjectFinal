@@ -168,6 +168,7 @@ class ShopController extends Controller
         }
     }
 
+    /* Use to display the cart's view and get the good information to do so */
     public function indexCart()
     {
         //
@@ -188,6 +189,7 @@ class ShopController extends Controller
         return view('shop.cart', compact('products', 'totalPrice'));
     }
 
+    /* Add an item from the cart */
     public function addToCart(Request $request, $id)
     {
         $isInCart = false;
@@ -213,6 +215,7 @@ class ShopController extends Controller
         return redirect('shop')->cookie('cart', json_encode($cart), 24 * 60 * 2);
     }
 
+    /* Delete an item from the cart */
     public function delToCart(Request $request, $id)
     {
         $cart = json_decode($request->cookie('cart'));
@@ -231,11 +234,13 @@ class ShopController extends Controller
         return redirect('/shop/cart')->cookie('cart', json_encode($newCart), 24 * 60 * 2);
     }
 
+    /* Once someone validate his order, he is redirect to the method buy */
     public function order()
     {
         return redirect(route('shop.buy'));
     }
 
+    /* Get important information to send them into the email's view */
     public function buy()
     {
         $cart = json_decode(Cookie::get('cart'));
@@ -262,6 +267,7 @@ class ShopController extends Controller
         return redirect('shop')->cookie('cart', json_encode([]));
     }
 
+    /* Get all products for datatable purpose */
     public function allFormatted()
     {
         $products = Product::all();

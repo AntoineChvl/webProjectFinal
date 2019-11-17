@@ -14,6 +14,7 @@
 
 @section('content')
 
+    <!-- Modify a product's categories or properties -->
     <section>
         <a href="{{URL::previous()}}" class="btn btn-light back" id="back">Retour</a>
 
@@ -23,6 +24,8 @@
 
             <h1>Modification d'un produit</h1>
             <hr>
+
+                <!-- Choosing the categories of an article -->
                 <p class="selectCat">Sélectionnez une ou plusieurs catégorie(s)</p>
                 <div class="category-list row">
                     @foreach($categories as $category)
@@ -36,6 +39,7 @@
                     @endforeach
                 </div>
 
+                <!-- Choosing the properties of an article -->
                 <p class="propArt">Propriétés de l'article</p>
                 <div class="container">
                     <div class="row">

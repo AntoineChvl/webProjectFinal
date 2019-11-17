@@ -17,10 +17,13 @@
 
 @section('content')
 
+    <!-- Title and access to the cart -->
     <div class="top-center">
         <h1>Boutique du bureau des élèves</h1>
         <a href="/shop/cart" class="cart">Mon panier</a>
     </div>
+
+    <!-- Display the 3 products the most ordered -->
     @if(!isset($category))
         <div class="container">
             <div class="row">
@@ -67,6 +70,7 @@
 
             <div class="section-scroll"></div>
 
+            <!-- Filters by price and categories -->
             <div>
                 <div>
                     <hr class="top-bar">
@@ -100,8 +104,10 @@
             </div>
         </div>
 
+    <!-- Research bar -->
     <input type="text" placeholder="Recherchez..." id="search-bar">
 
+    <!-- Display all the products in the database -->
     <div class="product-list row">
         @foreach($products as $product)
             <div class="product col-md-3 col-sm-6">
@@ -117,8 +123,6 @@
 
 @push('script')
     <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
-
     <script src="{{ asset('js/EasyAutocomplete/jquery.easy-autocomplete.min.js') }}"></script>
     <script src="{{ asset('js/project-js/shopAutocomplete.js') }}"></script>
     <script src="{{ asset('js/project-js/shop.js') }}"></script>

@@ -14,6 +14,7 @@
 
 @section('content')
 
+    <!-- Return to the shop or add to the cart with a quantity -->
     <div class="navigation">
         <a href="{{ route('shop') }}" class="btn btn-light" id="shop">Retour à la boutique</a>
 
@@ -28,6 +29,7 @@
         <hr class="hr-top">
     </div>
 
+    <!-- Display a box containing all the information of a single product -->
     <article class="container">
         <div class="row">
             <div class="col">

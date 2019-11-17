@@ -18,6 +18,7 @@
 
 @section('content')
 
+    <!-- Create a category -->
     <section>
         <a href="{{URL::previous()}}" class="btn btn-light back" id="back">Retour</a>
 

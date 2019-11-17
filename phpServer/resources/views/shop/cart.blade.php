@@ -18,20 +18,26 @@
 
 @section('content')
 
+    <!-- Title and total of the cart -->
     <div class="top-center">
         <h1>Votre panier</h1>
         <div class="cart">Panier : <b>{{ $totalPrice }}€</b></div>
     </div>
 
+    <!-- Display all the information for each product -->
     @foreach($products as $product)
          <div class="container">
              <div class="row title">
+
+                 <!-- Button to delete a product form the cart -->
                  <div class="col">
                      <form action="{{ route('shop.delToCart', $product->product->id) }}" method="post">
                          @csrf
                          <button class="yellow" type="submit"><img src="{{ asset('assets/imgs/close.png') }}" class="del" alt="supprimer"></button>
                      </form>
                 </div>
+
+                 <!-- Information's titles -->
                  <div class="col-4"><span class="full-text">Article</span><span class="short-text">Art</span></div>
                  <div class="col"><span class="full-text">Quantité</span><span class="short-text">Qté</span></div>
                  <div class="col"><span class="full-text">Prix Unitaire</span><span class="short-text">P. Uni</span></div>
@@ -41,6 +47,7 @@
 
              <hr>
 
+             <!-- Information contained in the board -->
              <div class="row">
                  <div class="col">
                      <img src={{ asset('storage/imagesUploaded/'.$product->product->image->path) }} alt="produit">
@@ -70,6 +77,7 @@
          </div>
     @endforeach
 
+    <!-- Back to the shop or validating the cart -->
     <a href="{{ route('shop') }}" class="btn btn-light" id="shop">Retour à la boutique</a>
     <a href="{{ route('shop.order') }}" class="btn submit-button" id="order">Valider la commande</a>
 

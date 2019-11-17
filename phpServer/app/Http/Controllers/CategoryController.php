@@ -71,6 +71,7 @@ class CategoryController extends Controller
         }
     }
 
+    /* Get all categories for datatable purpose */
     public function allFormatted()
     {
         $categories = Category::all();
