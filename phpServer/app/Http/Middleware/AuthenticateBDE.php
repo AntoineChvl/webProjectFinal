@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Route;
 class AuthenticateBDE
 {
     /**
-     * Handle an incoming request.
+     * Check if the user is a BDE member.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

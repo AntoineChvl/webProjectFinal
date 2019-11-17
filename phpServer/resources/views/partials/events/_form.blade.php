@@ -1,3 +1,4 @@
+<!-- The form used to create and edit an event -->
 <div class="form-group">
     <label for="name">Nom de l'évènement :</label>
     <input type="text" name="name" id="name" value="{{ old('name') ?? isset($event) ? $event->name : ''}}" class="form-control" required>

@@ -1,20 +1,25 @@
 $(document).ready(function () {
 
+    /* Load the admin datatable that manages events */
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         }
     });
 
+    /* The datatables properties */
     var route = $('meta[name="route-name"]').attr('content');
     var validateRoute = "/espace-admin/events/validate";
     var tableName = "eventsList";
 
-
+    /* Make the datatable appear */
     $('#eventsList').removeClass('d-none');
 
+    /* Call adminTable.js to remove a row on click */
     removeElement(validateRoute, 'POST', tableName, 'event_id');
 
+    /* Configure the datatable with the events information, render buttons to make actions on rows */
     $('#eventsList').DataTable( {
         destroy: true,
         "autoWidth": false,

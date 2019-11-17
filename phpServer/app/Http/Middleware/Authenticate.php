@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 class Authenticate
 {
     /**
-     * Handle an incoming request.
+     * Check if the user is authenticated.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

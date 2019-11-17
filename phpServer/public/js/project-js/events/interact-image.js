@@ -1,18 +1,21 @@
 $(document).ready(function () {
 
+    /* Manage the comments posted on images */
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
+    /* Extract the id of the image through the URI */
     let url = $(location).attr('href');
     let urlsplit = url.split('/');
     let imagePastEventId = urlsplit[urlsplit.length-1];
 
+        /* Insert the comment in the database */
         $('.addComment').on('click', function(e){
 
-            console.log(imagePastEventId);
            $.ajax({
                 method: 'POST', // Type of response and matches what we said in the route
                 url: '/addComment', // This is the url we gave in the route
@@ -30,7 +33,7 @@ $(document).ready(function () {
 
         $(window).onload = updateComments();
 
-
+        /* Load comments related to the picture */
         function updateComments()
         {
 

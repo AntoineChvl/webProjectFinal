@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Response;
 
 class ParticipateController extends Controller
 {
-
+    /* Add a participation in our database table */
     public function participate(Request $request)
     {
         if(User::auth())
@@ -20,7 +20,7 @@ class ParticipateController extends Controller
         }
     }
 
-
+    /* Remove a participation in our database table */
     public function noLongerParticipate(Request $request)
     {
         if(User::auth())
@@ -30,6 +30,7 @@ class ParticipateController extends Controller
         }
     }
 
+    /* Get users that participate to an event, for datatable purpose */
     public function users()
     {
         $eventId = request()->input('event_id');

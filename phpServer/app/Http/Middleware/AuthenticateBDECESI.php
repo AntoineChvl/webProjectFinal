@@ -8,7 +8,7 @@ use Closure;
 class AuthenticateBDECESI
 {
     /**
-     * Handle an incoming request.
+     * Check if the user is a BDE member or an employee.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

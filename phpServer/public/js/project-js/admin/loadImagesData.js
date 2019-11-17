@@ -1,24 +1,32 @@
 $(document).ready(function () {
 
+    /* Load the admin datatable that manages images posted on past events */
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
 
-
+    /* Proceed to treatment when the user choose an option in the select list */
     $('#eventChoice').on('change', (function(e){
 
+        /* The datatables properties */
         var selectedOption = $(this).children('option:selected').val().split('t');
         var eventSelected = selectedOption[selectedOption.length-1];
         var route = $('meta[name="route-name"]').attr('content');
         var validateRoute = "/espace-admin/images/validate";
         var tableName = "eventImages";
 
+
+        /* Make the datatable appear */
         $('#eventImages').removeClass('d-none');
 
+        /* Call adminTable.js to remove a row on click */
         removeElement(validateRoute, 'POST', tableName, 'image_id');
 
+
+        /* Configure the datatable to be responsive, with the images data */
         $('#eventImages').DataTable( {
             destroy: true,
             "autoWidth": false,

@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Response;
 
 class CommentsController extends Controller
 {
-
+    /* Display comments */
     public function index(Request $request)
     {
 
@@ -29,6 +29,7 @@ class CommentsController extends Controller
         return Response::json($commentsData);
     }
 
+    /* Add a comment */
     public function add(Request $request)
     {
         if(User::auth())
@@ -39,6 +40,7 @@ class CommentsController extends Controller
 
     }
 
+    /* Get the image the comments has been posted on, datatable purpose */
     public function commentsEvent($uploadedImageId)
     {
 
@@ -48,6 +50,7 @@ class CommentsController extends Controller
        return view('admin.commentsAdministration', compact('imagePastEventId', 'imageToCheckComments'));
     }
 
+    /* Get all comments related to an event */
     public function allByEvent()
     {
         $comments = Comment::where('image_past_events_id', '=', request()->input('uploadedImageId'))->where('is_validated', '=', '1')->get();
@@ -61,6 +64,7 @@ class CommentsController extends Controller
         return Response::json(array('data' =>$commentsJSON));
     }
 
+    /* Soft deleting of a comment, alert by email if the user is an employee */
     public function updateCommentStatus(Request $request)
     {
         if(User::auth())

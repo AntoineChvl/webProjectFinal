@@ -14,16 +14,16 @@
 
 @push('stylesheet')
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/project-css/lightbox/lightbox.css') }}" rel="stylesheet">
 @endpush
 
+<!-- One event description page -->
 
 @section('content')
 
     <a href="{{route('events.index')}}" class="btn btn-light back">Retour aux évènements</a>
 
 
-
+    <!-- Main information about the event -->
     <article>
 
         <h1 id="singleEventTitle">{{$event->name}}</h1>
@@ -38,12 +38,11 @@
                 <div class="row">
                     <p class="col-md ">Date de l'évènement : {{$event->date}}</p>
                     <p class="col-md ">Lieu : {{$event->location}}</p>
+                    <p class="col-md ">Prix : {{ $event->price }} €</p>
                 </div>
 
                 <div class="row">
-                    <div class="eventInformations">
                         <p id="eventDescription" class="col-md">{{$event->description}}</p>
-                    </div>
                 </div>
             </div>
         </div>
@@ -51,6 +50,7 @@
 
     </article>
 
+    <!-- Display images posted by users if the event is dated -->
     <div class="row">
         @if($event->date < now())
 
@@ -124,17 +124,18 @@
             </div>
 
         @else
+        <!-- Display buttons to participate and edit event if the user is authorized -->
             @if($isConnected)
-                <div class="container flex-column">
-                    <div class="row col-3">
+                <div class="container flex-column" id="eventButtons">
+                    <div class="row col-md-3 col-12">
                         <button type="button"
                                 class="btn  @if(\App\Participate::where('user_id', '=', $userId)->where('event_id', '=', $event->id)->count() >0) confirm-button @else submit-button @endif"
                                 id="participateToEvent">@if(\App\Participate::where('user_id', '=', $userId)->where('event_id', '=', $event->id)->count() >0) Inscris ! @else Participer à l'évènement @endif
                         </button>
                         @if($userStatus == 2)
-                                <a href="{{ route('events.edit', ['event' => $event]) }}" class="btn submit-button" id="editEvent">Éditer l'évènement</a>
+                                <a href="{{ route('events.edit', ['event' => $event]) }}" class="btn submit-button mb-4" id="editEvent">Éditer l'évènement</a>
                         @elseif($userStatus == 3)
-                            <a href="" class="btn submit-button" id="editEvent">Éditer l'évènement</a>
+                            <a href="" class="btn submit-button mb-4" id="editEvent">Éditer l'évènement</a>
                         @endif
                     </div>
 

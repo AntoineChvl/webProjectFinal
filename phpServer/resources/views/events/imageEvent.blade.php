@@ -17,6 +17,8 @@
     <link href="{{ asset('css/project-css/lightbox/lightbox.css') }}" rel="stylesheet">
 @endpush
 
+<!-- Show one image posted by a user on a past event and its related comments -->
+
 @section('content')
 
     <a href="{{URL::previous()}}" class="btn btn-light back">Retour à l'évènement</a>

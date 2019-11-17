@@ -17,6 +17,7 @@ use ZanySoft\Zip\Zip;
 class ImagesController extends Controller
 {
 
+    /* Display a single image related to an event */
     public function show(Event $event, ImagePastEvent $image)
     {
         // Check if the image is associated with the event
@@ -38,6 +39,7 @@ class ImagesController extends Controller
         return redirect('events');
     }
 
+    /* Upload an image on a past event */
     public function uploadImagePastEvent(Request $request)
     {
         /*Get the event number from which the request has been made*/
@@ -56,6 +58,7 @@ class ImagesController extends Controller
         return back();
     }
 
+    /* Publish an image related to an event */
     public function publishImage(Request $request)
     {
        if($request->hasfile('image'))
@@ -66,12 +69,14 @@ class ImagesController extends Controller
        }
     }
 
+    /* Get all images related to a specific past event, posted by users */
     public function imagesByEvent()
     {
         $eventInput = request()->input('event_id');
         return ImagePastEvent::imagesByEvent($eventInput);
     }
 
+    /* Soft deleting of an image */
     public function updateImage(Request $request)
     {
         if(User::auth())
@@ -91,12 +96,14 @@ class ImagesController extends Controller
 
     }
 
+    /* Download all image uploaded */
     public function download()
     {
         $zip = Zip::create(public_path('images.zip'))->add(public_path('storage/imagesUploaded/', true))->close();
         return Response::download('images.zip')->deleteFileAfterSend(true);
     }
 
+    /* Check the image has the right attributes */
     public function validateImage()
     {
         return request()->validate([

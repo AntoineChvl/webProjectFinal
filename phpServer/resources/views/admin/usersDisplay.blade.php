@@ -21,6 +21,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.6.0/css/buttons.dataTables.min.css"/>
 @endpush
 
+<!-- See users participation to events -->
 
 @section('content')
 
@@ -44,7 +45,7 @@
             <thead>
             <tr>
                 <th >Id de l'évènement</th>
-                <th >Nom de l'utilisateur</th>
+                <th >Nom de l'évènement</th>
                 <th >Id de l'utilisateur</th>
                 <th> Prénom de l'utilisateur</th>
                 <th >Nom de l'utilisateur</th>

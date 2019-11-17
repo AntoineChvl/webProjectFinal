@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class LikesController extends Controller
 {
-
+    /* Add a like in our database table */
     public function add(Request $request)
     {
         if(User::auth())
@@ -18,7 +18,7 @@ class LikesController extends Controller
         }
     }
 
-
+    /* Remove a like in our database table */
     public function remove(Request $request)
     {
         if(User::auth())

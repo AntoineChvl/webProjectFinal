@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+    /* Manage participation to events */
 
     $.ajaxSetup({
         headers: {
@@ -13,12 +14,14 @@ $(document).ready(function () {
 
         const eventId = getEventId();
 
+        /* Add participation */
         if($('#participateToEvent').hasClass('submit-button'))
         {
 
             changeButtonAppearance('submit-button', 'confirm-button', 'Inscris !');
             postAjax('/participateEvent', eventId);
 
+            /* Remove participation */
         } else {
 
             changeButtonAppearance('confirm-button', 'submit-button', "Participer à l'évènement !");
@@ -28,7 +31,7 @@ $(document).ready(function () {
     })
 });
 
-
+/* Add a participation row in our database */
 function postAjax(url, data)
 {
     $.ajax({
@@ -42,6 +45,7 @@ function postAjax(url, data)
     });
 }
 
+/* Load different appearance depending on if the user participates or not */
 function changeButtonAppearance(removeClass, addClass, buttonValue)
 {
     $('#participateToEvent').removeClass(removeClass);
@@ -49,6 +53,7 @@ function changeButtonAppearance(removeClass, addClass, buttonValue)
     $('#participateToEvent').html(buttonValue);
 }
 
+/* Extract the event id from the URI */
 function getEventId()
 {
     let url = $(location).attr('href');

@@ -20,6 +20,7 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/responsive/2.2.3/css/responsive.bootstrap4.min.css"/>
 @endpush
 
+<!-- Admin main page that display the different options to manage -->
 
 @section('content')
 

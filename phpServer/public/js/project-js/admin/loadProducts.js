@@ -1,20 +1,28 @@
 $(document).ready(function () {
 
+    /* Load the admin datatable that manages existing products on the shop */
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         }
     });
 
+    /* The datatables properties */
     var route = $('meta[name="route-name"]').attr('content');
     var validateRoute = "/shop/product/";
     var tableName = "productsList";
 
 
+    /* Make the datatable appear */
     $('#productsList').removeClass('d-none');
 
+
+    /* Remove a product when the user decide to delete it */
     removeElement(validateRoute, 'DELETE', tableName, 'product_id');
 
+
+    /* Configure the datatable to display all the products information */
     $('#productsList').DataTable( {
         destroy: true,
         "autoWidth": false,

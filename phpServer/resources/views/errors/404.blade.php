@@ -15,6 +15,7 @@
     <link href="{{ asset('css/project-css/errors/404.css') }}" rel="stylesheet">
 @endpush
 
+<!-- Our 404 page -->
 
 @section('content')
 

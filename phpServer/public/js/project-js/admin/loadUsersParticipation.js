@@ -1,14 +1,20 @@
 $(document).ready(function () {
 
+    /* Load the admin datatable that shows whose users participate to events*/
+
+    /* Proceed to treatment when the user choose an option in the select list */
     $('#eventChoice').on('change', (function(e){
 
+        /* Datatable parameters */
         var selectedOption = $(this).children('option:selected').val().split('t');
-
         var eventSelected = selectedOption[selectedOption.length-1];
         var route = $('meta[name="route-name"]').attr('content');
 
+        /* Make the datatable appear */
         $('#usersParticipation').removeClass('d-none');
 
+
+        /* Configure the datatable to display the correct users */
         $('#usersParticipation').DataTable( {
             destroy: true,
             "autoWidth": false,
@@ -25,6 +31,7 @@ $(document).ready(function () {
                     } )
                 }
             },
+            /* Export buttons */
             buttons: [
                 'csvHtml5',
                 'pdfHtml5',

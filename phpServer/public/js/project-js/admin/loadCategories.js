@@ -1,20 +1,25 @@
 $(document).ready(function () {
 
+    /* Load the admin datatable that manages categories */
+
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         }
     });
 
+    /* The datatables properties */
     var route = $('meta[name="route-name"]').attr('content');
     var validateRoute = "/shop/category/";
     var tableName = "categoriesList";
 
-
+    /* Make the datatable appear */
     $('#categoriesList').removeClass('d-none');
 
+    /* Call adminTable.js to remove a row on click */
     removeElement(validateRoute, 'DELETE', tableName, 'category_id');
 
+    /* Load the datatable with the categories information, making it responsive */
     $('#categoriesList').DataTable( {
         destroy: true,
         "autoWidth": false,

@@ -12,6 +12,7 @@
     <link href="{{ asset('css/project-css/events.css') }}" rel="stylesheet">
 @endpush
 
+<!-- Display the event creation form -->
 
 @section('content')
 

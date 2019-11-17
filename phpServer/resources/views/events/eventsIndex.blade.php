@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="{{ asset('css/project-css/transition.css') }}">
 @endpush
 
+<!-- Display all events (recent and past) -->
 
 @section('content')
 
@@ -51,6 +52,7 @@
             </div>
             <div class="eventsList row mt-3" id="recentEventsList">
 
+                <!-- Call my ajax script, to load more events on click -->
             </div>
             <div class="d-flex justify-content-center">
                 <a href="" class="btn btn-outline-dark mt-3" id="loadMoreRecent">Charger plus...</a>

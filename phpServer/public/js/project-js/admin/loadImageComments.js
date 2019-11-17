@@ -1,21 +1,27 @@
 $(document).ready(function () {
 
+        /* Load the admin datatable that manages comments posted on images */
+
         $.ajaxSetup({
             headers: {
                 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
             }
         });
 
+        /* The datatables properties */
         var route = $('meta[name="route-name"]').attr('content');
         var imageUploadedId = $('meta[name="imagePastEventId"]').attr('content');
         var validateRoute = "/espace-admin/comments/validate";
         var tableName = "imageComments";
 
-
+        /* Make the datatable appear */
         $('#imageComments').removeClass('d-none');
 
+
+        /* Call adminTable.js to remove a row on click */
         removeElement(validateRoute, 'POST', tableName, 'comment_id');
 
+        /* Configure the datatable with the comments properties, call the controller method to get back comments posted on a specific image */
         $('#imageComments').DataTable( {
             destroy: true,
             "autoWidth": false,

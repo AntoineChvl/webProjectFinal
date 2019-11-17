@@ -29,6 +29,7 @@ class EventsController extends Controller
 
     }
 
+    /* Load more events */
     public function moreEvents(Request $request)
     {
         $skip = $request->input('skip');
@@ -150,6 +151,7 @@ class EventsController extends Controller
         }
     }
 
+    /* Check the event has the right attributes */
     public function validateEvent()
     {
         return request()->validate([
@@ -162,7 +164,7 @@ class EventsController extends Controller
         ]);
     }
 
-
+    /* Check the edited event has the right attributes */
     public function validateEditingEvent()
     {
         return request()->validate([
@@ -174,12 +176,14 @@ class EventsController extends Controller
         ]);
     }
 
+    /* Store an image related to an event */
     public function storeImage()
     {
         $imageController = new ImagesController();
         return $imageController->publishImage(request());
     }
 
+    /* Get all events for datatable purpose */
     public function allFormatted()
     {
         $events = Event::where('is_validated', '=', 1)->get();
@@ -194,7 +198,7 @@ class EventsController extends Controller
         return Response::json(array('data' => $eventsDetails));
     }
 
-
+    /* Soft deleting of an event */
     public function updateEvent(Request $request)
     {
         if(User::auth())

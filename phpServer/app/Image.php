@@ -9,10 +9,12 @@ use Intervention\Image\Facades\Image as ImagesIntervention;
 
 class Image extends Model
 {
+    /* Authorize fields of the table to be filled */
     protected $fillable = [
         'path', 'user_id'
     ];
 
+    /* Upload an image in our database and save it in local into the imagesUploaded folder */
     public static function storeImage($imageName)
     {
 

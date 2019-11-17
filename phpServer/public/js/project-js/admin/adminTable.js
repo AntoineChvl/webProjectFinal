@@ -1,6 +1,7 @@
 const removeElement = function (validateRoute, ajaxMethod, tableName, fieldContent)
 {
 
+    /* Remove the datatable row when the user click on it, while it call the right controller method to update our database  */
     $('#'+tableName).on('click', '.remove', function (e) {
         e.preventDefault();
 
@@ -20,8 +21,6 @@ const removeElement = function (validateRoute, ajaxMethod, tableName, fieldConte
             success: function(response){ // What to do if we succeed
             },
             error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
-                console.log(textStatus);
-                console.log(jqXHR);
             }
         });
         table

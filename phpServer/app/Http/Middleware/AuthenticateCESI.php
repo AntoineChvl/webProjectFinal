@@ -8,7 +8,7 @@ use Closure;
 class AuthenticateCESI
 {
     /**
-     * Handle an incoming request.
+     * Check if the user is an employee.
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

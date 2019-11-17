@@ -7,6 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
+<!-- Email to inform that a content has been reported by an employee -->
+
 <body>
 <h1>Alerte : Un membre du personnel CESI vous informe d'une anomalie sur un(e) {{ $data['type'] }}</h1>
 

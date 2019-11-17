@@ -1,5 +1,6 @@
 $(document).ready(function () {
 
+        /* Manage likes */
 
         $('.heartLike').on('click', function(e){
 
@@ -11,11 +12,13 @@ $(document).ready(function () {
 
             const imageId = getImageId();
 
+            /* Add one like and color the heart in red */
             if($('#like').hasClass('far'))
             {
                 changeHeartAppearance('far', 'fas');
                 postAjax('/likeImage/', imageId);
 
+                /* Remove the like and uncolor the heart */
             } else {
 
                 changeHeartAppearance('fas', 'far');
@@ -24,7 +27,7 @@ $(document).ready(function () {
         });
 });
 
-
+/* Insert or remove the like in our database table */
 function postAjax(url, data)
 {
     $.ajax({
@@ -38,12 +41,14 @@ function postAjax(url, data)
     });
 }
 
+/* Color or not the like's heart in red */
 function changeHeartAppearance(removeClass, addClass)
 {
     $('#like').removeClass(removeClass);
     $('#like').addClass(addClass);
 }
 
+/* Extract the image id from the URI */
 function getImageId()
 {
     let url = $(location).attr('href');
