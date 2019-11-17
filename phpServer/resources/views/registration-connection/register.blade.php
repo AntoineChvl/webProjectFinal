@@ -142,8 +142,7 @@
                             <div class="custom-control custom-checkbox">
                                 <input type="checkbox" class="custom-control-input" id="legalIssuesConsent"
                                        name="legalIssuesConsent">
-                                <label class="custom-control-label" for="legalIssuesConsent">J'accepte les mentions
-                                    légales</label>
+                                <label class="custom-control-label" for="legalIssuesConsent">J'accepte les <a href="{{ route('legal_mention') }}">mentions légales</a></label>
                             </div>
                         </div>
                         @if($errors->has('legalIssuesConsent'))
