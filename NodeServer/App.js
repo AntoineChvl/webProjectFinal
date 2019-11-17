@@ -46,12 +46,12 @@ app.use(
 
 //creating the route to get a token from an username and a password
 app.get('/getToken', async (req, res) => {
-    let body = [
-        req.body.username,
-        hasher.createHash('sha512').update(req.body.password, 'utf-8').digest('hex'),
-    ];
+    let body = {
+        username : req.body.username,
+        password : hasher.createHash('sha512').update(req.body.password, 'utf-8').digest('hex'),
+    };
     //verifying username and password
-    if(executeQuery('SELECT * FROM accessList WHERE ?',body)){
+    if((await executeQuery('SELECT * FROM accessList WHERE username = ? AND password = ?',[body.username,body.password])).length>0){
         //create a token
         let privateKey = fs.readFileSync('./private.pem', 'utf8');
         let token = jwt.sign({},privateKey, { algorithm: 'HS256'});
