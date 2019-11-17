@@ -28,7 +28,7 @@ class Contain extends Model
     /* Get the products about a order */
     public function product()
     {
-        return $this->has(Product::class);
+        return $this->belongsTo(Product::class);
     }
 
 }
