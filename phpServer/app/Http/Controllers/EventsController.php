@@ -216,4 +216,14 @@ class EventsController extends Controller
         }
     }
 
+    public function recurrent()
+    {
+        $event =  Event::find(request()->input('eventId'));
+        $eventDuplicated = $event->replicate();
+        $eventDuplicated->save();
+        return redirect()->route('events.edit', [$eventDuplicated]);
+    }
+
+
+
 }

@@ -97,7 +97,7 @@ h1 {
     justify-content: center;
 }
 
-#participateToEvent
+#participateToEvent, #replicateEvent
 {
     margin-top: 1%;
     margin-bottom: 1%;

@@ -100,8 +100,6 @@
                 </div>
             </div>
 
-
-
             <!-- Display images posted by users that have participated -->
             <div class="row">
             @foreach($event->imagesPostedByUsers as $pastImage)
@@ -133,7 +131,8 @@
                                 id="participateToEvent">@if(\App\Participate::where('user_id', '=', $userId)->where('event_id', '=', $event->id)->count() >0) Inscris ! @else Participer à l'évènement @endif
                         </button>
                         @if($userStatus == 2)
-                                <a href="{{ route('events.edit', ['event' => $event]) }}" class="btn submit-button mb-4" id="editEvent">Éditer l'évènement</a>
+                                <a href="{{ route('events.edit', ['event' => $event]) }}" class="btn submit-button" id="editEvent">Éditer l'évènement</a>
+                                <a href="{{ route('events.reccurent', ['eventId' => $event->id]) }}" class="btn submit-button mb-4" id="replicateEvent">Répliquer l'évènement</a>
                         @elseif($userStatus == 3)
                             <a href="" class="btn submit-button mb-4" id="editEvent">Éditer l'évènement</a>
                         @endif
