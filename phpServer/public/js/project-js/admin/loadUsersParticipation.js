@@ -31,6 +31,7 @@ $(document).ready(function () {
                     } )
                 }
             },
+            dom: 'Bfrtip',
             /* Export buttons */
             buttons: [
                 'csvHtml5',

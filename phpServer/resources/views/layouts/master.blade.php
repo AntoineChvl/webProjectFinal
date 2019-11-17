@@ -48,7 +48,7 @@
         crossorigin="anonymous"></script>
 <script src="//wpcc.io/lib/1.0.2/cookieconsent.min.js"></script>
 <!-- Our script for the cookie consent banner -->
-<script>window.addEventListener("load", function(){window.wpcc.init({"border":"normal","corners":"large","colors":{"popup":{"background":"#222222","text":"#ffffff","border":"#fde296"},"button":{"background":"#fde296","text":"#000000"}},"position":"bottom","padding":"large","margin":"none","fontsize":"large","transparency": "10","content":{"href":"http://127.0.0.1:8000/privacy_politicy","message":"En naviguant sur notre site internet, vous acceptez notre politique d'utilisation des cookies, ainsi que nos directives sur la protection de vos données personnelles.","button":"Je comprends","link":"En savoir plus"}})});</script>
+<script>window.addEventListener("load", function(){window.wpcc.init({"border":"normal","corners":"large","colors":{"popup":{"background":"#222222","text":"#ffffff","border":"#fde296"},"button":{"background":"#fde296","text":"#000000"}},"position":"bottom","padding":"large","margin":"none","fontsize":"large","transparency": "10","content":{"href":"http://127.0.0.1:8000/legal_mention","message":"En naviguant sur notre site internet, vous acceptez notre politique d'utilisation des cookies, ainsi que nos directives sur la protection de vos données personnelles.","button":"Je comprends","link":"En savoir plus"}})});</script>
 
 @stack('script')
 </body>

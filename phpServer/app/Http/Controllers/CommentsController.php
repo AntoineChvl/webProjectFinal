@@ -18,7 +18,7 @@ class CommentsController extends Controller
     public function index(Request $request)
     {
 
-        $comments = Comment::latest()->where('image_past_events_id', '=', $request->input('image_past_events_id'))->get();
+        $comments = Comment::latest()->where('image_past_events_id', '=', $request->input('image_past_events_id'))->where('is_validated', '=', 1)->get();
         $commentsData = [];
 
         for($i = 0; $i < $comments->count(); $i++)
