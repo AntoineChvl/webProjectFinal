@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\Image;
+use App\Mail\NotificationMembers;
 use App\Participate;
 use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
 use stdClass;
 
@@ -180,7 +182,7 @@ class EventsController extends Controller
 
     public function allFormatted()
     {
-        $events = Event::all();
+        $events = Event::where('is_validated', '=', 1)->get();
         $eventsDetails = [];
 
         for($i = 0; $i < $events->count(); $i++)
@@ -190,6 +192,24 @@ class EventsController extends Controller
         }
 
         return Response::json(array('data' => $eventsDetails));
+    }
+
+
+    public function updateEvent(Request $request)
+    {
+        if(User::auth())
+        {
+            $eventChecked = Event::where('id', '=', $request->input('data'))->first();
+            $eventChecked->validate();
+            $eventData = array('type' => 'EVENT', 'content' => $eventChecked->name, 'user' => User::find($eventChecked->user_id)->lastname.' '.User::find($eventChecked->user_id)->firstname);
+
+            if(User::auth()->statusLvl == 3)
+            {
+                Mail::to(User::auth()->email)->send(new NotificationMembers($eventData));
+            }
+
+            return Response::json($eventData);
+        }
     }
 
 }

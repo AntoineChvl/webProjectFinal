@@ -34,14 +34,14 @@
                 Ajouter un évènement
             </a>
 
-            <a class="row btn submit-button col-12"  href="{{ route('admin-events') }}">
-                Gérer les évènements
-            </a>
-
             <a class="row btn submit-button col-12" id="listUsers" href="{{ route('admin-event-users') }}">
                 Accéder à la liste des inscrits par évènement
             </a>
         @endif
+
+        <a class="row btn submit-button col-12"  href="{{ route('admin-events') }}">
+            Gérer les évènements
+        </a>
 
         <a class="row btn submit-button col-12" href="{{ route('admin-images') }}">
             Gérer les photos et commentaires des évènements passés

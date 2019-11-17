@@ -7,13 +7,13 @@ $(document).ready(function () {
     });
 
     var route = $('meta[name="route-name"]').attr('content');
-    var validateRoute = "/events/";
+    var validateRoute = "/espace-admin/events/validate";
     var tableName = "eventsList";
 
 
     $('#eventsList').removeClass('d-none');
 
-    removeElement(validateRoute, 'DELETE', tableName, 'event_id');
+    removeElement(validateRoute, 'POST', tableName, 'event_id');
 
     $('#eventsList').DataTable( {
         destroy: true,

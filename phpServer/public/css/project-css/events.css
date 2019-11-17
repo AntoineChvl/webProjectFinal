@@ -184,7 +184,7 @@ form
     transition: .4s;
 }
 
-textarea
+#commentTextArea
 {
     resize: none;
 }

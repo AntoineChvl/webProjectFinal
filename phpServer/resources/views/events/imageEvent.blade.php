@@ -47,7 +47,7 @@
                         @if($isConnected)
                         <div class="form-group">
                             <h6>Espace commentaires :</h6>
-                            <textarea name="comment" cols="30" rows="1" class="form-control commentValue"
+                            <textarea name="comment" cols="30" rows="1" class="form-control commentValue" id="commentTextArea"
                                       placeholder="Votre commentaire..."></textarea>
                         </div>
                         <button type="button" class="btn submit-button addComment">Ajouter le commentaire</button>

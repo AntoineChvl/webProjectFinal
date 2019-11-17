@@ -73,6 +73,7 @@ Route::get('/espace-admin/images/download', 'ImagesController@download')->name('
 Route::get('/espace-admin/products/all', 'AdminController@products')->name('admin-products')->middleware('authBDECESI');
 Route::get('/espace-admin/categories/all','AdminController@categories')->name('admin-categories')->middleware('authBDE');
 Route::get('/espace-admin/events/all', 'AdminController@events')->name('admin-events')->middleware('authBDECESI');
+Route::post('/espace-admin/events/validate', 'EventsController@updateEvent')->middleware('authBDECESI');
 
 Route::post('/likeImage', 'LikesController@add')->middleware('auth');
 Route::post('/unlikeImage', 'LikesController@remove')->middleware('auth');

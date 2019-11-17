@@ -31,4 +31,5 @@ class Image extends Model
 
         return $storedImage;
     }
+
 }

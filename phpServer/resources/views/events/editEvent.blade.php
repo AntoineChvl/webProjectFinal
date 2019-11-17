@@ -18,7 +18,7 @@
     <a href="{{URL::previous()}}" class="btn btn-light back">Retour</a>
 
     <section>
-        <h1 class="createEvent">Modifier l'évènement {{ $event->name }}</h1>
+        <h1 class="createEvent">Modifier l'évènement : {{ $event->name }}</h1>
 
 
         <form action="{{route('events.update', $event->id)}}" method="POST" enctype="multipart/form-data">
@@ -29,7 +29,7 @@
 
             @include('partials.events._form')
 
-            <button type="submit" class="btn submit-button">Modifier l'évènement !</button>
+            <button type="submit" class="btn submit-button mb-4">Modifier l'évènement !</button>
 
 
         </form>

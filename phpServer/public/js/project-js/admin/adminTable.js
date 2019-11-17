@@ -6,7 +6,7 @@ const removeElement = function (validateRoute, ajaxMethod, tableName, fieldConte
 
         var table = $('#'+tableName).DataTable();
         var rowObject = table.row($(this).closest('tr')).data()[fieldContent];
-
+        console.log(rowObject);
         if(ajaxMethod == 'DELETE')
         {
             validateRoute += rowObject;

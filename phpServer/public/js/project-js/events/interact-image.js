@@ -21,13 +21,8 @@ $(document).ready(function () {
                 }, // a JSON object to send back
                 success: function(response){ // What to do if we succeed
                     updateComments();
-                    console.log('Success');
-                    console.log(response);
                 },
                 error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
-
-                    console.log(JSON.stringify(jqXHR));
-                    console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
                 }
             });
 
@@ -49,13 +44,17 @@ $(document).ready(function () {
                 },
                 success: function(res) {
                     console.log(res);
+
                     for(var i=0; i < res.length; i++)
                     {
-                        $('.comments').append("<p><span class='commentContent'>"+res[i].content+"</span>, ajouté à "+res[i].created_at+"</p>");
+                        var dateParts = res[i].created_at.split("-");
+                        var dateDetails = dateParts[2].split(' ');
+                        var jsDate = new Date(dateParts[0], dateParts[1] - 1);
+                        $('.comments').append("<p><span class='commentContent'>"+res[i].content+"</span>, ajouté le "+jsDate.toLocaleDateString('fr-FR')+", par "+ res[i].user+"</p>");
                     }
                 },
                 error: function(xhr) {
-                    //Do Something to handle error
+                    console.log(xhr);
                 }
             });
         }

@@ -19,7 +19,14 @@ class CommentsController extends Controller
     {
 
         $comments = Comment::latest()->where('image_past_events_id', '=', $request->input('image_past_events_id'))->get();
-        return Response::json($comments);
+        $commentsData = [];
+
+        for($i = 0; $i < $comments->count(); $i++)
+        {
+            $commentsData[$i] = array('content' => $comments[$i]->content,'created_at' => $comments[$i]->created_at, 'user' => User::find($comments[$i]->user_id)->firstname.' '.User::find($comments[$i]->user_id)->lastname);
+        }
+
+        return Response::json($commentsData);
     }
 
     public function add(Request $request)

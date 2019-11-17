@@ -8,7 +8,7 @@
 
 <div class="form-group">
     <label for="description">Description de l'évènement :</label>
-    <textarea name="description" id="description"  class="form-control"
+    <textarea name="description" id="description"  class="form-control" rows="5"
               required>{{ old('description') ?? isset($event) ? $event->description : ''}}</textarea>
     @error('description')
     <p>{{ $errors->first('description') }}</p>
