@@ -14,19 +14,47 @@
         </div>
 
         <div>
-            <p>Total du panier : {{ $order->price }}€</p>
             <p>Référence de la commande : #{{ $order->id }}</p>
+            <p>Total du panier : {{ $order->price }}€</p>
         </div>
 
-        <img src="{{ asset('assets/imgs/cesi_logo.png') }}" alt="CESI Logo">
-        <p>Merci d'avoir choisi la boutique du CESI</p>
+        <br>
 
+        <div>
+            <img src="{{ asset('assets/imgs/cesi_logo.png') }}" alt="CESI Logo">
+            <p>Merci d'avoir choisi la boutique du CESI</p>
+        </div>
+        
         <hr>
 
         <div>
             <p>Ceci est un mail automatique, merci de ne pas y répondre.</p>
             <p>Pour nous contacter, veuillez cliquer sur le lien suivant : <a href="{{ route('contact') }}">Contact</a></p>
         </div>
+
+        <br>
+
+        <div>
+            <p>Détails de la commande :</p>
+            <table>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prix Unitaire</th>
+                    <th>Quantité</th>
+                    <th>Prix Total</th>
+                </tr>
+                @foreach($order->contains as $c)
+                    <tr>
+                        <td>{{ $c->product->name }}</td>
+                        <td>{{ $c->product->price }}€</td>
+                        <td>{{ $c->quantity }}</td>
+                        <td>{{ $c->quantity * $c->product->price}}€</td>
+                    </tr>
+                @endforeach
+            </table>
+        </div>
+
+        <br>
 
         <div>
             <p>Chère cliente, cher client,</p>
